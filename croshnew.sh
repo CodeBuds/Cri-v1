@@ -1154,13 +1154,6 @@ cmd_battery_test() (
   echo "Battery discharged ${bat_diff}% in ${test_length} second(s)."
 )
 
-USAGE_unameor=''
-HELP_unameor='
-Overridden unamethat should work in crosh
-'
-cmd_unameor() (
-  /usr/bin/uname "$@"
-)
 
 USAGE_dump_emk=''
 HELP_dump_emk='
