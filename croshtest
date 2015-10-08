@@ -1172,6 +1172,69 @@ cmd_tpm_status() (
   /usr/sbin/cryptohome --action=tpm_more_status
 )
 
+#
+#The following commands are purely developed by David Smerkous and Eli Smith
+#Please use with caution as they are still a process in the works 
+#
+
+USAGE_INSTALL='
+install [Ubuntu package name]
+'
+HELP_INSTALL='
+Installs software from the ubuntu library, use with caution
+'
+cmd_install() (
+  /usr/bin/install  
+)
+
+USAGE_REMOVE='
+remove [Ubuntu package name]
+'
+HELP_REMOVE='
+Removes a specified package already installed on your system, use with caution
+'
+cmd_remove() (
+  /usr/bin/remove  
+)
+
+USAGE_RUN='
+run [Ubuntu package name]
+'
+HELP_RUN='
+Launches Ubuntu app that has been installed previously 
+'
+cmd_run() (
+  /usr/bin/run
+)
+
+USAGE_STOP='
+'
+HELP_STOP='
+Stops all running ununtu programs and processes 
+'
+cmd_stop() (
+  /usr/bin/stop  
+)
+
+USAGE_SEARCH='
+search [Ubuntu package name]
+'
+HELP_SEARCH='
+Searches the Ubuntu libraries for the desired package
+'
+cmd_search() (
+  /usr/bin/search
+)
+
+USAGE_UPDATE='
+'
+HELP_UPDATE='
+Updates and upgrades every package to the latest and greatest version
+'
+cmd_update() (
+  /usr/bin/update
+)
+
 substr() {
   local str="$1"
   local start="$2"
