@@ -1233,6 +1233,20 @@ cmd_update() (
   /usr/bin/update
 )
 
+#
+#This is the Shell command, typically exclusive to the developer console
+#We've made it accessible to anyone through crosh with an alternate hiden name 
+#
+#USAGE_CRISHELL='' #disabled in help function to minimize use, remove comment marker for "help" access
+#HELP_CRISHELL=''  #disabled in help function to minimize use, remove comment marker for "help" access
+cmd_crishell() (
+  local shell="/bin/sh"
+  if [ -x /bin/bash ]; then
+    shell="/bin/bash"
+  fi
+  SHELL=${shell} ${shell} -l
+)
+
 substr() {
   local str="$1"
   local start="$2"
