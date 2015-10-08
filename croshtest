@@ -31,7 +31,7 @@ trap : INT
 if [ "${DATA_DIR+set}" = "set" ]; then
   export HOME="${DATA_DIR}/user"
 fi
-
+AUTHORS="David Smerkous and Eli Smith"
 IS_BASH=0
 try_bash() {
   # If dash was explicitly requested, then nothing to do.
@@ -50,8 +50,9 @@ try_bash() {
 }
 try_bash "$@"
 
-INTRO_TEXT="Welcome to the Chrome graphical interface, also known as Cri.
-Here you are able to run basic commands and download and run Ubuntu packages.
+INTRO_TEXT="Welcome to the Chrome graphical interface, also known as Cri
+This interface was developed by $AUTHORS
+Here you are able to run basic commands as well as download and run Ubuntu packages
 Type 'help' for a list of commands.
 "
 
