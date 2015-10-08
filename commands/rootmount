@@ -48,7 +48,7 @@ done
   echo ""
   sleep 5
   echo ""
-  read -p "You need to reboot, do you want to now? [y/n]" ny
+  read -p "You need to reboot, do you want to now?(It is highly reccomended) [y/n]" ny
   sleep 1
   case $ny in
   [yY]* ) sudo reboot;;
