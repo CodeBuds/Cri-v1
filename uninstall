@@ -1,0 +1,4 @@
+#!/bin/bash
+sudo cd /usr/local/chroots
+sudo delete-chroot -y *
+sudo rm -rf /usr/local/bin
