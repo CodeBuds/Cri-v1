@@ -1,1 +1,5 @@
-
+#!/bin/bash
+sudo enter-chroot 
+sudo apt-get -y update 
+sudo apt-get -y upgrade
+sudo unmount-chroot -a -f -y
