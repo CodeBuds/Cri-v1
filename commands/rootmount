@@ -8,11 +8,12 @@ echo ""
 echo ""
 echo "PLEASE READ ALL OF THIS AND ANSWER CAREFULLY... If you don't you might need to reinstall this script"
 echo "The problem here is that we can't just randomly change deep system files"
-echo "we will need to remount the user filesystem so we can edit the X11 settings"
+echo "we will need to remount the user filesystem so we can edit the bin settings"
 echo ""
 echo "If you select something besides no, program will exit..."
-echo "If you select yes or put some other character, (if not already) continue installation using install-x"
-echo "Fyi don't but 'crevos install-x' just 'install-x' (Without apos.)"
+echo "If you select yes or put some other character, (if not already) continue installation using the second"
+echo "Half of the script which is located on github"
+sleep 5
 echo ""
 set +e
 while true; do
@@ -42,12 +43,10 @@ done
   sudo crossystem dev_boot_signed_only=0
   sudo mount -o remount,rw /
   echo "Succesful remount of system, now the rest of the script should run with little warnings besides"
-  echo "That this isn't a officialy supported device (Luckily we have been able to fix that)"
   echo "BUT"
-  echo "For the second have of the script to work you will need to reboot"
-  echo "As soon as you reboot, you will need to install X11 for chromebooks, so run the command"
-  echo "install-x"
-  echo "Nothing else just install-x"
+  echo "To get it working make sure you run the second part which should be on the github page"
+  echo ""
+  sleep 5
   echo ""
   read -p "You need to reboot, do you want to now? [y/n]" ny
   sleep 1
