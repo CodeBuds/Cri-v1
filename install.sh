@@ -53,7 +53,7 @@ sleep 1
 
 echo "Installing secondary files"
 echo "1/11..."
-sudo wget "$URL/commands/root-mount" --no-check-certificate -q
+sudo wget "$URL/commands/rootmount" --no-check-certificate -q
 echo "2/11..."
 sudo wget "$URL/commands/remount" --no-check-certificate -q
 echo "3/11..."
@@ -77,7 +77,7 @@ sudo wget "$URL/cri" --no-check-certificate -q
 echo "Done installing secondary files"
 
 echo "Changing the permissions"
-sudo chmod +x root-mount
+sudo chmod +x rootmount
 sudo chmod +x remount
 sudo chmod +x install
 sudo chmod +x remove
@@ -98,4 +98,4 @@ echo "Changing the mounts to be root read/write"
 echo "As soon as you mount your system as root reboot, the program will ask you in less"
 echo "than 15 seconds"
 sleep 15
-sudo sh root-mount
+sudo sh rootmount
