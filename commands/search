@@ -1,0 +1,4 @@
+#!/bin/bash
+sudo enter-chroot 
+sudo apt-cache search $@
+sudo unmount-chroot -a -f -y
