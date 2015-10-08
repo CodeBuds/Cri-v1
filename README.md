@@ -9,5 +9,5 @@ This saves power and time with the ease of access we provide with this tool for 
 
 ______
 #####Contact information
-Eli Smith: plunkinguitar@gmail.com
-David Smerkous: smerkousdavid@gmail.com
+Eli Smith: plunkinguitar@gmail.com <br>
+David Smerkous: smerkousdavid@gmail.com <br>
