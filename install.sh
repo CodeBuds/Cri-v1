@@ -1,6 +1,6 @@
 #!/bin/bash
 #Directories for all files
-CREATORS="David Smerkous and Eli Smith"
+AUTHORS="David Smerkous and Eli Smith"
 MODIFIERS="NONE"
 URL="https://raw.github.com/CodeBuds/Cri/master"
 CRIBIN=/usr/bin
@@ -15,12 +15,12 @@ architecture=$(uname -m)
 
 echo "You are running as $USER, and on a $ARCHITECTURE computer"
 echo ""
-echo "Developed by David Smerkous and Eli Smith"
+echo "Developed by $AUTHORS"
 echo ""
 
 sleep 2
 
-read -p "Have you installed this before? [y] or [n]" -n 1 -r
+read -p "Is Cri already on your system? [y] or [n]" -n 1 -r
 echo    # (optional) move to a new line
 if [[ ! $REPLY =~ ^[Yy]$ ]]
 then
@@ -30,23 +30,12 @@ echo "Done"
 echo "..."
 
 sleep 1
-
-read -p "Are you reinstalling? [y] or [n]" -n 1 -r
-echo    # (optional) move to a new line
-if [[ ! $REPLY =~ ^[Yy]$ ]]
-then
     echo "Installing"
     sudo crouton -t e17,xiwi
     echo ""
     echo "Done installing second os (Ubunut-core)"
     echo ""
-else
     echo "Installing"
-    sudo crouton -t e17,xiwi -u -u
-    echo ""
-    echo "Done installing second os (Ubunut-core)"
-    echo ""
-fi
 fi
 
 sleep 1
@@ -75,7 +64,7 @@ sudo wget "$URL/commands/reinstall" --no-check-certificate -q
 echo "11/11..."
 sudo wget "$URL/cri" --no-check-certificate -q
 echo "Done installing secondary files"
-
+sleep 1
 echo "Changing the permissions"
 sudo chmod +x rootmount
 sudo chmod +x remount
