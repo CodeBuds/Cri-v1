@@ -7,7 +7,7 @@ This interface is a chrome end application to install and run Ubuntu application
 to run a seperate instance of Crouton/Ubuntu in the background or have it dual mounted.<br>
 This saves power and time with the ease of access we provide with this tool for Chrome OS <br>
 ______
-To install Cri, first you need to put your system into Developer mode by follow this guide <a href="http://www.howtogeek.com/210817/how-to-enable-developer-mode-on-your-chromebook/" target="_new"><br>
+To install Cri, first you need to put your system into Developer mode by follow this guide <a href="http://www.howtogeek.com/210817/how-to-enable-developer-mode-on-your-chromebook/" target="_new">here</a><br>
 Then type in the command "shell" and follow the instructions below 
 Install Cri part 1 here:
     wget -q -O - https://raw.github.com/CodeBuds/Cri/master/install.sh | bash
