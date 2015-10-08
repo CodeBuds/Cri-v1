@@ -1234,6 +1234,30 @@ cmd_update() (
   /usr/bin/update
 )
 
+USAGE_UNINSTALL='
+'
+HELP_UNINSTALL='
+completely removes Cri from the system, that includes all commands and Crouton, be warned! 
+'
+cmd_uninstall() (
+  /usr/bin/uninstall
+)
+
+USAGE_UNMOUNT='
+'
+HELP_UNMOUNT='
+Forcibly unmounts the Ubuntu filesystem, used to fix errors and resolve problems  
+'
+cmd_unmount() (
+  /usr/bin/unmount
+)
+
+#USAGE_ROOTMOUNT=''  #Hidden because root mounting is only required on the initial install
+#HELP_ROOTMOUNT=''   #Hidden because root mounting is only required on the initial install
+cmd_unmount() (
+  /usr/bin/rootmount  
+)
+
 #
 #This is the Shell command, typically exclusive to the developer console
 #We've made it accessible to anyone through crosh with an alternate hiden name 
