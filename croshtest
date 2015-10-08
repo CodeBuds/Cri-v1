@@ -50,7 +50,7 @@ try_bash() {
 }
 try_bash "$@"
 
-INTRO_TEXT="Welcome to crosh, the Chrome graphical interface, also known as Cri.
+INTRO_TEXT="Welcome to the Chrome graphical interface, also known as Cri.
 Here you are able to run basic commands and download and run Ubuntu packages.
 Type 'help' for a list of commands.
 "
