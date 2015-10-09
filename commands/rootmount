@@ -14,7 +14,7 @@ echo "If you select yes or put some other character, (if not already) continue i
 echo "Half of the script which is located on github"
 sleep 2
 echo ""
-read -p "Have you mounted and rebooted your syetem to read and write yet?" -n 1 ynn
+read -p "Have you mounted and rebooted your syetem to read and write yet?[y/n]" -n 1 ynn
 case $ynn in
     [yY][eE][sS]|[yY]) 
         exit
