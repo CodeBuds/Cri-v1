@@ -73,27 +73,29 @@ sleep 1
 cd
 cd Downloads
 echo "Installing secondary files"
-echo "1/11..."
+echo "1/12..."
 sudo wget "$URL/commands/rootmount" --no-check-certificate -q
-echo "2/11..."
+echo "2/12..."
 sudo wget "$URL/commands/unmount" --no-check-certificate -q
-echo "3/11..."
+echo "3/12..."
 sudo wget "$URL/commands/install" --no-check-certificate -q
-echo "4/11..."
+echo "4/12..."
 sudo wget "$URL/commands/remove" --no-check-certificate -q
-echo "5/11..."
+echo "5/12..."
 sudo wget "$URL/commands/run" --no-check-certificate -q
-echo "6/11..."
+echo "6/12..."
 sudo wget "$URL/commands/search" --no-check-certificate -q
-echo "7/11..."
+echo "7/12..."
 sudo wget "$URL/commands/stop" --no-check-certificate -q
-echo "8/11..."
+echo "8/12..."
 sudo wget "$URL/commands/uninstall" --no-check-certificate -q
-echo "9/11..."
+echo "9/12..."
 sudo wget "$URL/commands/update" --no-check-certificate -q
-echo "10/11..."
+echo "10/12..."
 sudo wget "$URL/commands/reinstall" --no-check-certificate -q
-echo "11/11..."
+echo "11/12..."
+sudo wget "$URL/commands/crishell" --no-check-certificate -q
+echo "12/12..."
 sudo wget "$URL/cri" --no-check-certificate -q
 echo "Done installing secondary files"
 sleep 1
