@@ -1,2 +1,4 @@
-#!/bin/bash 
-sudo enter-chroot -n precise -b xiwi $@
+#!/bin/bash
+name=$@
+sudo enter-chroot -n precise xiwi $name
+exit
