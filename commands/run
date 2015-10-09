@@ -1,5 +1,6 @@
 #!/bin/bash
 name=$@
-echo "Trying to run $NAME"
-sudo enter-chroot -n precise xiwi -F $name
-exit
+echo "Trying to run $name"
+echo "Give us at least 5 seconds to start up ubuntu..."
+sudo enter-chroot -b -n precise xiwi  $name
+echo "Thanks for using cri to run $name"
