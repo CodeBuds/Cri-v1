@@ -1261,11 +1261,7 @@ cmd_unmount() (
 #USAGE_CRISHELL='' #disabled in help function to minimize use, remove comment marker for "help" access
 #HELP_CRISHELL=''  #disabled in help function to minimize use, remove comment marker for "help" access
 cmd_crishell() (
-  local shell="/bin/sh"
-  if [ -x /bin/bash ]; then
-    shell="/bin/bash"
-  fi
-  SHELL=${shell} ${shell} -l
+  /usr/bin/crishell
 )
 
 substr() {
