@@ -102,8 +102,6 @@ sudo wget "$URL/commands/fixconfig" --no-check-certificate -q
 echo "Done..."
 sleep 1
 cd $CTEMP
-
-sleep 2
 echo
 echo
 echo
@@ -112,6 +110,7 @@ echo "To make any changed you will need remount as read and write, please read c
 sudo cp rootmount /usr/local/bin
 cd /usr/local/bin
 sudo chmod +x rootmount
+chmod +x rootmount
 sleep 3
 echo
 echo
