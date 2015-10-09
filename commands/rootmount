@@ -14,16 +14,44 @@ echo "If you select something besides no, program will exit..."
 echo "If you select yes or put some other character, (if not already) continue installation using the second"
 echo "Half of the script which is located on github"
 sleep 5
+ask() {
+    # http://djm.me/ask
+    while true; do
+
+        if [ "${2:-}" = "Y" ]; then
+            prompt="Y/n"
+            default=Y
+        elif [ "${2:-}" = "N" ]; then
+            prompt="y/N"
+            default=N
+        else
+            prompt="y/n"
+            default=
+        fi
+
+        # Ask the question - use /dev/tty in case stdin is redirected from somewhere else
+        read -p "$1 [$prompt] " REPLY </dev/tty
+
+        # Default?
+        if [ -z "$REPLY" ]; then
+            REPLY=$default
+        fi
+
+        # Check if the reply is valid
+        case "$REPLY" in
+            Y*|y*) return 0 ;;
+            N*|n*) return 1 ;;
+        esac
+
+    done
+}
 echo ""
+if ask "Have you mounted and rebooted your syetem to read and write yet?"; then
+    exit
+else
+    echo ""
+fi
 set +e
-while true; do
-    read -p "Have you mounted and rebooted your syetem to read and write yet? [y/n]" yn
-    case $yn in
-        [Yy]* ) exit;;
-        [Nn]* ) break;;
-        * ) echo "Please answer y or n.";;
-    esac
-done
   echo "Please be ready to anwser system settings questions, so that we can proceed"
   sleep 3
   set +e
