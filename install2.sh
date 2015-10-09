@@ -11,28 +11,29 @@ cd
 cd Downloads
 echo "Copying and Deleting commands"
 echo ""
-echo "1/11..."
+echo "1/12..."
 sudo mv rootmount $CBIN
-echo "2/11..."
+echo "2/12..."
 sudo mv unmount $CBIN
-echo "3/11..."
+echo "3/12..."
 sudo mv install $CBIN
-echo "4/11..."
+echo "4/12..."
 sudo mv remove $CBIN
-echo "5/11..."
+echo "5/12..."
 sudo mv run $CBIN
-echo "6/11..."
+echo "6/12..."
 sudo mv search $CBIN
-echo "7/11..."
+echo "7/12..."
 sudo mv stop $CBIN
-echo "8/11..."
+echo "8/12..."
 sudo mv uninstall $CBIN
-echo "9/11..."
+echo "9/12..."
 sudo mv update $CBIN
-echo "10/11..."
+echo "10/12..."
 sudo mv reinstall $CBIN
-echo "11/11..."
+echo "11/12..."
 sudo mv crishell $CBIN
+echo "12/12..."
 sudo mv cri $CBIN
 echo "Done copying and deleting"
 echo "DONE..."
