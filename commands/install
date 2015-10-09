@@ -1,5 +1,5 @@
 #!/bin/bash
 name=$@
-crishell
+echo "Trying to install $NAME"
 sudo enter-chroot -n precise sudo apt-get -y install $name
 exit
