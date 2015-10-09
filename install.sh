@@ -61,7 +61,7 @@ else
     sleep 1
     echo "Installing"
     sudo chmod +x crouton
-    sudo sh crouton -t e17,xiwi
+    sudo sh crouton -t xiwi
     echo ""
     echo "Done installing second os (Ubuntu-core)"
     echo ""
