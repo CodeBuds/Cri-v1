@@ -51,7 +51,7 @@ ask() {
 
     done
 }
-if ask "Is Cri already on your system? [y] or [n]"; then
+if ask "Is Cri already on your system?"; then
     echo "Installing secondary then..."
 else
     echo "Installing pre files"
@@ -63,7 +63,7 @@ else
     sudo chmod +x crouton
     sudo sh crouton -t e17,xiwi
     echo ""
-    echo "Done installing second os (Ubunut-core)"
+    echo "Done installing second os (Ubuntu-core)"
     echo ""
     echo "Installing"
 fi
