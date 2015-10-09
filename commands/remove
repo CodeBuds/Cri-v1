@@ -2,3 +2,4 @@
 name=$@
 echo "Trying to remove $NAME"
 sudo enter-chroot -n precise sudo apt-get -y remove $name
+exit
