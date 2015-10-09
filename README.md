@@ -10,8 +10,10 @@ ______
 To install Cri, first you need to put your system into Developer mode by follow this guide <a href="http://www.howtogeek.com/210817/how-to-enable-developer-mode-on-your-chromebook/" target="_new">here</a><br>
 Then type in the command "shell" and follow the instructions below <br>
 Install Cri part 1 here: <br>
+
     wget -q -O - https://raw.github.com/CodeBuds/Cri/master/install.sh | bash <br>
 Then, after that is done and you have rebooted run this command in shell <br>
+
     wget -q -O - https://raw.github.com/CodeBuds/Cri/master/install.sh | bash <br>
  ______
 #####Contact information
