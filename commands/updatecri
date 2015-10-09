@@ -1,8 +1,15 @@
 #!/bin/bash
-CBIN=/usr/bin
+CBIN=/usr/bin/
+URL="https://raw.github.com/CodeBuds/Cri/master"
 cd $CBIN
 echo "Welcome to the cri updater, please give me a minute to organize everything"
+echo "Make sure you are connected to the internet or this will screw up everything"
+sleep 4
 echo
+echo "Checking for internet using wget..."
+sudo wget "$URL/commands/crishell" --no-check-certificate --show-progress
+echo "Double check now to make sure you're connected to the internet...."
+sleep 5
 echo "Deleting old files"
 sudo rm -rf rootmount
 sudo rm -rf unmount
@@ -19,6 +26,7 @@ sudo rm -rf fixconfig
 sudo rm -rf crosh
 sudo rm -rf cri
 sudo rm -rf updatecri
+cd $CBIN
 echo "Installing secondary files"
 echo "1/12..."
 sudo wget "$URL/commands/rootmount" --no-check-certificate -q
