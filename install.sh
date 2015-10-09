@@ -4,9 +4,9 @@ AUTHORS="David Smerkous and Eli Smith"
 MODIFIERS="NONE"
 URL="https://raw.github.com/CodeBuds/Cri/master"
 CRIBIN=/usr/bin
+CTEMP=~/Downloads/
 
-cd 
-cd Downloads
+cd $CTEMP
 echo 'Welcome to the Cri installer, this will install Cri in 5 seconds, hit ctrl+z to stop if unwanted'
 sleep 5
 
@@ -70,8 +70,7 @@ fi
 
 sleep 1
 
-cd
-cd Downloads
+cd $CTEMP
 echo "Installing secondary files"
 echo "1/12..."
 sudo wget "$URL/commands/rootmount" --no-check-certificate -q
@@ -102,14 +101,12 @@ echo "Installing pre config files"
 sudo wget "$URL/commands/fixconfig" --no-check-certificate -q
 echo "Done..."
 sleep 1
-cd
-cd Downloads
+cd $CTEMP
 
 sleep 2
 
 echo "Changing the mounts to be root read/write"
 echo "As soon as you mount your system as root, please reboot, the program will ask you in less"
 echo "than 15 seconds"
-sleep 15
-cd $CBIN
+sleep 5
 ./rootmount
