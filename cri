@@ -189,7 +189,7 @@ cmd_help() (
 
   case $# in
   0)
-    local cmds="exit help help_advanced ping top"
+    local cmds="exit help help_advanced ping top install reinstall remove run search stop uninstall unmount update"
     for cmd in ${cmds}; do
       cmd_help "${cmd}"
     done
@@ -1182,6 +1182,14 @@ HELP_install='
 '
 cmd_install() (
   /usr/bin/install  
+)
+
+USAGE_reinstall='reinstall [Ubuntu package name]'
+HELP_reinstall='
+  reinstalls software from the ubuntu library
+'
+cmd_reinstall() (
+  /usr/bin/reinstall  
 )
 
 USAGE_remove='remove [Ubuntu package name]'
