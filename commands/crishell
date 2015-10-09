@@ -1,5 +1,5 @@
 #!/bin/bash
-local shell="/bin/sh"
+shell="/bin/sh"
   if [ -x /bin/bash ]; then
     shell="/bin/bash"
   fi
