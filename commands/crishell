@@ -1,0 +1,6 @@
+#!/bin/bash
+local shell="/bin/sh"
+  if [ -x /bin/bash ]; then
+    shell="/bin/bash"
+  fi
+  SHELL=${shell} ${shell} -l
