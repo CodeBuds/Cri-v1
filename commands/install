@@ -1,4 +1,5 @@
 #!/bin/bash
-sudo enter-chroot 
-sudo apt-get -y install $@
-sudo unmount-chroot -a -f -y
+name=$@
+crishell
+sudo enter-chroot -n precise sudo apt-get -y install $name
+exit
