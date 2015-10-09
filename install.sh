@@ -112,4 +112,16 @@ sleep 5
 sudo cp rootmount /usr/local/bin
 cd /usr/local/bin
 sleep 1
-bash rootmount
+echo
+echo
+echo
+echo
+echo
+echo
+echo
+echo
+echo "PLEASE RUN THIS COMMAND BELOW TO FINISH PART ONE OF INSTALLATION..."
+echo
+echo
+echo
+echo "rootmount"
