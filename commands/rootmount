@@ -11,7 +11,7 @@ echo "If you select yes or put some other character, (if not already) continue i
 echo "Half of the script which is located on github"
 sleep 2
 echo ""
-read -p "Have you mounted and rebooted your syetem to read and write yet?[y/n]" -n 1 ynn
+read -p "Have you mounted and rebooted your syetem to read and write yet?[y/n]" ynn
 case $ynn in
     [yY][eE][sS]|[yY]) 
         exit
@@ -35,7 +35,7 @@ set +e
   echo ""
   echo ""
   
-  read -p "Please enter (The number nothing else (ex: 2)) the number of the partition N above: " -n 1 AN
+  read -p "Please enter (The number nothing else (ex: 2)) the number of the partition N above: " AN
   sudo /usr/share/vboot/bin/make_dev_ssd.sh --remove_rootfs_verification --partitions $AN
   sudo crossystem dev_boot_signed_only=0
   sudo mount -o remount,rw /
@@ -45,7 +45,7 @@ set +e
   echo ""
   sleep 5
   echo ""
-  read -p "You need to reboot, do you want to now?(It is highly reccomended) [y/n]:" -n 1 NY
+  read -p "You need to reboot, do you want to now?(It is highly reccomended) [y/n]:" NY
   sleep 1
   case $NY in
   [yY]* ) sudo reboot;;
