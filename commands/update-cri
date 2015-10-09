@@ -1,0 +1,73 @@
+#!/bin/bash
+CBIN=/usr/bin
+cd $CBIN
+echo "Welcome to the cri updater, please give me a minute to organize everything"
+echo
+echo "Deleting old files"
+sudo rm -rf rootmount
+sudo rm -rf unmount
+sudo rm -rf install
+sudo rm -rf remove
+sudo rm -rf run
+sudo rm -rf search
+sudo rm -rf stop
+sudo rm -rf uninstall
+sudo rm -rf update
+sudo rm -rf reinstall
+sudo rm -rf crishell
+sudo rm -rf fixconfig
+sudo rm -rf crosh
+sudo rm -rf cri
+echo "Installing secondary files"
+echo "1/12..."
+sudo wget "$URL/commands/rootmount" --no-check-certificate -q
+echo "2/12..."
+sudo wget "$URL/commands/unmount" --no-check-certificate -q
+echo "3/12..."
+sudo wget "$URL/commands/install" --no-check-certificate -q
+echo "4/12..."
+sudo wget "$URL/commands/remove" --no-check-certificate -q
+echo "5/12..."
+sudo wget "$URL/commands/run" --no-check-certificate -q
+echo "6/12..."
+sudo wget "$URL/commands/search" --no-check-certificate -q
+echo "7/12..."
+sudo wget "$URL/commands/stop" --no-check-certificate -q
+echo "8/12..."
+sudo wget "$URL/commands/uninstall" --no-check-certificate -q
+echo "9/12..."
+sudo wget "$URL/commands/update" --no-check-certificate -q
+echo "10/12..."
+sudo wget "$URL/commands/reinstall" --no-check-certificate -q
+echo "11/12..."
+sudo wget "$URL/commands/crishell" --no-check-certificate -q
+echo "12/12..."
+sudo wget "$URL/cri" --no-check-certificate -q
+echo "Done installing secondary files"
+echo "Installing pre config files"
+sudo wget "$URL/commands/fixconfig" --no-check-certificate -q
+echo "Done installing pre config files
+echo "Installing updating package"
+sudo wget "$URL/commands/update-cri" --no-check-certificate -q
+echo "Done..."
+
+echo "Changing the permissions"
+sudo chmod +x rootmount
+sudo chmod +x unmount
+sudo chmod +x install
+sudo chmod +x remove
+sudo chmod +x run
+sudo chmod +x search
+sudo chmod +x stop
+sudo chmod +x uninstall
+sudo chmod +x update
+sudo chmod +x reinstall
+sudo chmod +x crishell
+sudo chmod +x fixconfig
+sudo chmod +x crosh
+echo "Done changing permissions"
+echo "DONE..."
+echo
+echo "Remember this doesn't update the ubuntu packages just the commands for them"
+echo "Also this updates Cri, and configs"
+echo "So don't be surprised if colors or commands change"
