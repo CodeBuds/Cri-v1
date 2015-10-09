@@ -14,7 +14,7 @@ echo ""
 echo "1/11..."
 sudo mv rootmount $CBIN
 echo "2/11..."
-sudo mv remount $CBIN
+sudo mv unmount $CBIN
 echo "3/11..."
 sudo mv install $CBIN
 echo "4/11..."
