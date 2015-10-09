@@ -35,3 +35,20 @@ echo "11/11..."
 sudo mv cri $CBIN
 echo "Done copying and deleting"
 echo "DONE..."
+
+cd $CBIN
+echo "Changing the permissions"
+sudo chmod +x rootmount
+sudo chmod +x unmount
+sudo chmod +x install
+sudo chmod +x remove
+sudo chmod +x run
+sudo chmod +x search
+sudo chmod +x stop
+sudo chmod +x uninstall
+sudo chmod +x update
+sudo chmod +x reinstall
+sudo chmod +x cri
+echo "Done changing permissions"
+echo ""
+echo ""
