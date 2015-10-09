@@ -13,7 +13,7 @@ sleep 5
 user=$(whoami)
 architecture=$(uname -m)
 
-echo "You are running as $USER, and on a $ARCHITECTURE computer"
+echo "You are running as $user, and on a $architecture computer"
 echo ""
 echo "Developed by $AUTHORS"
 echo ""
