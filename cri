@@ -2,6 +2,7 @@
 # Copyright (c) 2012 The Chromium OS Authors. All rights reserved.
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
+# Modified by David Smerkous and Eli Smith
 
 #This is just to clear the screen of all clutter
 clear
@@ -192,7 +193,7 @@ cmd_help() (
 
   case $# in
   0)
-    local cmds="exit help help_advanced ping top install reinstall remove run search stop uninstall unmount update"
+    local cmds="exit help help_advanced ping top install reinstall remove run search stop uninstall unmount update updatecri"
     for cmd in ${cmds}; do
       cmd_help "${cmd}"
     done
@@ -1246,6 +1247,7 @@ cmd_update() (
 USAGE_uninstall=''
 HELP_uninstall='
   completely removes Cri from the system, that includes all commands and Crouton, be warned! 
+  WARNING, doesnt remove cri but does remove crouton system
 '
 cmd_uninstall() (
   /usr/bin/uninstall $@
