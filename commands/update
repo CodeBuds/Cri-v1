@@ -1,3 +1,7 @@
 #!/bin/bash
-sudo enter-chroot -n precise sudo apt-get -y update && sudo apt-get -y upgrade && sudo unmount-chroot -a -f -y
-exit
+echo "Updating and Upgrading all packages..."
+echo "This can take up to 6 minutes..."
+sudo enter-chroot -b -n precise sudo apt-get -y update && sudo apt-get -y upgrade && sudo unmount-chroot -a -f -y
+echo ""
+echo ""
+echo "Done... Thanks for waiting"
