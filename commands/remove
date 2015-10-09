@@ -1,4 +1,4 @@
 #!/bin/bash
-sudo enter-chroot
-sudo apt-get -y remove $@
-sudo unmount-chroot -a -f -y
+name=$@
+echo "Trying to remove $NAME"
+sudo enter-chroot -n precise sudo apt-get -y remove $name
