@@ -1,8 +1,13 @@
-#!/bin/bash
+#!/bin/sh
 
 echo ""
 echo "IM WAITING"
 read ok
+okay=$ok
+while [[ ! $okay == "y"]]; do
+read okk
+okay=$okk
+done
 echo "got: $ok"
 echo ""
 echo ""
