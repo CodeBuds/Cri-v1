@@ -66,8 +66,8 @@ set +e
   echo ""
   echo ""
   
-  read -n 1 -p "Please enter (The number nothing else (ex: 2)) the number of the partition N above: " AN </dev/tty
-  sudo /usr/share/vboot/bin/make_dev_ssd.sh --remove_rootfs_verification --partitions $an
+  read -p "Please enter (The number nothing else (ex: 2)) the number of the partition N above: " AN </dev/tty
+  sudo /usr/share/vboot/bin/make_dev_ssd.sh --remove_rootfs_verification --partitions $AN
   sudo crossystem dev_boot_signed_only=0
   sudo mount -o remount,rw /
   echo "Succesful remount of system, now the rest of the script should run with little warnings besides"
@@ -76,7 +76,7 @@ set +e
   echo ""
   sleep 5
   echo ""
-  read -n 1 -p "You need to reboot, do you want to now?(It is highly reccomended) [y/n]" NY </dev/tty
+  read -p "You need to reboot, do you want to now?(It is highly reccomended) [y/n]" NY </dev/tty
   sleep 1
   case $NY in
   [yY]* ) sudo reboot;;
