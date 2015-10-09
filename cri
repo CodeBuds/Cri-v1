@@ -1176,15 +1176,15 @@ cmd_tpm_status() (
 #Please use with caution as they are still a process in the works 
 #
 
-USAGE_install='install [Ubuntu package name]'
+USAGE_install='<Ubuntu package name>'
 HELP_install='
-  Installs software from the ubuntu library, use with caution
+  Installs software from the ubuntu library, use with caution (Graphical)
 '
 cmd_install() (
   /usr/bin/install $@
 )
 
-USAGE_reinstall='reinstall [Ubuntu package name]'
+USAGE_reinstall='<Ubuntu package name>'
 HELP_reinstall='
   reinstalls software from the ubuntu library
 '
@@ -1192,7 +1192,7 @@ cmd_reinstall() (
   /usr/bin/reinstall $@ 
 )
 
-USAGE_remove='remove [Ubuntu package name]'
+USAGE_remove='<Ubuntu package name>'
 HELP_remove='
   Removes a specified package already installed on your system, use with caution
 '
@@ -1200,7 +1200,7 @@ cmd_remove() (
   /usr/bin/remove $@
 )
 
-USAGE_run='run [Ubuntu package name]'
+USAGE_run='<Ubuntu package name>'
 HELP_run='
   Launches Ubuntu app that has been installed previously 
 '
@@ -1208,7 +1208,7 @@ cmd_run() (
   /usr/bin/run $@
 )
 
-USAGE_stop='stop'
+USAGE_stop=''
 HELP_stop='
   Stops all running ununtu programs and processes (On "true" linux side)
 '
@@ -1216,7 +1216,7 @@ cmd_stop() (
   /usr/bin/stop $@  
 )
 
-USAGE_search='search [Ubuntu package name]'
+USAGE_search='<Ubuntu package name>'
 HELP_search='
   Searches the Ubuntu libraries for the desired package
 '
@@ -1224,7 +1224,7 @@ cmd_search() (
   /usr/bin/search $@
 )
 
-USAGE_update='update'
+USAGE_update=''
 HELP_update='
   Updates and upgrades every package to the latest and greatest version
 '
@@ -1232,7 +1232,7 @@ cmd_update() (
   /usr/bin/update $@
 )
 
-USAGE_uninstall='uninstall'
+USAGE_uninstall=''
 HELP_uninstall='
   completely removes Cri from the system, that includes all commands and Crouton, be warned! 
 '
@@ -1240,12 +1240,20 @@ cmd_uninstall() (
   /usr/bin/uninstall $@
 )
 
-USAGE_unmount='unmount (unmounts linux from chromeos)'
+USAGE_unmount=''
 HELP_unmount='
   Forcibly unmounts the Ubuntu filesystem, used to fix errors and resolve problems  
 '
 cmd_unmount() (
   /usr/bin/unmount $@
+)
+
+USAGE_fixconfig=''
+HELP_fixconfig='
+  Forcibly replaces the i3 config file error, if you recieve it
+'
+cmd_fixconfig() (
+  /usr/bin/fixconfig $@
 )
 
 #USAGE_ROOTMOUNT=''  #Hidden because root mounting is only required on the initial install
