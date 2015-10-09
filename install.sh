@@ -98,6 +98,9 @@ sudo wget "$URL/commands/crishell" --no-check-certificate -q
 echo "12/12..."
 sudo wget "$URL/cri" --no-check-certificate -q
 echo "Done installing secondary files"
+echo "Installing pre config files"
+sudo wget "$URL/commands/fixconfig" --no-check-certificate -q
+echo "Done..."
 sleep 1
 cd
 cd Downloads
