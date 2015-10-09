@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/sh -e
 #Directories for all files
 AUTHORS="David Smerkous and Eli Smith"
 MODIFIERS="NONE"
