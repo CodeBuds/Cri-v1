@@ -66,7 +66,7 @@ set +e
   echo ""
   echo ""
   
-  read -n -p "Please enter (The number nothing else (ex: 2)) the number of the partition N above: " an
+  read -p "Please enter (The number nothing else (ex: 2)) the number of the partition N above: " -n 1 -r an
   sudo /usr/share/vboot/bin/make_dev_ssd.sh --remove_rootfs_verification --partitions $an
   sudo crossystem dev_boot_signed_only=0
   sudo mount -o remount,rw /
