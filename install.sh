@@ -20,16 +20,45 @@ echo ""
 
 sleep 2
 
-read -p "Is Cri already on your system? [y] or [n]" -n 1 -r
-echo    # (optional) move to a new line
-if [[ ! $REPLY =~ ^[Yy]$ ]]
-then
-echo "Installing pre files"
-sudo wget "https://raw.githubusercontent.com/dnschneid/crouton/master/installer/crouton" --no-check-certificate -q
-echo "Done"
-echo "..."
+ask() {
+    # http://djm.me/ask
+    while true; do
 
-sleep 1
+        if [ "${2:-}" = "Y" ]; then
+            prompt="Y/n"
+            default=Y
+        elif [ "${2:-}" = "N" ]; then
+            prompt="y/N"
+            default=N
+        else
+            prompt="y/n"
+            default=
+        fi
+
+        # Ask the question - use /dev/tty in case stdin is redirected from somewhere else
+        read -p "$1 [$prompt] " REPLY </dev/tty
+
+        # Default?
+        if [ -z "$REPLY" ]; then
+            REPLY=$default
+        fi
+
+        # Check if the reply is valid
+        case "$REPLY" in
+            Y*|y*) return 0 ;;
+            N*|n*) return 1 ;;
+        esac
+
+    done
+}
+if ask "Is Cri already on your system? [y] or [n]"; then
+    echo "Installing secondary then..."
+else
+    echo "Installing pre files"
+    sudo wget "https://raw.githubusercontent.com/dnschneid/crouton/master/installer/crouton" --no-check-certificate -q
+    echo "Done"
+    echo "..."
+    sleep 1
     echo "Installing"
     sudo chmod +x crouton
     sudo sh crouton -t e17,xiwi
