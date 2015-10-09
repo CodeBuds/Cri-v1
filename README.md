@@ -14,7 +14,7 @@ Install Cri part 1 here: <br>
     wget -q -O - https://raw.github.com/CodeBuds/Cri/master/install.sh | bash <br>
 Then, after that is done and you have rebooted run this command in shell <br>
 
-    wget -q -O - https://raw.github.com/CodeBuds/Cri/master/install.sh | bash <br>
+    wget -q -O - https://raw.github.com/CodeBuds/Cri/master/install2.sh | bash <br>
  ______
 #####Contact information
 Eli Smith: plunkinguitar@gmail.com <br>
