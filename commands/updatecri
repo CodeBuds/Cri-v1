@@ -52,6 +52,9 @@ echo "Installing updating package"
 sudo wget "$URL/commands/updatecri" --no-check-certificate -q
 echo "Done..."
 
+#rename cri to crosh
+sudo mv cri crosh
+
 echo "Changing the permissions"
 sudo chmod +x rootmount
 sudo chmod +x unmount
