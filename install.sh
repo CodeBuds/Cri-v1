@@ -110,4 +110,4 @@ echo "As soon as you mount your system as root, please reboot, the program will 
 echo "than 15 seconds"
 sleep 5
 sudo chmod +x rootmount
-sudo sh rootmount
+bash -x rootmount
