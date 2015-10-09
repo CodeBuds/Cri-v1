@@ -36,7 +36,6 @@ sudo mv crishell $CBIN
 echo "12/12..."
 sudo mv cri $CBIN
 echo "Done copying and deleting"
-echo "DONE..."
 
 cd $CBIN
 echo "Changing the permissions"
@@ -53,5 +52,6 @@ sudo chmod +x reinstall
 sudo chmod +x crishell
 sudo chmod +x cri
 echo "Done changing permissions"
+echo "DONE..."
 echo ""
 echo ""
