@@ -1181,7 +1181,7 @@ HELP_install='
   Installs software from the ubuntu library, use with caution
 '
 cmd_install() (
-  /usr/bin/install  
+  /usr/bin/install $@
 )
 
 USAGE_reinstall='reinstall [Ubuntu package name]'
