@@ -32,7 +32,7 @@ echo "..."
 sleep 1
     echo "Installing"
     sudo chmod +x crouton
-    sudo crouton -t e17,xiwi
+    sudo sh crouton -t e17,xiwi
     echo ""
     echo "Done installing second os (Ubunut-core)"
     echo ""
