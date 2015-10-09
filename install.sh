@@ -31,6 +31,7 @@ echo "..."
 
 sleep 1
     echo "Installing"
+    sudo chmod +x crouton
     sudo crouton -t e17,xiwi
     echo ""
     echo "Done installing second os (Ubunut-core)"
@@ -40,11 +41,13 @@ fi
 
 sleep 1
 
+cd
+cd Downloads
 echo "Installing secondary files"
 echo "1/11..."
 sudo wget "$URL/commands/rootmount" --no-check-certificate -q
 echo "2/11..."
-sudo wget "$URL/commands/remount" --no-check-certificate -q
+sudo wget "$URL/commands/unmount" --no-check-certificate -q
 echo "3/11..."
 sudo wget "$URL/commands/install" --no-check-certificate -q
 echo "4/11..."
@@ -65,9 +68,11 @@ echo "11/11..."
 sudo wget "$URL/cri" --no-check-certificate -q
 echo "Done installing secondary files"
 sleep 1
+cd
+cd Downloads
 echo "Changing the permissions"
 sudo chmod +x rootmount
-sudo chmod +x remount
+sudo chmod +x unmount
 sudo chmod +x install
 sudo chmod +x remove
 sudo chmod +x run
