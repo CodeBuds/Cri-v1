@@ -32,6 +32,7 @@ sudo mv update $CBIN
 echo "10/11..."
 sudo mv reinstall $CBIN
 echo "11/11..."
+sudo mv crishell $CBIN
 sudo mv cri $CBIN
 echo "Done copying and deleting"
 echo "DONE..."
@@ -48,6 +49,7 @@ sudo chmod +x stop
 sudo chmod +x uninstall
 sudo chmod +x update
 sudo chmod +x reinstall
+sudo chmod +x crishell
 sudo chmod +x cri
 echo "Done changing permissions"
 echo ""
