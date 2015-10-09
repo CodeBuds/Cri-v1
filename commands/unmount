@@ -1,2 +1,6 @@
 #!/bin/bash
+echo "Unmounting crouton for you..."
 sudo unmount-chroot -a -f -y
+echo ""
+echo ""
+echo "Done..."
