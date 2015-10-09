@@ -111,4 +111,5 @@ echo "than 15 seconds"
 sleep 5
 sudo cp rootmount /usr/local/bin
 cd /usr/local/bin
-rootmount
+sleep 1
+bash rootmount
