@@ -36,8 +36,9 @@ sudo mv crishell $CBIN
 echo "12/12..."
 sudo mv cri $CBIN
 echo "Done copying and deleting main files"
-echo "Moving config files"\
+echo "Moving config files"
 sudo mv fixconfig $CBIN
+echo "Done"
 
 cd $CBIN
 echo "Changing the permissions"
