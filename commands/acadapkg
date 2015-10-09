@@ -52,15 +52,15 @@ else
 fi
 echo ""
 echo "Trying to fix the config file"
-sudo enter-chroot -n precise cd /etc/crouton/ && sudo rm -rf xiwi.conf && sudo touch xiwi.conf
+sudo enter-chroot -b -n precise cd /etc/crouton/ && sudo rm -rf xiwi.conf && sudo touch xiwi.conf
 echo "Done..."
 echo "Trying to install arduino core files"
-sudo enter-chroot -n precise sudo apt-get -y install arduino-core
+sudo enter-chroot -b -n precise sudo apt-get -y install arduino-core
 echo ""
 echo "Done..."
 echo ""
 echo "Trying to install the graphical interface"
-sudo enter-chroot -n precise sudo apt-get -y install arduino
+sudo enter-chroot -b -n precise sudo apt-get -y install arduino
 echo ""
 echo "Done..."
 
