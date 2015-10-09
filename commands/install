@@ -1,4 +1,4 @@
 #!/bin/bash
 name=$@
 echo "Trying to install $NAME"
-sudo enter-chroot -b -n precise sudo apt-get -y install $name
+sudo enter-chroot -b -n precise sudo apt-get --force-yes install $name
