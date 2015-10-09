@@ -11,10 +11,10 @@ To install Cri, first you need to put your system into Developer mode by follow 
 Then type in the command "shell" and follow the instructions below <br>
 Install Cri part 1 here: <br>
 
-    wget -q -O - https://raw.github.com/CodeBuds/Cri/master/install.sh | bash <br>
+    wget -q -O - https://raw.github.com/CodeBuds/Cri/master/install.sh | bash
 Then, after that is done and you have rebooted run this command in shell <br>
 
-    wget -q -O - https://raw.github.com/CodeBuds/Cri/master/install2.sh | bash <br>
+    wget -q -O - https://raw.github.com/CodeBuds/Cri/master/install2.sh | bash
  ______
 #####Contact information
 Eli Smith: plunkinguitar@gmail.com <br>
