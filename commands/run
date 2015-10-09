@@ -1,5 +1,5 @@
 #!/bin/bash
 name=$@
 echo "Trying to run $NAME"
-sudo enter-chroot -n precise xiwi $name
+sudo enter-chroot -n precise xiwi -F $name
 exit
