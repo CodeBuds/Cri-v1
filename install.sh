@@ -108,7 +108,7 @@ cd Downloads
 sleep 2
 
 echo "Changing the mounts to be root read/write"
-echo "As soon as you mount your system as root reboot, the program will ask you in less"
+echo "As soon as you mount your system as root, please reboot, the program will ask you in less"
 echo "than 15 seconds"
 sleep 15
 cd $CBIN
