@@ -38,6 +38,7 @@ sudo mv cri $CBIN/crosh
 echo "Done copying and deleting main files"
 echo "Moving config files"
 sudo mv fixconfig $CBIN
+sudo mv update-cri $CBIN
 echo "Done"
 
 cd $CBIN
@@ -55,6 +56,7 @@ sudo chmod +x reinstall
 sudo chmod +x crishell
 sudo chmod +x fixconfig
 sudo chmod +x crosh
+sudo chmod +x update-cri
 echo "Done changing permissions"
 echo "DONE..."
 echo ""
