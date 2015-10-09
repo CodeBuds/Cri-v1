@@ -101,7 +101,7 @@ echo "Installing pre config files"
 sudo wget "$URL/commands/fixconfig" --no-check-certificate -q
 echo "Done installing pre config files"
 echo "Installing updating package"
-sudo wget "$URL/commands/update-cri" --no-check-certificate -q
+sudo wget "$URL/commands/updatecri" --no-check-certificate -q
 echo "Done..."
 sleep 1
 cd $CTEMP
@@ -124,7 +124,8 @@ echo
 echo
 echo
 echo "PLEASE RUN THIS COMMAND BELOW TO FINISH PART ONE OF INSTALLATION..."
-echo
+echo "Second part won't work until you do"
 echo
 echo
 echo "rootmount"
+echo
