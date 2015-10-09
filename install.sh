@@ -111,6 +111,7 @@ echo
 echo "To make any changed you will need remount as read and write, please read carefully"
 sudo cp rootmount /usr/local/bin
 cd /usr/local/bin
+sudo chmod +x rootmount
 sleep 3
 echo
 echo
