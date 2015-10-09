@@ -81,6 +81,6 @@ set +e
   case $ny in
   [yY]* ) sudo reboot;;
   [nN]* ) exit;;
-  * ) echo "Sorry didn't understand that :'(";; 
+  * ) echo "Sorry didn't understand '$an' and/or '$ny' :'(";; 
   esac
   exit
