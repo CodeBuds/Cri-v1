@@ -1189,7 +1189,7 @@ HELP_reinstall='
   reinstalls software from the ubuntu library
 '
 cmd_reinstall() (
-  /usr/bin/reinstall  
+  /usr/bin/reinstall $@ 
 )
 
 USAGE_remove='remove [Ubuntu package name]'
@@ -1197,7 +1197,7 @@ HELP_remove='
   Removes a specified package already installed on your system, use with caution
 '
 cmd_remove() (
-  /usr/bin/remove  
+  /usr/bin/remove $@
 )
 
 USAGE_run='run [Ubuntu package name]'
@@ -1205,7 +1205,7 @@ HELP_run='
   Launches Ubuntu app that has been installed previously 
 '
 cmd_run() (
-  /usr/bin/run
+  /usr/bin/run $@
 )
 
 USAGE_stop='stop'
@@ -1213,7 +1213,7 @@ HELP_stop='
   Stops all running ununtu programs and processes (On "true" linux side)
 '
 cmd_stop() (
-  /usr/bin/stop  
+  /usr/bin/stop $@  
 )
 
 USAGE_search='search [Ubuntu package name]'
@@ -1221,7 +1221,7 @@ HELP_search='
   Searches the Ubuntu libraries for the desired package
 '
 cmd_search() (
-  /usr/bin/search
+  /usr/bin/search $@
 )
 
 USAGE_update='update'
@@ -1229,7 +1229,7 @@ HELP_update='
   Updates and upgrades every package to the latest and greatest version
 '
 cmd_update() (
-  /usr/bin/update
+  /usr/bin/update $@
 )
 
 USAGE_uninstall='uninstall'
@@ -1237,7 +1237,7 @@ HELP_uninstall='
   completely removes Cri from the system, that includes all commands and Crouton, be warned! 
 '
 cmd_uninstall() (
-  /usr/bin/uninstall
+  /usr/bin/uninstall $@
 )
 
 USAGE_unmount='unmount (unmounts linux from chromeos)'
@@ -1245,7 +1245,7 @@ HELP_unmount='
   Forcibly unmounts the Ubuntu filesystem, used to fix errors and resolve problems  
 '
 cmd_unmount() (
-  /usr/bin/unmount
+  /usr/bin/unmount $@
 )
 
 #USAGE_ROOTMOUNT=''  #Hidden because root mounting is only required on the initial install
@@ -1261,7 +1261,7 @@ cmd_unmount() (
 #USAGE_CRISHELL='' #disabled in help function to minimize use, remove comment marker for "help" access
 #HELP_CRISHELL=''  #disabled in help function to minimize use, remove comment marker for "help" access
 cmd_crishell() (
-  /usr/bin/crishell
+  /usr/bin/crishell $@
 )
 
 substr() {
