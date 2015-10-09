@@ -2,8 +2,10 @@
 
 echo ""
 echo ""
-echo ""
-echo ""
+echo "IM WAITING"
+read ok
+echo "I got: $ok"
+exit
 echo ""
 echo ""
 echo "PLEASE READ ALL OF THIS AND ANSWER CAREFULLY... If you don't you might need to reinstall this script"
