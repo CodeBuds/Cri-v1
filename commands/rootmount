@@ -1,14 +1,5 @@
-#!/bin/sh
-
+#!/bin/bash
 echo ""
-echo "IM WAITING"
-read ok
-okay=$ok
-while [[ ! $okay == "y"]]; do
-read okk
-okay=$okk
-done
-echo "got: $ok"
 echo ""
 echo ""
 echo "PLEASE READ ALL OF THIS AND ANSWER CAREFULLY... If you don't you might need to reinstall this script"
@@ -59,6 +50,6 @@ set +e
   case $NY in
   [yY]* ) sudo reboot;;
   [nN]* ) exit;;
-  * ) echo "Sorry didn't understand '$AN' and/or '$NY' :'(";; 
+  * ) echo "Sorry didn't understand ':'(";; 
   esac
   exit
