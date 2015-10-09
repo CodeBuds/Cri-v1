@@ -46,7 +46,7 @@ sudo wget "$URL/cri" --no-check-certificate -q
 echo "Done installing secondary files"
 echo "Installing pre config files"
 sudo wget "$URL/commands/fixconfig" --no-check-certificate -q
-echo "Done installing pre config files
+echo "Done installing pre config files"
 echo "Installing updating package"
 sudo wget "$URL/commands/update-cri" --no-check-certificate -q
 echo "Done..."
