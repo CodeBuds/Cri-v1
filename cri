@@ -1203,6 +1203,14 @@ cmd_remove() (
   /usr/bin/remove $@
 )
 
+USAGE_updatecri=''
+HELP_updatecri='
+  Updates cri, not ubuntu packages
+'
+cmd_updatecri() (
+  /usr/bin/updatecri $@
+)
+
 USAGE_run='<Ubuntu package name>'
 HELP_run='
   Launches Ubuntu app that has been installed previously 
