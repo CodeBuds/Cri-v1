@@ -55,10 +55,10 @@ else
     sudo chmod +x crouton
     if ask "Do you have crouton already installed? if you select yes then we will wipe it..."; then
         echo "Installing..."
-        sudo sh crouton -t keyboard,extension,xiwi -u -u
+        sudo sh crouton -t xiwi -u -u
     else
         echo "Installing..."
-        sudo sh crouton -t keyboard,extension,xiwi
+        sudo sh crouton -t xiwi
     fi
     echo 
     echo "Done installing second os (Ubuntu-core)"
