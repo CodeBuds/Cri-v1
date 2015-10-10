@@ -1,5 +1,5 @@
 #!/bin/bash
-CBIN=/usr/bin/
+CBIN=/usr/bin
 URL="https://raw.github.com/CodeBuds/Cri/master"
 cd $CBIN
 echo "Welcome to the cri updater, please give me a minute to organize everything"
@@ -31,6 +31,7 @@ sudo rm -rf fixconfig
 sudo rm -rf crosh
 sudo rm -rf cri
 sudo rm -rf updatecri
+sudo rm -rf acadapkg
 cd $CBIN
 echo "Installing secondary files"
 echo "1/12..."
@@ -63,10 +64,11 @@ sudo wget "$URL/commands/fixconfig" --no-check-certificate -q
 echo "Done installing pre config files"
 echo "Installing updating package"
 sudo wget "$URL/commands/updatecri" --no-check-certificate -q
+sudo wget "$URL/commands/acadapkg" --no-check-certificate -q
 echo "Done..."
 
 #rename cri to crosh
-sudo cp cri crosh
+sudo cp cri $CBIN/crosh
 
 echo "Changing the permissions"
 sudo chmod +x rootmount
@@ -83,6 +85,7 @@ sudo chmod +x crishell
 sudo chmod +x fixconfig
 sudo chmod +x crosh
 sudo chmod +x updatecri
+sudo chmod +x acadapkg
 echo "Done changing permissions"
 echo "DONE..."
 echo
