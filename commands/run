@@ -2,5 +2,5 @@
 name=$@
 echo "Trying to run $name"
 echo "Give us at least 5 seconds to start up ubuntu..."
-sudo enter-chroot -b -n precise xiwi  $name
+sudo enter-chroot -b -n precise xiwi  $name | awk '{print $1;}'
 echo "Thanks for using cri to run $name"
