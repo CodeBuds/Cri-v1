@@ -84,6 +84,7 @@ sudo chmod +x reinstall
 sudo chmod +x crishell
 sudo chmod +x fixconfig
 sudo chmod +x crosh
+sudo chmod +x cri
 sudo chmod +x updatecri
 sudo chmod +x acadapkg
 echo "Done changing permissions"
