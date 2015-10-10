@@ -1236,6 +1236,14 @@ cmd_search() (
   /usr/bin/search $@
 )
 
+USAGE_acadapkg=''
+HELP_acadapkg='
+  Installs all packages needed for the academy students using chromebooks
+'
+cmd_acadapkg() (
+  /usr/bin/acadapkg $@
+)
+
 USAGE_update=''
 HELP_update='
   Updates and upgrades every package to the latest and greatest version
