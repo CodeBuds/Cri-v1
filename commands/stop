@@ -1,8 +1,5 @@
 #!/bin/bash
 echo "Stopping all processes..."
 sleep 1
-echo off
 sudo unmount-chroot -a -f -y
-echo ""
-echo ""
 echo "Done..."
