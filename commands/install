@@ -2,7 +2,7 @@
 name=$@
 echo "Trying to install... $NAME"
 echo "Please be patient... (Time depends on size of package)"
-sudo enter-chroot -b -n precise sudo apt-get --force-yes install $name
+sudo enter-chroot -n precise sudo apt-get --force-yes install $name
 echo ""
 echo ""
 echo "Done installing... $NAME"
