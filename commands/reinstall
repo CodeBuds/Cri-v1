@@ -1,1 +1,3 @@
+#!/bin/bash
 #This file is currently unavailable
+echo "Command currently unavailable"
