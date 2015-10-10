@@ -61,7 +61,7 @@ sudo wget "$URL/commands/updatecri" --no-check-certificate -q
 echo "Done..."
 
 #rename cri to crosh
-sudo mv cri crosh
+sudo cp cri crosh
 
 echo "Changing the permissions"
 sudo chmod +x rootmount
