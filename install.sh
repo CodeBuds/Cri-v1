@@ -59,9 +59,16 @@ else
     echo "Done"
     echo "..."
     sleep 1
-    echo "Installing"
+    echo
+    echo
     sudo chmod +x crouton
-    sudo sh crouton -t xiwi
+    if ask "Do you have crouton already installed? if you select yes then we will wipe it..."; then
+        echo "Installing..."
+        sudo sh crouton -t xiwi -u -u
+    else
+        echo "Installing..."
+        sudo sh crouton -t xiwi
+    fi
     echo ""
     echo "Done installing second os (Ubuntu-core)"
     echo ""
