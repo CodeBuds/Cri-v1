@@ -72,12 +72,10 @@ echo "Installing java"
 sudo enter-chroot -n precise sudo apt-get -y install openjdk-7-jre
 sudo enter-chroot -n precise sudo apt-get -y install curl
 echo "Done now config for java 7..."
-sudo enter-chroot -n precise cd /etc/apt/ && sed -i '$ a\deb http://www.duinsoft.nl/pkg debs all' sources.list && sudo apt-key adv --keyserver keys.gnupg.net --recv-keys 5CB26B26 && sudo apt-get update && sudo apt-get install update-sun-jre 
+sudo enter-chroot -n precise sed -i '$ a\deb http://www.duinsoft.nl/pkg debs all' /etc/apt/sources.list && sudo apt-key adv --keyserver keys.gnupg.net --recv-keys 5CB26B26 && sudo apt-get update && sudo apt-get install update-sun-jre 
 echo "Installed java 7 (True version)..."
 echo
 echo
 echo "Installing NetLogo..."
-cd ~/Downloads
-sudo wget https://ccl.northwestern.edu/netlogo/5.2.1/netlogo-5.2.1.tar.gz && tar xzf netlogo-5.2.1.tar.gz && rm netlogo-5.2.1.tar.gz
-sudo mkdir ~/netlogo
-sudo mv netlogo-5.2.1 ~/
+sudo enter-chroot -n precise cd ~/Downloads && sudo wget https://ccl.northwestern.edu/netlogo/5.2.1/netlogo-5.2.1.tar.gz && tar xzf netlogo-5.2.1.tar.gz && rm netlogo-5.2.1.tar.gz && mv netlogo-5.2.1 ~/netlogo
+echo "Done..."
