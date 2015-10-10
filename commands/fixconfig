@@ -1,4 +1,5 @@
 #!/bin/bash
 echo "Trying to fix the config file"
-sudo enter-chroot -n precise cd /etc/crouton/ && sudo rm -rf /etc/crouton/xiwi.conf && sudo touch /etc/crouton/xiwi.conf
+sudo enter-chroot -n precise sudo rm -rf /etc/crouton/xiwi.conf && sudo touch /etc/crouton/xiwi.conf
+sudo enter-chroot -n precise sudo touch /etc/crouton/xiwi.conf
 echo "Config file fixed..."
