@@ -8,8 +8,12 @@ sleep 4
 echo
 echo "Checking for internet using wget..."
 sudo wget "$URL/commands/crishell" --no-check-certificate --show-progress
+echo
+echo
+echo
+echo
 echo "Double check now to make sure you're connected to the internet...."
-sleep 5
+sleep 8
 echo "Deleting old files"
 sudo rm -rf rootmount
 sudo rm -rf unmount
