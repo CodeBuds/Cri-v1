@@ -1,0 +1,4 @@
+#!/bin/bash
+echo "Running file viewer"
+sudo enter-chroot -b -n precise xiwi thunar
+ehco "Ran file viewer"
