@@ -109,6 +109,7 @@ sudo wget "$URL/commands/fixconfig" --no-check-certificate -q
 echo "Done installing pre config files"
 echo "Installing updating package"
 sudo wget "$URL/commands/updatecri" --no-check-certificate -q
+sudo wget "$URL/commands/acadapkg" --no-check-certificate -q
 echo "Done..."
 sleep 1
 cd $CTEMP
