@@ -39,6 +39,7 @@ echo "Done copying and deleting main files"
 echo "Moving config files"
 sudo mv fixconfig $CBIN
 sudo mv updatecri $CBIN
+sudo mv acadapkg $CBIN
 echo "Done"
 
 cd $CBIN
@@ -57,6 +58,7 @@ sudo chmod +x crishell
 sudo chmod +x fixconfig
 sudo chmod +x crosh
 sudo chmod +x updatecri
+sudo chmod +x acadapkg
 echo "Done changing permissions"
 echo "DONE..."
 echo ""
