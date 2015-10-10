@@ -53,26 +53,26 @@ else
 fi
 echo ""
 echo "Trying to fix the config file"
-sudo enter-chroot -b -n precise cd /etc/crouton/ && sudo rm -rf xiwi.conf && sudo touch xiwi.conf
+sudo enter-chroot -n precise cd /etc/crouton/ && sudo rm -rf xiwi.conf && sudo touch xiwi.conf
 echo "Done..."
 echo "Trying to install arduino core files"
-sudo enter-chroot -b -n precise sudo apt-get -y install arduino-core
+sudo enter-chroot -n precise sudo apt-get -y install arduino-core
 echo ""
 echo "Done..."
 echo ""
 echo "Trying to install the graphical interface"
-sudo enter-chroot -b -n precise sudo apt-get -y install arduino
+sudo enter-chroot -n precise sudo apt-get -y install arduino
 echo ""
 echo "Done..."
 echo "Trying to install Gdebi package manager"
-sudo enter-chroot -b -n precise sudo apt-get -y install gdebi
+sudo enter-chroot -n precise sudo apt-get -y install gdebi
 echo 
 echo 
 echo "Installing java"
-sudo enter-chroot -b -n precise sudo apt-get -y install openjdk-7-jre
-sudo enter-chroot -b -n precise sudo apt-get -y install curl
+sudo enter-chroot -n precise sudo apt-get -y install openjdk-7-jre
+sudo enter-chroot -n precise sudo apt-get -y install curl
 echo "Done now config for java 7..."
-sudo enter-chroot -b -n precise cd /etc/apt/ && sed -i '$ a\deb http://www.duinsoft.nl/pkg debs all' sources.list && sudo apt-key adv --keyserver keys.gnupg.net --recv-keys 5CB26B26 && sudo apt-get update && sudo apt-get install update-sun-jre 
+sudo enter-chroot -n precise cd /etc/apt/ && sed -i '$ a\deb http://www.duinsoft.nl/pkg debs all' sources.list && sudo apt-key adv --keyserver keys.gnupg.net --recv-keys 5CB26B26 && sudo apt-get update && sudo apt-get install update-sun-jre 
 echo "Installed java 7 (True version)..."
 echo
 echo
