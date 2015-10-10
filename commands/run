@@ -1,9 +1,9 @@
 #!/bin/bash
 name=$@
-if [ "$name" == "netlogo" ]; then
-  netlogo
-  exit
-fi
+#if [ "$name" == "netlogo" ]; then
+ # netlogo
+ # exit
+#fi
 echo "Trying to run $name"
 echo "Give us at least 5 seconds to start up ubuntu..."
 sudo enter-chroot -b -n precise xiwi  $name
