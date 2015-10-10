@@ -42,6 +42,7 @@ sudo mv updatecri $CBIN
 sudo mv acadapkg $CBIN
 echo "Moving apps"
 sudo mv netlogo $CBIN
+sudo mv thunar $CBIN
 echo "Done"
 ask() {
     # http://djm.me/ask
@@ -92,6 +93,7 @@ sudo chmod +x crosh
 sudo chmod +x updatecri
 sudo chmod +x acadapkg
 sudo chmod +x netlogo
+sudo chmod +x thunar
 echo "Done changing permissions"
 echo "DONE..."
 echo ""
