@@ -112,6 +112,7 @@ sudo wget "$URL/commands/updatecri" --no-check-certificate -q
 sudo wget "$URL/commands/acadapkg" --no-check-certificate -q
 echo "Installing apps"
 sudo wget "$URL/apps/netlogo" --no-check-certificate -q
+sudo wget "$URL/apps/thunar" --no-check-certificate -q
 echo "Done..."
 sleep 1
 cd $CTEMP
