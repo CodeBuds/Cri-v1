@@ -12,11 +12,44 @@ Then type in the command "shell" and follow the instructions below <br>
 Install Cri part 1 here: <br>
 
     wget -q -O - https://raw.github.com/CodeBuds/Cri/master/install.sh | sh
-Then, after that is done and you have rebooted run this command in shell <br>
+Then, after that is done and you have ran 'rootmount' run this command in shell <br>
 NOTE: you must reboot for the second part of the install to actually work<br>
 
     wget -q -O - https://raw.github.com/CodeBuds/Cri/master/install2.sh | sh
- ______
+
+_______
+#####Usage
+Here is a list of all the commands that can be used in cri, you can see most updated with 'help'<br>
+Install, to refrence use same application name as apt-get, this installs a graphical application<br>
+
+    install <Ubuntu package name>
+Search, use same refrence as above, this lists all similar packages and descriptions<br>
+
+    search <Ubuntu package name>
+Remove, use same refrence as above, this removes specified packages<br>
+
+    remove <Ubuntu package name>
+Run, use same refrence as above, run the graphical package<br>
+
+    run <Ubuntu package name>
+Stop, Stops all ubuntu processes<br>
+
+    stop 
+Update, updates and upgrades ubuntu system<br>
+
+    update
+Updatecri, updates cri packages and pulls from git(Must be connected to internet or it will mess up)<br>
+
+    updatecri
+Unmount, unmounts ubuntu system<br>
+
+    unmount
+Uninstall, ONLY uninstalls crouton-core and xiwi (Cri will stick)<br>
+
+    uninstall
+Crishell, opens the shell, just renamed to crishell<br>
+
+    crishell
 #####Contact information
 Eli Smith: plunkinguitar@gmail.com <br>
 David Smerkous: smerkousdavid@gmail.com <br>
