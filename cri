@@ -193,7 +193,7 @@ cmd_help() (
 
   case $# in
   0)
-    local cmds="exit help help_advanced ping top install reinstall remove run search stop uninstall unmount update updatecri"
+    local cmds="exit help help_advanced ping top files install reinstall remove run search stop uninstall unmount update updatecri"
     for cmd in ${cmds}; do
       cmd_help "${cmd}"
     done
@@ -1242,6 +1242,14 @@ HELP_acadapkg='
 '
 cmd_acadapkg() (
   /usr/bin/acadapkg $@
+)
+
+USAGE_files=''
+HELP_files='
+  A file manager for chromebooks
+'
+cmd_files() (
+  /usr/bin/thunar $@
 )
 
 USAGE_update=''
