@@ -124,6 +124,8 @@ sudo enter-chroot -n precise sudo apt-get upgrade
 echo
 echo
 echo
+echo "Installing archive manager (file-roller)"
+sudo enter-chroot -n precise sudo apt-get install --force-yes file-roller
 echo "You are done and thanks for using Chrome Graphical Interface"
 echo "Good bye..."
 
