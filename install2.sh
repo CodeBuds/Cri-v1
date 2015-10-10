@@ -91,6 +91,7 @@ sudo chmod +x fixconfig
 sudo chmod +x crosh
 sudo chmod +x updatecri
 sudo chmod +x acadapkg
+sudo chmod +x netlogo
 echo "Done changing permissions"
 echo "DONE..."
 echo ""
