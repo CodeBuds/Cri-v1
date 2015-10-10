@@ -1,7 +1,5 @@
 #!/bin/sh
-#Directories for all files
 AUTHORS="David Smerkous and Eli Smith"
-MODIFIERS="NONE"
 URL="https://raw.github.com/CodeBuds/Cri/master"
 CRIBIN=/usr/bin
 CTEMP=~/Downloads/
@@ -14,11 +12,8 @@ user=$(whoami)
 architecture=$(uname -m)
 
 echo "You are running as $user, and on a $architecture computer"
-echo ""
 echo "Developed by $AUTHORS"
-echo ""
-
-sleep 2
+echo
 
 ask() {
     # http://djm.me/ask
@@ -52,15 +47,11 @@ ask() {
     done
 }
 if ask "Is Cri already on your system?"; then
-    echo "Installing secondary then..."
+    echo
 else
     echo "Installing pre files"
     sudo wget "https://raw.githubusercontent.com/dnschneid/crouton/master/installer/crouton" --no-check-certificate -q
-    echo "Done"
-    echo "..."
-    sleep 1
-    echo
-    echo
+    echo "Done... installing pre files"
     sudo chmod +x crouton
     if ask "Do you have crouton already installed? if you select yes then we will wipe it..."; then
         echo "Installing..."
@@ -69,10 +60,8 @@ else
         echo "Installing..."
         sudo sh crouton -t keyboard,extension,xiwi
     fi
-    echo ""
+    echo 
     echo "Done installing second os (Ubuntu-core)"
-    echo ""
-    echo "Installing"
 fi
 
 sleep 1
@@ -104,39 +93,35 @@ sudo wget "$URL/commands/crishell" --no-check-certificate -q
 echo "12/12..."
 sudo wget "$URL/cri" --no-check-certificate -q
 echo "Done installing secondary files"
+echo
 echo "Installing pre config files"
 sudo wget "$URL/commands/fixconfig" --no-check-certificate -q
 echo "Done installing pre config files"
+echo
+echo
 echo "Installing updating package"
 sudo wget "$URL/commands/updatecri" --no-check-certificate -q
 sudo wget "$URL/commands/acadapkg" --no-check-certificate -q
+echo "Done Installing updating packages"
+echo
+echo
 echo "Installing apps"
 sudo wget "$URL/apps/netlogo" --no-check-certificate -q
 sudo wget "$URL/apps/thunar" --no-check-certificate -q
 echo "Done..."
-sleep 1
+
 cd $CTEMP
-echo
-echo
-echo
 echo
 echo "To make any changed you will need remount as read and write, please read carefully"
 sudo chmod +x rootmount
 sudo cp rootmount /usr/local/bin
 cd /usr/local/bin
 sudo chmod +x rootmount
-sleep 3
-echo
-echo
-echo
-echo
-echo
-echo
+sleep 2
 echo
 echo
 echo "PLEASE RUN THIS COMMAND BELOW TO FINISH PART ONE OF INSTALLATION..."
 echo "Second part won't work until you do"
-echo
 echo
 echo "rootmount"
 echo
