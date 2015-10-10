@@ -1,5 +1,5 @@
 #!/bin/bash
 echo
 echo "Trying to run NetLogo (Still buggy)"
-sudo enter-chroot -n precise xiwi xterm -e cd && cd netlogo-5.2.1 && sh netlogo.sh &
+sudo enter-chroot -n precise xiwi xterm -e sudo cd -- "$(find / -name netlogo.sh -type f -printf '%h' -quit)" && sh netlogo.sh &
 echo "Ran NetLogo..."
