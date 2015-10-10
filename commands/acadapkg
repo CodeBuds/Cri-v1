@@ -118,7 +118,9 @@ echo
 echo
 echo
 echo "Updating and Upgrading current system"
-sudo enter-chroot -n precise sudo apt-get update && sudo apt-get upgrade
+sudo enter-chroot -n precise sudo apt-get update
+sleep 1
+sudo enter-chroot -n precise sudo apt-get upgrade
 echo
 echo
 echo
