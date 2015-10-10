@@ -95,9 +95,8 @@ sudo chmod +x acadapkg
 sudo chmod +x netlogo
 sudo chmod +x thunar
 echo "Done changing permissions"
-echo "DONE..."
-echo ""
-echo ""
+echo 
+echo "Please read carefuly below"
 
 if ask "Would you like to fix the current config file?"; then
   sudo fixconfig
