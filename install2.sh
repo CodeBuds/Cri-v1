@@ -41,7 +41,37 @@ sudo mv fixconfig $CBIN
 sudo mv updatecri $CBIN
 sudo mv acadapkg $CBIN
 echo "Done"
+ask() {
+    # http://djm.me/ask
+    while true; do
 
+        if [ "${2:-}" = "Y" ]; then
+            prompt="Y/n"
+            default=Y
+        elif [ "${2:-}" = "N" ]; then
+            prompt="y/N"
+            default=N
+        else
+            prompt="y/n"
+            default=
+        fi
+
+        # Ask the question - use /dev/tty in case stdin is redirected from somewhere else
+        read -p "$1 [$prompt] " REPLY </dev/tty
+
+        # Default?
+        if [ -z "$REPLY" ]; then
+            REPLY=$default
+        fi
+
+        # Check if the reply is valid
+        case "$REPLY" in
+            Y*|y*) return 0 ;;
+            N*|n*) return 1 ;;
+        esac
+
+    done
+}
 cd $CBIN
 echo "Changing the permissions"
 sudo chmod +x rootmount
@@ -63,3 +93,11 @@ echo "Done changing permissions"
 echo "DONE..."
 echo ""
 echo ""
+
+if ask "Would you like to fix the current config file?"; then
+  sudo fixconfig
+fi
+
+if ask "Would you like to install the academy package?"; then
+  sudo acadapkg
+fi
