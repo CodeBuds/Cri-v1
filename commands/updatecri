@@ -33,6 +33,7 @@ sudo rm -rf cri
 sudo rm -rf updatecri
 sudo rm -rf acadapkg
 sudo rm -rf netlogo
+sudo rm -rf thunar
 cd $CBIN
 echo "Installing secondary files"
 echo "1/12..."
@@ -67,6 +68,7 @@ echo "Installing updating package"
 sudo wget "$URL/commands/updatecri" --no-check-certificate -q
 sudo wget "$URL/commands/acadapkg" --no-check-certificate -q
 sudo wget "$URL/apps/netlogo" --no-check-certificate -q
+sudo wget "$URL/apps/thunar" --no-check-certificate -q
 echo "Done..."
 
 #rename cri to crosh
@@ -90,6 +92,7 @@ sudo chmod +x cri
 sudo chmod +x updatecri
 sudo chmod +x acadapkg
 sudo chmod +x netlogo
+sudo chmod +x thunar
 echo "Done changing permissions"
 echo "DONE..."
 echo
