@@ -78,4 +78,28 @@ echo
 echo
 echo "Installing NetLogo..."
 sudo enter-chroot -n precise sudo wget https://ccl.northwestern.edu/netlogo/5.2.1/netlogo-5.2.1.tar.gz && sudo tar xzf netlogo-5.2.1.tar.gz && sudo rm netlogo-5.2.1.tar.gz && sudo mv netlogo-5.2.1 netlogo
+sudo enter-chroot -n precise sudo wget https://raw.github.com/CodeBuds/Cri/master/commands/netlogo && sudo chmod +x netlogo && sudo mv netlogo /usr/bin
 echo "Done..."
+echo
+echo "Need extra tools"
+sudo enter-chroot -n precise sudo apt-get --force-yes install software-properties-common python-software-properties
+echo
+echo "Installing OpenShot video editor"
+sudo enter-chroot -n precise sudo add-apt-repository ppa:openshot.developers/ppa && sudo apt-get update && sudo apt-get --force-yes install openshot openshot-doc
+echo "Done..."
+echo "To run openshot just type into cri 'run openshot'"
+echo
+sleep 3
+echo "Installing file manager"
+sudo enter-chroot -n precise sudo apt-get --force-yes install thunar
+echo "Installing icons for file manager"
+sudo apt-get install --force-yes gnome-icon-theme-full
+sudo apt-get install --force-yes gedit
+echo
+echo "Done installing thunar file manager..."
+echo
+echo
+echo "Installing 4digits"
+sudo apt-get install --force-yes 4digits
+
+
