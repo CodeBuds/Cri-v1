@@ -1,11 +1,7 @@
 #!/bin/bash
 name=$@
-#if [ "$name" == "netlogo" ]; then
- # netlogo
- # exit
-#fi
 echo "Trying to run $name"
 echo "Give us at least 5 seconds to start up ubuntu..."
-sudo enter-chroot -b -n precise xiwi  $name
+sudo enter-chroot -b -n precise sudo xiwi $name
 echo "If nothing popped up, then it's an invalid command"
 echo "Thanks for using cri to run $name"
