@@ -4,6 +4,7 @@ URL="https://raw.github.com/CodeBuds/Cri/master"
 cd $CBIN
 echo "Welcome to the cri updater, please give me a minute to organize everything"
 echo "Make sure you are connected to the internet or this will screw up everything"
+echo "If after the test is says your not immediatly press Ctrl+c and/or Ctrl+z"
 sleep 4
 echo
 echo "Checking for internet using wget..."
