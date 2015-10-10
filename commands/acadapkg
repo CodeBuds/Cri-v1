@@ -93,13 +93,36 @@ sleep 3
 echo "Installing file manager"
 sudo enter-chroot -n precise sudo apt-get --force-yes install thunar
 echo "Installing icons for file manager"
-sudo apt-get install --force-yes gnome-icon-theme-full
-sudo apt-get install --force-yes gedit
+sudo enter-chroot -n precise sudo apt-get install --force-yes gnome-icon-theme-full
+sudo enter-chroot -n precise sudo apt-get install --force-yes gedit
 echo
 echo "Done installing thunar file manager..."
 echo
 echo
 echo "Installing 4digits"
-sudo apt-get install --force-yes 4digits
+sudo enter-chroot -n precise sudo apt-get install --force-yes 4digits
+echo
+echo
+echo
+echo "Installing photo editor (gimp)"
+sudo enter-chroot -n precise sudo apt-get install --force-yes gimp
+echo "Done installing gimp"
+echo
+echo
+echo
+echo "Installing geany and software center"
+sudo enter-chroot -n precise sudo apt-get install --force-yes geany
+sudo enter-chroot -n precise sudo apt-get install --force-yes lubuntu-software-center
+echo "Done installing geany..."
+echo
+echo
+echo
+echo "Updating and Upgrading current system"
+sudo enter-chroot -n precise sudo apt-get update && sudo apt-get upgrade
+echo
+echo
+echo
+echo "You are done and thanks for using Chrome Graphical Interface"
+echo "Good bye..."
 
 
