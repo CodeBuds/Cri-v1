@@ -40,6 +40,8 @@ echo "Moving config files"
 sudo mv fixconfig $CBIN
 sudo mv updatecri $CBIN
 sudo mv acadapkg $CBIN
+echo "Moving apps"
+sudo mv netlogo $CBIN
 echo "Done"
 ask() {
     # http://djm.me/ask
