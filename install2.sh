@@ -103,6 +103,6 @@ if ask "Would you like to fix the current config file?"; then
   sudo fixconfig
 fi
 
-if ask "Would you like to install the academy package?"; then
+if ask "Would you like to install the academy package? (HIGHLY RECOMMENDED), choose yes for list of packages"; then
   sudo acadapkg
 fi
