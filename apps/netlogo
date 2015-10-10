@@ -1,8 +1,0 @@
-#!/bin/bash
-echo
-echo "Trying to run NetLogo (Still buggy)"
-echo 
-echo "Netlogo will run into errors..."
-echo "Stopping"
-sudo enter-chroot -n precise xiwi xterm -e cd /home/smerkous/netlogo-5.2.1 && ./netlogo.sh & 
-echo "Ran NetLogo..."
