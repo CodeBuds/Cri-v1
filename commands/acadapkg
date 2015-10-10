@@ -45,7 +45,7 @@ echo "File viewer"
 echo "small-manager"
 echo ""
 echo ""
-if ask "Would you like to install the academy package?"; then
+if ask "Would you like to install the academy package? (Double checking)"; then
     echo "Moving on..."
 else
   exit
