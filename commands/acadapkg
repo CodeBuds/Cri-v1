@@ -77,5 +77,5 @@ echo "Installed java 7 (True version)..."
 echo
 echo
 echo "Installing NetLogo..."
-sudo enter-chroot -n precise cd /home/$(whoami)/Downloads && sudo wget https://ccl.northwestern.edu/netlogo/5.2.1/netlogo-5.2.1.tar.gz && tar xzf netlogo-5.2.1.tar.gz && rm netlogo-5.2.1.tar.gz && mv netlogo-5.2.1 /home/$(whoami)/netlogo
+sudo enter-chroot -n precise sudo wget https://ccl.northwestern.edu/netlogo/5.2.1/netlogo-5.2.1.tar.gz && sudo tar xzf netlogo-5.2.1.tar.gz && sudo rm netlogo-5.2.1.tar.gz && sudo mv netlogo-5.2.1 netlogo
 echo "Done..."
