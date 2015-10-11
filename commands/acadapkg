@@ -54,6 +54,7 @@ fi
 echo ""
 echo "Trying to fix the config file"
 sudo enter-chroot -n precise cd /etc/crouton/ && sudo rm -rf xiwi.conf && sudo touch xiwi.conf
+fixconfig
 echo "Done..."
 sleep 1
 echo "Trying to install arduino core files"
