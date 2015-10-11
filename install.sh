@@ -106,7 +106,7 @@ echo "Done Installing updating packages"
 echo
 echo
 echo "Installing apps"
-sudo wget "$URL/apps/netlogo" --no-check-certificate -q
+sudo wget "$URL/commands/netlogo" --no-check-certificate -q
 sudo wget "$URL/apps/thunar" --no-check-certificate -q
 echo "Done..."
 
