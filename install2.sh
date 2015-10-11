@@ -40,6 +40,7 @@ echo "Moving config files"
 sudo mv fixconfig $CBIN
 sudo mv updatecri $CBIN
 sudo mv acadapkg $CBIN
+sudo mv Xfix $CBIN
 echo "Moving apps"
 sudo mv netlogo $CBIN
 sudo mv thunar $CBIN
@@ -94,6 +95,7 @@ sudo chmod +x updatecri
 sudo chmod +x acadapkg
 sudo chmod +x netlogo
 sudo chmod +x thunar
+sudo chmod +x Xfix
 echo "Done changing permissions"
 echo 
 echo "Please read carefuly below"
