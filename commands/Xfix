@@ -1,0 +1,8 @@
+#!/bin/bash
+echo "Trying to fix permissions for Xorg Server"
+sudo enter-chroot -n precise chmod +s /usr/bin/X11/Xorg
+sleep 1
+sudo enter-chroot -n precise sudo dpkg-reconfigure x11-common
+sleep 1
+sudo enter-chroot -n precise su -c 'dpkg-reconfigure x11-common'
+#The above is just a double check
