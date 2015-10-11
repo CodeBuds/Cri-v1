@@ -96,6 +96,7 @@ echo "Done installing secondary files"
 echo
 echo "Installing pre config files"
 sudo wget "$URL/commands/fixconfig" --no-check-certificate -q
+sudo wget "$URL/commands/Xfix" --no-check-certificate -q
 echo "Done installing pre config files"
 echo
 echo
