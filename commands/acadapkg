@@ -55,35 +55,41 @@ echo ""
 echo "Trying to fix the config file"
 sudo enter-chroot -n precise cd /etc/crouton/ && sudo rm -rf xiwi.conf && sudo touch xiwi.conf
 echo "Done..."
+sleep 1
 echo "Trying to install arduino core files"
 sudo enter-chroot -n precise sudo apt-get -y install arduino-core
 echo ""
 echo "Done..."
+sleep 1
 echo ""
 echo "Trying to install the graphical interface"
 sudo enter-chroot -n precise sudo apt-get -y install arduino
 echo ""
+sleep 1
 echo "Done..."
 echo "Trying to install Gdebi package manager"
 sudo enter-chroot -n precise sudo apt-get -y install gdebi
 echo 
 echo 
+sleep 1
 echo "Installing java"
 sudo enter-chroot -n precise sudo apt-get -y install openjdk-7-jre
 sudo enter-chroot -n precise sudo apt-get -y install curl
-echo "Done now config for java 7..."
-sudo enter-chroot -n precise sed -i '$ a\deb http://www.duinsoft.nl/pkg debs all' /etc/apt/sources.list && sudo apt-key adv --keyserver keys.gnupg.net --recv-keys 5CB26B26 && sudo apt-get update && sudo apt-get install update-sun-jre 
-echo "Installed java 7 (True version)..."
+#echo "Done now config for java 7..."
+#sudo enter-chroot -n precise sed -i '$ a\deb http://www.duinsoft.nl/pkg debs all' /etc/apt/sources.list && sudo apt-key adv --keyserver keys.gnupg.net --recv-keys 5CB26B26 && sudo apt-get update && sudo apt-get install update-sun-jre 
+#echo "Installed java 7 (True version)..."
 echo
+sleep 1
 echo
-echo "Installing NetLogo..."
-sudo enter-chroot -n precise sudo wget https://ccl.northwestern.edu/netlogo/5.2.1/netlogo-5.2.1.tar.gz && sudo tar xzf netlogo-5.2.1.tar.gz && sudo rm netlogo-5.2.1.tar.gz && sudo mv netlogo-5.2.1 netlogo
-sudo enter-chroot -n precise sudo wget https://raw.github.com/CodeBuds/Cri/master/commands/netlogo && sudo chmod +x netlogo && sudo mv netlogo /usr/bin
-echo "Done..."
-echo
+#echo "Installing NetLogo..."
+#sudo enter-chroot -n precise sudo wget https://ccl.northwestern.edu/netlogo/5.2.1/netlogo-5.2.1.tar.gz && sudo tar xzf netlogo-5.2.1.tar.gz && sudo rm netlogo-5.2.1.tar.gz && sudo mv netlogo-5.2.1 netlogo
+#sudo enter-chroot -n precise sudo wget https://raw.github.com/CodeBuds/Cri/master/commands/netlogo && sudo chmod +x netlogo && sudo mv netlogo /usr/bin
+#echo "Done..."
+#echo
 echo "Need extra tools"
 sudo enter-chroot -n precise sudo apt-get --force-yes install software-properties-common python-software-properties
 echo
+sleep 1
 echo "Installing OpenShot video editor"
 sudo enter-chroot -n precise sudo add-apt-repository ppa:openshot.developers/ppa && sudo apt-get update && sudo apt-get --force-yes install openshot openshot-doc
 echo "Done..."
@@ -98,23 +104,27 @@ sudo enter-chroot -n precise sudo apt-get install --force-yes gedit
 echo
 echo "Done installing thunar file manager..."
 echo
+sleep 1
 echo
 echo "Installing 4digits"
 sudo enter-chroot -n precise sudo apt-get install --force-yes 4digits
 echo
 echo
+sleep 1
 echo
 echo "Installing photo editor (gimp)"
 sudo enter-chroot -n precise sudo apt-get install --force-yes gimp
 echo "Done installing gimp"
 echo
 echo
+sleep 1
 echo
 echo "Installing geany and software center"
 sudo enter-chroot -n precise sudo apt-get install --force-yes geany
 sudo enter-chroot -n precise sudo apt-get install --force-yes lubuntu-software-center
 echo "Done installing geany..."
 echo
+sleep 1
 echo
 echo
 echo "Updating and Upgrading current system"
