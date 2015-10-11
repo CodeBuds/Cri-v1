@@ -121,7 +121,7 @@ sleep 1
 echo
 echo "Installing geany and software center"
 sudo enter-chroot -n precise sudo apt-get install --force-yes geany
-sudo enter-chroot -n precise sudo apt-get install --force-yes lubuntu-software-center
+#sudo enter-chroot -n precise sudo apt-get install --force-yes lubuntu-software-center
 echo "Done installing geany..."
 echo
 sleep 1
