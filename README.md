@@ -17,6 +17,9 @@ NOTE: you must reboot for the second part of the install to actually work<br>
 
     wget -q -O - https://raw.github.com/CodeBuds/Cri/master/install2.sh | sh
 
+
+####NOTE: REMOVING SOME PACKAGES FROM ACADAPKG.... (such as netlogo...) you will have to manually install using crishell then 'sudo enter-chroot'
+#######Please message me (Email below) if you recieve a UID 1000 error
 _______
 #####Usage
 Here is a list of all the commands that can be used in cri, you can see most updated with 'help'<br>
