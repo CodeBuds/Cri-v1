@@ -1,2 +1,2 @@
 #!/bin/bash
-sudo enter-chroot -n precise sudo apt-cache search $@ && sudo unmount-chroot -a -f -y
+sudo enter-chroot -n precise sudo apt-cache search $@
