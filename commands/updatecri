@@ -3,102 +3,97 @@ CBIN=/usr/bin
 URL="https://raw.github.com/CodeBuds/Cri/master"
 cd $CBIN
 echo "Welcome to the cri updater, please give me a minute to organize everything"
-echo "Make sure you are connected to the internet or this will screw up everything"
-echo "If after the test is says your not immediatly press Ctrl+c and/or Ctrl+z"
+echo "Make sure you are connected to the internet..."
+echo
+echo "If not connected to internet, press Ctrl+c and/or Ctrl+z"
 sleep 4
-echo
-echo "Checking for internet using wget..."
-sudo wget "$URL/commands/crishell" --no-check-certificate --show-progress
-echo
-echo
-echo
-echo
-echo "Double check now to make sure you're connected to the internet...."
-sleep 8
-echo "Deleting old files"
-sudo rm -rf rootmount
-sudo rm -rf unmount
-sudo rm -rf install
-sudo rm -rf remove
-sudo rm -rf run
-sudo rm -rf search
-sudo rm -rf stop
-sudo rm -rf uninstall
-sudo rm -rf update
-sudo rm -rf reinstall
-sudo rm -rf crishell
-sudo rm -rf fixconfig
-sudo rm -rf crosh
-sudo rm -rf cri
-sudo rm -rf updatecri
-sudo rm -rf acadapkg
-sudo rm -rf netlogo
-sudo rm -rf thunar
-sudo rm -rf Xfix
+#echo "Deleting old files"
+#sudo rm -rf rootmount
+#sudo rm -rf unmount
+#sudo rm -rf install
+#sudo rm -rf remove
+#sudo rm -rf run
+#sudo rm -rf search
+#sudo rm -rf stop
+#sudo rm -rf uninstall
+#sudo rm -rf update
+#sudo rm -rf reinstall
+#sudo rm -rf crishell
+#sudo rm -rf fixconfig
+#sudo rm -rf crosh
+#sudo rm -rf cri
+#sudo rm -rf updatecri
+#sudo rm -rf acadapkg
+#sudo rm -rf netlogo
+#sudo rm -rf thunar
+#sudo rm -rf Xfix
 cd $CBIN
+
 echo "Installing secondary files"
 echo "1/12..."
-sudo wget "$URL/commands/rootmount" --no-check-certificate -q
+sudo wget -q --no-check-certificate "$URL/commands/rootmount" -O $CBIN/rootmount
 echo "2/12..."
-sudo wget "$URL/commands/unmount" --no-check-certificate -q
+sudo wget -q --no-check-certificate "$URL/commands/unmount" -O $CBIN/unmount
 echo "3/12..."
-sudo wget "$URL/commands/install" --no-check-certificate -q
+sudo wget -q --no-check-certificate "$URL/commands/install" -O $CBIN/install
 echo "4/12..."
-sudo wget "$URL/commands/remove" --no-check-certificate -q
+sudo wget -q --no-check-certificate "$URL/commands/remove" -O $CBIN/remove
 echo "5/12..."
-sudo wget "$URL/commands/run" --no-check-certificate -q
+sudo wget -q --no-check-certificate "$URL/commands/run" -O $CBIN/run
 echo "6/12..."
-sudo wget "$URL/commands/search" --no-check-certificate -q
+sudo wget -q --no-check-certificate "$URL/commands/search" -O $CBIN/search
 echo "7/12..."
-sudo wget "$URL/commands/stop" --no-check-certificate -q
+sudo wget -q --no-check-certificate "$URL/commands/stop" -O $CBIN/stop
 echo "8/12..."
-sudo wget "$URL/commands/uninstall" --no-check-certificate -q
+sudo wget -q --no-check-certificate "$URL/commands/uninstall" -O $CBIN/uninstall
 echo "9/12..."
-sudo wget "$URL/commands/update" --no-check-certificate -q
+sudo wget -q --no-check-certificate "$URL/commands/update" -O $CBIN/update
 echo "10/12..."
-sudo wget "$URL/commands/reinstall" --no-check-certificate -q
+sudo wget -q --no-check-certificate "$URL/commands/reinstall" -O $CBIN/reinstall
 echo "11/12..."
-sudo wget "$URL/commands/crishell" --no-check-certificate -q
+sudo wget -q --no-check-certificate "$URL/commands/crishell" -O $CBIN/crishell
 echo "12/12..."
-sudo wget "$URL/cri" --no-check-certificate -q
+sudo wget -q --no-check-certificate "$URL/cri" -O $CBIN/cri
 echo "Done installing secondary files"
 echo "Installing pre config files"
-sudo wget "$URL/commands/fixconfig" --no-check-certificate -q
-sudo wget "$URL/commands/Xfix" --no-check-certificate -q
+sudo wget -q --no-check-certificate "$URL/commands/fixconfig" -O $CBIN/fixconfig
+sudo wget -q --no-check-certificate "$URL/commands/Xfix" -O $CBIN/Xfix
 echo "Done installing pre config files"
 echo "Installing updating package"
-sudo wget "$URL/commands/updatecri" --no-check-certificate -q
-sudo wget "$URL/commands/acadapkg" --no-check-certificate -q
-sudo wget "$URL/commands/netlogo" --no-check-certificate -q
-sudo wget "$URL/apps/thunar" --no-check-certificate -q
+sudo wget -q --no-check-certificate "$URL/commands/updatecri" -O $CBIN/updatecri
+sudo wget -q --no-check-certificate "$URL/commands/acadapkg" -O $CBIN/acadapkg
+sudo wget -q --no-check-certificate "$URL/commands/netlogo" -O $CBIN/netlogo
+sudo wget -q --no-check-certificate "$URL/commands/thunar" -O $CBIN/thunar
 echo "Done..."
 
 #rename cri to crosh
 sudo cp cri $CBIN/crosh
 
 echo "Changing the permissions"
-sudo chmod +x rootmount
-sudo chmod +x unmount
-sudo chmod +x install
-sudo chmod +x remove
-sudo chmod +x run
-sudo chmod +x search
-sudo chmod +x stop
-sudo chmod +x uninstall
-sudo chmod +x update
-sudo chmod +x reinstall
-sudo chmod +x crishell
-sudo chmod +x fixconfig
-sudo chmod +x crosh
-sudo chmod +x cri
-sudo chmod +x updatecri
-sudo chmod +x acadapkg
-sudo chmod +x netlogo
-sudo chmod +x thunar
-sudo chmod +x Xfix
+for file in $CBIN/*
+do
+  sudo chmod +x $file
+done
+#sudo chmod +x rootmount
+#sudo chmod +x unmount
+#sudo chmod +x install
+#sudo chmod +x remove
+#sudo chmod +x run
+#sudo chmod +x search
+#sudo chmod +x stop
+#sudo chmod +x uninstall
+#sudo chmod +x update
+#sudo chmod +x reinstall
+#sudo chmod +x crishell
+#sudo chmod +x fixconfig
+#sudo chmod +x crosh
+#sudo chmod +x cri
+#sudo chmod +x updatecri
+#sudo chmod +x acadapkg
+#sudo chmod +x netlogo
+#sudo chmod +x thunar
+#sudo chmod +x Xfix
 echo "Done changing permissions"
-echo "DONE..."
 echo
-echo "Remember this doesn't update the ubuntu packages just the commands for them"
-echo "Also this updates Cri, and configs"
-echo "So don't be surprised if colors or commands change"
+echo
+echo "DONE..."
