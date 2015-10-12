@@ -193,7 +193,7 @@ cmd_help() (
 
   case $# in
   0)
-    local cmds="exit help help_advanced ping top files install reinstall remove run search stop uninstall unmount update updatecri"
+    local cmds="files install reinstall remove run search stop uninstall unmount update updatecri fixconfig Xfix help_advanced exit"
     for cmd in ${cmds}; do
       cmd_help "${cmd}"
     done
@@ -1279,10 +1279,18 @@ cmd_unmount() (
 
 USAGE_fixconfig=''
 HELP_fixconfig='
-  Forcibly replaces the i3 config file error, if you recieve it
+  Forcibly replaces the i3 config file error, if you recieve it when a a window pops up
 '
 cmd_fixconfig() (
   /usr/bin/fixconfig $@
+)
+
+USAGE_Xfix=''
+HELP_Xfix='
+  Forcibly changes the X11 log file so it works, Some input is required
+'
+cmd_fixconfig() (
+  /usr/bin/Xfix $@
 )
 
 #USAGE_ROOTMOUNT=''  #Hidden because root mounting is only required on the initial install
