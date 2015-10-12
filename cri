@@ -1289,7 +1289,7 @@ USAGE_Xfix=''
 HELP_Xfix='
   Forcibly changes the X11 log file so it works, Some input is required
 '
-cmd_fixconfig() (
+cmd_Xfix() (
   /usr/bin/Xfix $@
 )
 
