@@ -4,5 +4,8 @@ sudo enter-chroot -n precise sudo chmod +s /usr/bin/X11/Xorg
 sleep 1
 sudo enter-chroot -n precise sudo dpkg-reconfigure x11-common
 sleep 1
-sudo enter-chroot -n precise su -c 'dpkg-reconfigure x11-common'
+#whoami doesn't work on this
+read -p "Please enter your crouton username, Sorry I can't auto do that..." name
+sudo enter-chroot -n precise sudo chown $name:$name /tmp
+echo "I fixed the xiwi permissions"
 #The above is just a double check
