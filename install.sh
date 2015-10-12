@@ -15,6 +15,8 @@ echo "You are running as $user, and on a $architecture computer"
 echo "Developed by $AUTHORS"
 echo
 
+sleep 1
+
 ask() {
     # http://djm.me/ask
     while true; do
@@ -54,11 +56,13 @@ else
     echo "Done... installing pre files"
     sudo chmod +x crouton
     if ask "Do you have crouton already installed? if you select yes then we will wipe it..."; then
-        echo "Installing..."
-        sudo sh crouton -t extension,xiwi -u
+        read -p "Enter any other commands to crouton? (P.S. just leave blank and press enter if none)" commands
+        echo "Installing... extension and xiwi"
+        sudo sh crouton -t extension,xiwi -u $commands
     else
+        read -p "Enter any other commands to crouton? (P.S. just leave blank and press enter if none)" commandss
         echo "Installing..."
-        sudo sh crouton -t extension,xiwi
+        sudo sh crouton -t extension,xiwi $commandss
     fi
     echo 
     echo "Done installing second os (Ubuntu-core)"
