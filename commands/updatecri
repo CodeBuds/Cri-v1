@@ -95,5 +95,5 @@ done
 #sudo chmod +x Xfix
 echo "Done changing permissions"
 echo
-echo
+echo "Run the 'updatecri' command again in a second, because it needs to update itself"
 echo "DONE..."
