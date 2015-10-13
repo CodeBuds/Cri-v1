@@ -1,16 +1,9 @@
 #!/bin/sh
 AUTHORS="David Smerkous and Eli Smith"
 URL="https://raw.github.com/CodeBuds/Cri/master"
-VERSION=0.0.1
-BASEPATH=/home/chronos/user
 CRIBIN=/usr/bin
-CTEMP=$BASEPATH/Downloads
+CTEMP=~/Downloads/
 
-
-#Initialization
-if diff version versionTmp >/dev/null; then
-echo up to date
-else
 cd $CTEMP
 echo 'Welcome to the Cri installer, this will install Cri in 5 seconds, hit ctrl+z to stop if unwanted'
 sleep 5
