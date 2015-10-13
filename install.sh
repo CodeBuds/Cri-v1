@@ -136,11 +136,10 @@ sudo wget "$URL/commands/netlogo" --no-check-certificate -q
 sudo wget "$URL/apps/thunar" --no-check-certificate -q
 echo "Done..."
 fi
-
+cd $BASEPATH
 sudo mv version versionTmp
 sudo mv versionTmp version
-cd $BASEPATH
-if [-a version]
+if [-a version]; then
 echo "done!!!"
 else
 cd $CTEMP
