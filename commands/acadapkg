@@ -88,41 +88,41 @@ echo
 #echo "Done..."
 #echo
 echo "Need extra tools"
-sudo enter-chroot -n precise sudo apt-get --force-yes install software-properties-common python-software-properties
+sudo enter-chroot -n precise sudo apt-get -y install software-properties-common python-software-properties
 echo
 sleep 1
 echo "Installing OpenShot video editor"
-sudo enter-chroot -n precise sudo add-apt-repository ppa:openshot.developers/ppa && sudo apt-get update && sudo apt-get --force-yes install openshot openshot-doc
+sudo enter-chroot -n precise sudo add-apt-repository ppa:openshot.developers/ppa && sudo apt-get update && sudo apt-get -y install openshot openshot-doc
 echo "Done..."
 echo "To run openshot just type into cri 'run openshot'"
 echo
 sleep 3
 echo "Installing file manager"
-sudo enter-chroot -n precise sudo apt-get --force-yes install thunar
+sudo enter-chroot -n precise sudo apt-get -y install thunar
 echo "Installing icons for file manager"
-sudo enter-chroot -n precise sudo apt-get install --force-yes gnome-icon-theme-full
-sudo enter-chroot -n precise sudo apt-get install --force-yes gedit
+sudo enter-chroot -n precise sudo apt-get install -y gnome-icon-theme-full
+sudo enter-chroot -n precise sudo apt-get install -y gedit
 echo
 echo "Done installing thunar file manager..."
 echo
 sleep 1
 echo
 echo "Installing 4digits"
-sudo enter-chroot -n precise sudo apt-get install --force-yes 4digits
+sudo enter-chroot -n precise sudo apt-get install -y 4digits
 echo
 echo
 sleep 1
 echo
 echo "Installing photo editor (gimp)"
-sudo enter-chroot -n precise sudo apt-get install --force-yes gimp
+sudo enter-chroot -n precise sudo apt-get install -y gimp
 echo "Done installing gimp"
 echo
 echo
 sleep 1
 echo
 echo "Installing geany and software center"
-sudo enter-chroot -n precise sudo apt-get install --force-yes geany
-#sudo enter-chroot -n precise sudo apt-get install --force-yes lubuntu-software-center
+sudo enter-chroot -n precise sudo apt-get install -y geany
+#sudo enter-chroot -n precise sudo apt-get install -y lubuntu-software-center
 echo "Done installing geany..."
 echo
 sleep 1
