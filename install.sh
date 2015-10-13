@@ -5,21 +5,7 @@ VERSION=0.0.1
 BASEPATH=/home/chronos/user
 CRIBIN=/usr/bin
 CTEMP=$BASEPATH/Downloads
-BASHRCPATH=$BASEPATH/.bashrc
-PROFILEPATH=$BASEPATH/.profile
-ENVPATH=/etc/environment
 
-#Permanently sets the version for checking later on
-cd $BASEPATH
-echo $VERSION >> versionTmp
-
-echo "VERSION=$VERSION" >> $BASHRCPATH
-echo "VERSION=$VERSION" >> $PROFILEPATH
-echo "VERSION=$VERSION" >> $ENVPATH
-sed -i "s/VERSION=$PREVER/VERSION=$CURVER/g" $BASHRCPATH
-sed -i "s/VERSION=$PREVER/VERSION=$CURVER/g" $PROFILEPATH
-sed -i "s/VERSION=$PREVER/VERSION=$CURVER/g" $ENVPATH
-echo done
 
 #Initialization
 if diff version versionTmp >/dev/null; then
@@ -135,13 +121,7 @@ echo "Installing apps"
 sudo wget "$URL/commands/netlogo" --no-check-certificate -q
 sudo wget "$URL/apps/thunar" --no-check-certificate -q
 echo "Done..."
-fi
-cd $BASEPATH
-sudo mv version versionTmp
-sudo mv versionTmp version
-if [-a version]; then
-echo "done!!!"
-else
+
 cd $CTEMP
 echo
 echo "To make any changed you will need remount as read and write, please read carefully"
@@ -157,4 +137,3 @@ echo "Second part won't work until you do"
 echo
 echo "rootmount"
 echo
-fi
