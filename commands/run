@@ -34,18 +34,19 @@ ask() {
     done
 }
 sleep 0.1
-if [[ "$name"='e17' ]] || [[ "$name"='unity' ]] || [[ "$name"='kde' ]]; then
+if [[ "$name"=="e17" ]] || [[ "$name"=="unity" ]] || [[ "$name"=="kde" ]]; then
     sudo start$name
-elif [ "$name"=='xfce' ]; then
-    sudo startxfce4
-else 
-    if ask "Does this app require terminal input or root access? (P.S. Arduino does)"; then
-      echo "Turning debugging on..."
-        sudo enter-chroot -n precise sudo xiwi $name
-    else
-     echo "Turning debugging off."
-     sudo enter-chroot -b -n precise xiwi $name
-    fi
+else
+    if [ "$name"=="xfce" ]; then
+        sudo startxfce4
+    else 
+        if ask "Does this app require terminal input or root access? (P.S. Arduino does)"; then
+            echo "Turning debugging on..."
+            sudo enter-chroot -n precise sudo xiwi $name
+        else
+             echo "Turning debugging off."
+             sudo enter-chroot -b -n precise xiwi $name
+        fi
   sleep 1
   echo "If nothing popped up, then it's an invalid command"
   echo "Thanks for using cri to run $name"
