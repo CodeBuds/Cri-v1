@@ -34,10 +34,10 @@ ask() {
     done
 }
 sleep 0.1
-if [ "$name"=='e17' ] || [ "$name"=='unity' ] || [ "$name"=='kde' ]; then
-    sudo start{$name}
+if [ "$name"='e17' ] || [ "$name"='unity' ] || [ "$name"='kde' ]; then
+    sudo start$name
   elif [ "$name"=='xfce' ]; then
-    sudo start{$name}4
+    sudo startxfce4
   else 
     if ask "Does this app require terminal input or root access? (P.S. Arduino does)"; then
       echo "Turning debugging on..."
