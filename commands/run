@@ -36,9 +36,9 @@ ask() {
 sleep 0.1
 if [ "$name"=='e17' ] || [ "$name"=='unity' ] || [ "$name"=='kde' ]; then
     sudo start{$name}
-  elif [ "$name"=='xfce' ]
+  elif [ "$name"=='xfce' ]; then
     sudo start{$name}4
-  elif [ "$name" != 'e17' ] || [ "$name" != 'unity' ] || [ "$name" != 'kde' ] || [ "$name" != 'xfce']
+  else 
     if ask "Does this app require terminal input or root access? (P.S. Arduino does)"; then
       echo "Turning debugging on..."
         sudo enter-chroot -n precise sudo xiwi $name
