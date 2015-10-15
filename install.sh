@@ -2,8 +2,10 @@
 AUTHORS="David Smerkous and Eli Smith"
 URL="https://raw.github.com/CodeBuds/Cri/master"
 CRIBIN=/usr/bin
-CTEMP=~/Downloads/
+CTEMP=~/Downloads/tmp
 
+cd ~/Downloads 
+mkdir tmp
 cd $CTEMP
 echo 'Welcome to the Cri installer, this will install Cri in 5 seconds, hit ctrl+z to stop if unwanted'
 sleep 5
