@@ -47,6 +47,7 @@ else
              echo "Turning debugging off."
              sudo enter-chroot -b -n precise xiwi $name
         fi
+    fi
   sleep 1
   echo "If nothing popped up, then it's an invalid command"
   echo "Thanks for using cri to run $name"
