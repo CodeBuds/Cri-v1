@@ -7,8 +7,8 @@ echo "Developed by David Smerkous and Eli Smith"
 sleep 1
 echo "Changing directories"
 
-cd 
-cd Downloads
+
+cd ~/Downloads/tmp
 echo "Copying and Deleting commands"
 echo ""
 echo "1/12..."
@@ -107,3 +107,5 @@ fi
 if ask "Would you like to install the academy package? (HIGHLY RECOMMENDED), choose yes for list of packages"; then
   sudo acadapkg
 fi
+cd ~/Downloads
+rm -rf tmp
