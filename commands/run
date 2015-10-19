@@ -1,6 +1,6 @@
 #!/bin/bash
-name=$@
-echo "Trying to run $name"
+NAME=$@
+echo "Trying to run $NAME"
 echo "Give us at least 5 seconds to start up ubuntu..."
 ask() {
     # http://djm.me/ask
@@ -34,21 +34,21 @@ ask() {
     done
 }
 sleep 0.1
-if [[ "$name"=="e17" ]] || [[ "$name"=="unity" ]] || [[ "$name"=="kde" ]]; then
-    sudo start$name
+if [[ "$NAME"=="e17" ]] || [[ "$NAME"=="unity" ]] || [[ "$NAME"=="kde" ]]; then
+    sudo start"$NAME"
 else
-    if [ "$name"=="xfce" ]; then
+    if [ "$NAME"=="xfce" ]; then
         sudo startxfce4
     else 
         if ask "Does this app require terminal input or root access? (P.S. Arduino does)"; then
             echo "Turning debugging on..."
-            sudo enter-chroot -n precise sudo xiwi $name
+            sudo enter-chroot -n precise sudo xiwi $NAME
         else
              echo "Turning debugging off."
-             sudo enter-chroot -b -n precise xiwi $name
+             sudo enter-chroot -b -n precise xiwi $NAME
         fi
     fi
   sleep 1
   echo "If nothing popped up, then it's an invalid command"
-  echo "Thanks for using cri to run $name"
+  echo "Thanks for using cri to run $NAME"
 fi
