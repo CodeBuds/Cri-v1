@@ -33,10 +33,12 @@ ask() {
 
     done
 }
-if [[ "$NAME" -eq "e17" || "$NAME" -eq "unity" || "$NAME" -eq "kde" ]]; then
+if [ "$NAME" -eq "e17" -o "$NAME" -eq "unity" -o "$NAME" -eq "kde" ]
+then
     sudo start"$NAME"
 else
-    if [ "$NAME" -eq "xfce" ]; then
+    if [ "$NAME" -eq "xfce" ]
+    then
         sudo startxfce4
     else 
         if ask "Does this app require terminal input or root access? (P.S. Arduino does)"; then
