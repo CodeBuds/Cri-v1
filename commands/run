@@ -1,4 +1,4 @@
-#!/bin/shell
+#!/bin/sh -e
 NAME=$@
 echo "Trying to run $NAME"
 echo "Give us at least 5 seconds to start up ubuntu..."
