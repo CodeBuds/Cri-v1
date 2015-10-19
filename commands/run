@@ -33,7 +33,7 @@ ask() {
 
     done
 }
-if [ "$NAME" -eq "e17" -o "$NAME" -eq "unity" -o "$NAME" -eq "kde" ]
+if [ ("$NAME" -eq "e17") -o ("$NAME" -eq "unity") -o ("$NAME" -eq "kde") ]
 then
     sudo start"$NAME"
 else
