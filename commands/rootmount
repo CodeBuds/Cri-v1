@@ -19,8 +19,7 @@ case $ynn in
         ;;
 esac
   sleep 3
-  sudo /usr/share/vboot/bin/make_dev_ssd.sh --remove_rootfs_verification --partitions ((
-  sudo /usr/share/vboot/bin/make_dev_ssd.sh --remove_rootfs_verification | sed -n '9p' | sed -n -e 's/^.*titions //p') 2>/dev/null)
+  sudo /usr/share/vboot/bin/make_dev_ssd.sh --remove_rootfs_verification --partitions ((sudo /usr/share/vboot/bin/make_dev_ssd.sh --remove_rootfs_verification | sed -n '9p' | sed -n -e 's/^.*titions //p') 2>/dev/null)
   sudo crossystem dev_boot_signed_only=0
   sudo mount -o remount,rw /
   read -p 'Done! Now please select y or n if you would like to reboot now' yn
