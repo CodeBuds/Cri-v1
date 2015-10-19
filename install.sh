@@ -3,26 +3,18 @@ AUTHORS="David Smerkous and Eli Smith"
 URL="https://raw.github.com/CodeBuds/Cri/master"
 CRIBIN=/usr/bin
 CTEMP=~/Downloads/tmp
+CROUTON=/mnt/stateful_partition/crouton  
+URLCROUTON="https://raw.githubusercontent.com/dnschneid/crouton/master/installer/crouton"
 
-cd ~/Downloads 
-mkdir tmp
-cd $CTEMP
-echo 'Welcome to the Cri installer, this will install Cri in 5 seconds, hit ctrl+z to stop if unwanted'
-sleep 5
-
+sudo mkdir $CTEMP && cd $CTEMP
 user=$(whoami)
-architecture=$(uname -m)
-
+echo "Welcome to the Cri installer"
 echo "You are running as $user, and on a $architecture computer"
 echo "Developed by $AUTHORS"
 echo
 
-sleep 1
-
 ask() {
-    # http://djm.me/ask
     while true; do
-
         if [ "${2:-}" = "Y" ]; then
             prompt="Y/n"
             default=Y
@@ -33,41 +25,38 @@ ask() {
             prompt="y/n"
             default=
         fi
-
-        # Ask the question - use /dev/tty in case stdin is redirected from somewhere else
         read -p "$1 [$prompt] " REPLY </dev/tty
-
-        # Default?
         if [ -z "$REPLY" ]; then
             REPLY=$default
         fi
-
-        # Check if the reply is valid
         case "$REPLY" in
             Y*|y*) return 0 ;;
             N*|n*) return 1 ;;
         esac
-
     done
 }
-if ask "Is Cri already on your system?"; then
-    echo
+
+if ask "Would you like to install cri?"; then
+	echo "Preparing for installation..."
+	echo
+	sudo wget -q --no-check-certificate $URLCROUTON -O $CTEMP/crouton
+	sudo chmod +x crouton
+	if [ ! -d "$CROUTON" ]; then
+		echo
+		if ask "It looks like xiwi isn't installed would you like to install it (xiwi is a requirement for cri)?"; then
+		    echo "Trying..."
+		    sudo sh crouton -t xiwi,extension,e17
+		fi
+	else
+		echo
+		if ask "It looks like crouton is already installed, we need to update it, is that okay?"; then
+		    echo "Trying..."
+		    sudo sh crouton -t xiwi,extension,e17 -u
+		fi	    
+	fi
 else
-    echo "Installing pre files"
-    sudo wget "https://raw.githubusercontent.com/dnschneid/crouton/master/installer/crouton" --no-check-certificate -q
-    echo "Done... installing pre files"
-    sudo chmod +x crouton
-    if ask "Do you have crouton already installed? if you select yes then we will wipe it..."; then
-        read -p "Enter any other commands to crouton? (P.S. just leave blank and press enter if none)" commands
-        echo "Installing... extension and xiwi"
-        sudo sh crouton -t extension,xiwi -u $commands
-    else
-        read -p "Enter any other commands to crouton? (P.S. just leave blank and press enter if none)" commandss
-        echo "Installing..."
-        sudo sh crouton -t extension,xiwi $commandss
-    fi
-    echo 
-    echo "Done installing second os (Ubuntu-core)"
+	echo "Exiting..."
+	exit
 fi
 
 sleep 1
