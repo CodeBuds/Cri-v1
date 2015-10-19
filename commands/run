@@ -1,7 +1,6 @@
 #!/bin/bash
 NAME=$@
-echo "Trying to run $NAME"
-echo "Give us at least 5 seconds to start up ubuntu..."
+echo "Trying to run $NAME..."
 ask() {
     # http://djm.me/ask
     while true; do
