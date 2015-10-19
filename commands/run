@@ -33,11 +33,10 @@ ask() {
 
     done
 }
-sleep 0.1
-if [[ "$NAME"=="e17" ]] || [[ "$NAME"=="unity" ]] || [[ "$NAME"=="kde" ]]; then
+if [[ "$NAME" -eq "e17" || "$NAME" -eq "unity" || "$NAME" -eq "kde" ]]; then
     sudo start"$NAME"
 else
-    if [ "$NAME"=="xfce" ]; then
+    if [ "$NAME" -eq "xfce" ]; then
         sudo startxfce4
     else 
         if ask "Does this app require terminal input or root access? (P.S. Arduino does)"; then
@@ -48,7 +47,6 @@ else
              sudo enter-chroot -b -n precise xiwi $NAME
         fi
     fi
-  sleep 1
   echo "If nothing popped up, then it's an invalid command"
   echo "Thanks for using cri to run $NAME"
 fi
