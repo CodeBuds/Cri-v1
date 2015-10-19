@@ -1,4 +1,4 @@
-#!/bin/sh -e
+#!/bin/bash
 NAME=$@
 echo "Trying to run $NAME"
 echo "Give us at least 5 seconds to start up ubuntu..."
@@ -33,11 +33,11 @@ ask() {
 
     done
 }
-if [ "$NAME" = "e17" || "$NAME" = "unity" || "$NAME" = "kde" ]
+if [ $NAME = "e17" || $NAME = "unity" || $NAME = "kde" ]
 then
     sudo start"$NAME"
 else
-    if [ "$NAME" -eq "xfce" ]
+    if [ "$NAME" = "xfce" ]
     then
         sudo startxfce4
     else 
