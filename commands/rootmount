@@ -27,3 +27,4 @@ esac
     sudo reboot
   else
     exit
+  fi
