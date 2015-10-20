@@ -108,4 +108,4 @@ if ask "Would you like to install the academy package? (HIGHLY RECOMMENDED), cho
   sudo acadapkg
 fi
 cd ~/Downloads
-rm -rf tmp
+sudo rm -rf tmp
