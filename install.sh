@@ -69,7 +69,7 @@ sleep 1
 cd $CTEMP
 echo "Downloading secondary files"
 sudo wget -q --no-check-certificate "$URL/commands.txt" -O $CTEMP/commands.txt
-sudo chmod +x commands.txt
+sudo chmod 755 commands.txt
 NAMES="$(< commands.txt)" #names from names.txt file
 LINES=$(lineCount)
 NUMBERS=0
