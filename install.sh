@@ -6,7 +6,8 @@ CTEMP=~/Downloads/tmp
 CROUTON=/mnt/stateful_partition/crouton  
 URLCROUTON="https://raw.githubusercontent.com/dnschneid/crouton/master/installer/crouton"
 
-sudo mkdir $CTEMP && cd $CTEMP
+sudo mkdir $CTEMP
+cd $CTEMP
 user=$(whoami)
 echo "Welcome to the Cri installer"
 echo "You are running as $user, and on a $architecture computer"
@@ -41,11 +42,12 @@ lineCount()
     wc -l < commands.txt	
 }
 
+cd $CTEMP
 if ask "Would you like to install cri?"; then
 	echo "Preparing for installation..."
 	echo
 	sudo wget -q --no-check-certificate $URLCROUTON -O $CTEMP/crouton
-	sudo chmod +x crouton
+	sudo chmod 755 crouton
 	if [ ! -d "$CROUTON" ]; then
 		echo
 		if ask "It looks like xiwi isn't installed would you like to install it (xiwi is a requirement for cri)?"; then
