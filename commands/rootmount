@@ -1,30 +1,42 @@
 #!/bin/bash
-echo "PLEASE READ ALL OF THIS AND ANSWER CAREFULLY... If you don't you might need to reinstall this script"
-echo "The problem here is that we can't just randomly change deep system files"
-echo "we will need to remount the user filesystem so we can edit the bin settings"
-echo ""
-echo "If you select something besides no, program will exit..."
-echo "If you select yes or put some other character, (if not already) continue installation using the second"
-echo "Half of the script which is located on github"
-sleep 2
-echo ""
-read -p "Have you mounted and rebooted your syetem to read and write yet?[y/n]" ynn
-case $ynn in
-    [yY][eE][sS]|[yY])
-        echo 'Copy and paste this command: \n wget -q -O - https://raw.github.com/CodeBuds/Cri/master/install2.sh | sh' 
-        exit
-        ;;
-    *)
-        echo
-        ;;
-esac
-  sleep 3
+echo
+echo "Please read all of the information below"
+sleep 4
+echo 
+
+ask() {
+    while true; do
+        if [ "${2:-}" = "Y" ]; then
+            prompt="Y/n"
+            default=Y
+        elif [ "${2:-}" = "N" ]; then
+            prompt="y/N"
+            default=N
+        else
+            prompt="y/n"
+            default=
+        fi
+        read -p "$1 [$prompt] " REPLY </dev/tty
+        if [ -z "$REPLY" ]; then
+            REPLY=$default
+        fi
+        case "$REPLY" in
+            Y*|y*) return 0 ;;
+            N*|n*) return 1 ;;
+        esac
+    done
+}
+if ask "Have you mounted and rebooted your syetem to read and write yet?"; then
+    if ask "Would you like to run part 2 of installation now?"; then
+        wget -q -O - https://raw.github.com/CodeBuds/Cri/master/install2.sh | bash
+    else
+        echo "Okay but just remember to run this later on..."
+        echo "wget -q -O - https://raw.github.com/CodeBuds/Cri/master/install2.sh | bash"
+    fi
+fi
   sudo /usr/share/vboot/bin/make_dev_ssd.sh --remove_rootfs_verification --partitions ((sudo /usr/share/vboot/bin/make_dev_ssd.sh --remove_rootfs_verification | sed -n '9p' | sed -n -e 's/^.*titions //p') 2>/dev/null)
   sudo crossystem dev_boot_signed_only=0
   sudo mount -o remount,rw /
-  read -p 'Done! Now please select y or n if you would like to reboot now' yn
-  if [ $yn = y ]; then
+if ask "Finished! Would you like to reboot now (If no, you will need to later)?"
     sudo reboot
-  else
-    exit
-  fi
+fi
