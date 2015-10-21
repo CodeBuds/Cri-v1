@@ -1,7 +1,7 @@
 #!/bin/bash
 CBIN=/usr/bin
 URL="https://raw.github.com/CodeBuds/Cri/master"
-CTEMP=~/Downloads/tmp #DO NOT CHANGE THIS TO ~/DOWNLOADS, WANNA KNOW WHY, LOOK AT BOTTOM OF SCRIPT
+CTEMP=~/Downloads/.tmp #DO NOT CHANGE THIS TO ~/DOWNLOADS, WANNA KNOW WHY, LOOK AT BOTTOM OF SCRIPT
 cd $CBIN
 echo "Welcome to the cri updater, please give me a minute to organize everything
 Make sure you are connected to the internet...
