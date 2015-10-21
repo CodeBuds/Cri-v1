@@ -78,8 +78,8 @@ NUMBERS=0
 for NAME in $NAMES; do
     echo "File $NUMBERS/$LINES..."
     let "NUMBERS += 1"
-    sudo wget -q --no-check-certificate $URL"$NAME" -O $CTEMP/$NAME
-    sudo chmod +x $NAME
+    sudo wget -q --no-check-certificate "$URL/$NAME" -O $CTEMP/${$NAME##*/}
+    sudo chmod +x ${$NAME##*/}
 done
 echo "Done..."
 
