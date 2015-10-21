@@ -1,8 +1,12 @@
 #!/bin/bash
-echo
-echo "Please read all of the information below"
-sleep 4
-echo 
+part ()
+{
+  sudo /usr/share/vboot/bin/make_dev_ssd.sh --remove_rootfs_verification 2>/dev/null | sed -n '9p' 2>/dev/null | sed -n -e 's/^.*titions //p' 2>/dev/null
+}
+#test ()
+#{
+ # sudo mount -o remount,rw / | grep write
+#}
 
 ask() {
     while true; do
@@ -26,17 +30,33 @@ ask() {
         esac
     done
 }
+
+echo "
+Please read all of the information below
+"
+sleep 4
 if ask "Have you mounted and rebooted your syetem to read and write yet?"; then
     if ask "Would you like to run part 2 of installation now?"; then
         wget -q -O - https://raw.github.com/CodeBuds/Cri/master/install2.sh | bash
     else
-        echo "Okay but just remember to run this later on..."
-        echo "wget -q -O - https://raw.github.com/CodeBuds/Cri/master/install2.sh | bash"
+        echo "Okay but just remember to run this later on...
+        wget -q -O - https://raw.github.com/CodeBuds/Cri/master/install2.sh | bash"
     fi
 fi
-  sudo /usr/share/vboot/bin/make_dev_ssd.sh --remove_rootfs_verification --partitions ((sudo /usr/share/vboot/bin/make_dev_ssd.sh --remove_rootfs_verification | sed -n '9p' | sed -n -e 's/^.*titions //p') 2>/dev/null)
+  sudo /usr/share/vboot/bin/make_dev_ssd.sh --remove_rootfs_verification --partitions $(part)
   sudo crossystem dev_boot_signed_only=0
   sudo mount -o remount,rw /
-if ask "Finished! Would you like to reboot now (If no, you will need to later)?"
+  echo
+  sleep 1
+  echo "If this is your second time running rootmount, you're done!
+  Now please run https://raw.github.com/CodeBuds/Cri/master/install2.sh | bash
+  "
+  sleep 0.5
+  echo
+  sleep 0.5
+  echo
+  sleep 0.5
+ if ask "Finished! Would you like to reboot now (If no, you will need to later)?"
     sudo reboot
-fi
+ fi
+  
