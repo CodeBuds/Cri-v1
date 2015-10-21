@@ -12,11 +12,11 @@ To install Cri, first you need to put your system into Developer mode by follow 
 Then type in the command "shell" and follow the instructions below <br>
 Install Cri part 1 here: <br>
 
-    wget -q -O - https://raw.github.com/CodeBuds/Cri/master/install.sh | sh
+    wget -q -O - https://raw.github.com/CodeBuds/Cri/master/install.sh | bash
 Then, after that is done and you have ran 'rootmount' run this command in shell <br>
 NOTE: you must reboot for the second part of the install to actually work<br>
 
-    wget -q -O - https://raw.github.com/CodeBuds/Cri/master/install2.sh | sh
+    wget -q -O - https://raw.github.com/CodeBuds/Cri/master/install2.sh | bash
 
 
 ####NOTE: REMOVING SOME PACKAGES FROM ACADAPKG.... (such as netlogo...) you will have to manually install using crishell then 'sudo enter-chroot'
