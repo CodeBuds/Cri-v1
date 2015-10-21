@@ -14,13 +14,15 @@ lineCount()
     wc -l < commands.txt	
 }
 
-cd $CBIN
+sudo mkdir $CTEMP
+cd $CTEMP
 echo "Downloading secondary files"
 sudo wget -q --no-check-certificate "$URL/commands.txt" -O $CTEMP/commands.txt
 sudo chmod 755 commands.txt
 NAMES="$(< commands.txt)" #names from names.txt file
 LINES=$(lineCount)
 NUMBERS=0
+cd $CBIN
 for NAME in $NAMES; do
     echo "File $NUMBERS/$LINES..."
     let "NUMBERS += 1"
