@@ -2,98 +2,59 @@
 CBIN=/usr/bin
 URL="https://raw.github.com/CodeBuds/Cri/master"
 cd $CBIN
-echo "Welcome to the cri updater, please give me a minute to organize everything"
-echo "Make sure you are connected to the internet..."
-echo
-echo "If not connected to internet, press Ctrl+c and/or Ctrl+z"
-sleep 4
-#echo "Deleting old files"
-#sudo rm -rf rootmount
-#sudo rm -rf unmount
-#sudo rm -rf install
-#sudo rm -rf remove
-#sudo rm -rf run
-#sudo rm -rf search
-#sudo rm -rf stop
-#sudo rm -rf uninstall
-#sudo rm -rf update
-#sudo rm -rf reinstall
-#sudo rm -rf crishell
-#sudo rm -rf fixconfig
-#sudo rm -rf crosh
-#sudo rm -rf cri
-#sudo rm -rf updatecri
-#sudo rm -rf acadapkg
-#sudo rm -rf netlogo
-#sudo rm -rf thunar
-#sudo rm -rf Xfix
+echo "Welcome to the cri updater, please give me a minute to organize everything
+Make sure you are connected to the internet...
+"
+
+ask() {
+    while true; do
+        if [ "${2:-}" = "Y" ]; then
+            prompt="Y/n"
+            default=Y
+        elif [ "${2:-}" = "N" ]; then
+            prompt="y/N"
+            default=N
+        else
+            prompt="y/n"
+            default=
+        fi
+        read -p "$1 [$prompt] " REPLY </dev/tty
+        if [ -z "$REPLY" ]; then
+            REPLY=$default
+        fi
+        case "$REPLY" in
+            Y*|y*) return 0 ;;
+            N*|n*) return 1 ;;
+        esac
+    done
+}
+
+if ask "Are you connected to the Internet?"; then
+  echo "Continuing..."
+else
+  echo "Exiting..."
+  exit 0
+fi  
+
+lineCount()
+{
+    wc -l < commands.txt	
+}
+
+sudo mkdir $CTEMP
+cd $CTEMP
+echo "ReDownloading files"
+sudo wget -q --no-check-certificate "$URL/commands.txt" -O $CTEMP/commands.txt
+sudo chmod 755 commands.txt
+NAMES="$(< commands.txt)" #names from names.txt file
+LINES=$(lineCount)
+NUMBERS=0
 cd $CBIN
-
-echo "Installing secondary files"
-echo "1/12..."
-sudo wget -q --no-check-certificate "$URL/commands/rootmount" -O $CBIN/rootmount
-echo "2/12..."
-sudo wget -q --no-check-certificate "$URL/commands/unmount" -O $CBIN/unmount
-echo "3/12..."
-sudo wget -q --no-check-certificate "$URL/commands/install" -O $CBIN/install
-echo "4/12..."
-sudo wget -q --no-check-certificate "$URL/commands/remove" -O $CBIN/remove
-echo "5/12..."
-sudo wget -q --no-check-certificate "$URL/commands/run" -O $CBIN/run
-echo "6/12..."
-sudo wget -q --no-check-certificate "$URL/commands/search" -O $CBIN/search
-echo "7/12..."
-sudo wget -q --no-check-certificate "$URL/commands/stop" -O $CBIN/stop
-echo "8/12..."
-sudo wget -q --no-check-certificate "$URL/commands/uninstall" -O $CBIN/uninstall
-echo "9/12..."
-sudo wget -q --no-check-certificate "$URL/commands/update" -O $CBIN/update
-echo "10/12..."
-sudo wget -q --no-check-certificate "$URL/commands/reinstall" -O $CBIN/reinstall
-echo "11/12..."
-sudo wget -q --no-check-certificate "$URL/commands/crishell" -O $CBIN/crishell
-echo "12/12..."
-sudo wget -q --no-check-certificate "$URL/cri" -O $CBIN/cri
-echo "Done installing secondary files"
-echo "Installing pre config files"
-sudo wget -q --no-check-certificate "$URL/commands/fixconfig" -O $CBIN/fixconfig
-sudo wget -q --no-check-certificate "$URL/commands/Xfix" -O $CBIN/Xfix
-echo "Done installing pre config files"
-echo "Installing updating package"
-sudo wget -q --no-check-certificate "$URL/commands/updatecri" -O $CBIN/updatecri
-sudo wget -q --no-check-certificate "$URL/commands/acadapkg" -O $CBIN/acadapkg
-sudo wget -q --no-check-certificate "$URL/commands/netlogo" -O $CBIN/netlogo
-sudo wget -q --no-check-certificate "$URL/commands/thunar" -O $CBIN/thunar
-echo "Done..."
-
-#rename cri to crosh
-sudo cp cri $CBIN/crosh
-
-echo "Changing the permissions"
-for file in $CBIN/*
-do
-  sudo chmod +x $file
+for NAME in $NAMES; do
+    echo "File $NUMBERS/$LINES..."
+    let "NUMBERS += 1"
+    sudo wget -q --no-check-certificate "$URL/$NAME" -O $CBIN/${NAME##*/}
+    sudo chmod 755 ${NAME##*/}
 done
-#sudo chmod +x rootmount
-#sudo chmod +x unmount
-#sudo chmod +x install
-#sudo chmod +x remove
-#sudo chmod +x run
-#sudo chmod +x search
-#sudo chmod +x stop
-#sudo chmod +x uninstall
-#sudo chmod +x update
-#sudo chmod +x reinstall
-#sudo chmod +x crishell
-#sudo chmod +x fixconfig
-#sudo chmod +x crosh
-#sudo chmod +x cri
-#sudo chmod +x updatecri
-#sudo chmod +x acadapkg
-#sudo chmod +x netlogo
-#sudo chmod +x thunar
-#sudo chmod +x Xfix
-echo "Done changing permissions"
-echo
-echo "Run the 'updatecri' command again in a second, because it needs to update itself"
-echo "DONE..."
+echo "Done...
+"
