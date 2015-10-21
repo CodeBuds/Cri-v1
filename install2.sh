@@ -1,6 +1,7 @@
 #!/bin/bash
 
 CBIN=/usr/bin
+URL="https://raw.github.com/CodeBuds/Cri/master"
 CTEMP=~/Downloads/tmp #DO NOT CHANGE THIS TO ~/DOWNLOADS, WANNA KNOW WHY, LOOK AT BOTTOM OF SCRIPT
 
 echo "Welcome to the second part of the installation"
