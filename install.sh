@@ -68,22 +68,9 @@ fi
 
 sleep 1
 
-cd $CTEMP
-echo "Downloading secondary files"
-sudo wget -q --no-check-certificate "$URL/commands.txt" -O $CTEMP/commands.txt
-sudo chmod 755 commands.txt
-NAMES="$(< commands.txt)" #names from names.txt file
-LINES=$(lineCount)
-NUMBERS=0
-for NAME in $NAMES; do
-    echo "File $NUMBERS/$LINES..."
-    let "NUMBERS += 1"
-    sudo wget -q --no-check-certificate "$URL/$NAME" -O $CTEMP/${NAME##*/}
-    sudo chmod +x ${NAME##*/}
-done
-echo "Done..."
 
 cd $CTEMP
+sudo wget -q --no-check-certificate "$URL/commands/rootmount" -O $CTEMP/rootmount
 sudo chmod 755 rootmount
 sudo cp rootmount /usr/local/bin
 cd /usr/local/bin
