@@ -56,7 +56,7 @@ fi
   sleep 0.5
   echo
   sleep 0.5
- if ask "Finished! Would you like to reboot now (If no, you will need to later)?"
+ if ask "Finished! Would you like to reboot now (If no, you will need to later)?" then
     sudo reboot
  fi
   
