@@ -84,17 +84,16 @@ done
 echo "Done..."
 
 cd $CTEMP
-echo
-echo "To make any changed you will need remount as read and write, please read carefully"
-sudo chmod +x rootmount
+sudo chmod 755 rootmount
 sudo cp rootmount /usr/local/bin
 cd /usr/local/bin
-sudo chmod +x rootmount
-sleep 2
-echo
-echo
-echo "PLEASE RUN THIS COMMAND BELOW TO FINISH PART ONE OF INSTALLATION..."
-echo "Second part won't work until you do"
-echo
-echo "rootmount"
-echo
+sudo chmod 755 rootmount
+if ask "Would you like to mount as root(Required if not done)?"; then
+   rootmount
+else
+   echo
+   if ask "Then would you like to install part two?"; then
+   	wget -q -O - https://raw.github.com/CodeBuds/Cri/master/install2.sh | bash
+   fi
+fi
+
