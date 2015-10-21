@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 AUTHORS="David Smerkous and Eli Smith"
 URL="https://raw.github.com/CodeBuds/Cri/master"
 CRIBIN=/usr/bin
@@ -48,7 +48,6 @@ if ask "Would you like to install cri?"; then
 	echo
 	sudo wget -q --no-check-certificate $URLCROUTON -O $CTEMP/crouton
 	sudo chmod 755 crouton
-	ls
 	if [ ! -d "$CROUTON" ]; then
 		echo
 		if ask "It looks like xiwi isn't installed would you like to install it (xiwi is a requirement for cri)?"; then
