@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 CBIN=/usr/bin
 CTEMP=~/Downloads/tmp #DO NOT CHANGE THIS TO ~/DOWNLOADS, WANNA KNOW WHY, LOOK AT BOTTOM OF SCRIPT
