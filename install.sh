@@ -36,6 +36,11 @@ ask() {
     done
 }
 
+lineCount()
+{
+    wc -l < commands.txt	
+}
+
 if ask "Would you like to install cri?"; then
 	echo "Preparing for installation..."
 	echo
@@ -62,48 +67,18 @@ fi
 sleep 1
 
 cd $CTEMP
-echo "Installing secondary files"
-echo "1/12..."
-sudo wget "$URL/commands/rootmount" --no-check-certificate -q
-echo "2/12..."
-sudo wget "$URL/commands/unmount" --no-check-certificate -q
-echo "3/12..."
-sudo wget "$URL/commands/install" --no-check-certificate -q
-echo "4/12..."
-sudo wget "$URL/commands/remove" --no-check-certificate -q
-echo "5/12..."
-sudo wget "$URL/commands/run" --no-check-certificate -q
-echo "6/12..."
-sudo wget "$URL/commands/search" --no-check-certificate -q
-echo "7/12..."
-sudo wget "$URL/commands/stop" --no-check-certificate -q
-echo "8/12..."
-sudo wget "$URL/commands/uninstall" --no-check-certificate -q
-echo "9/12..."
-sudo wget "$URL/commands/update" --no-check-certificate -q
-echo "10/12..."
-sudo wget "$URL/commands/reinstall" --no-check-certificate -q
-echo "11/12..."
-sudo wget "$URL/commands/crishell" --no-check-certificate -q
-echo "12/12..."
-sudo wget "$URL/cri" --no-check-certificate -q
-echo "Done installing secondary files"
-echo
-echo "Installing pre config files"
-sudo wget "$URL/commands/fixconfig" --no-check-certificate -q
-sudo wget "$URL/commands/Xfix" --no-check-certificate -q
-echo "Done installing pre config files"
-echo
-echo
-echo "Installing updating package"
-sudo wget "$URL/commands/updatecri" --no-check-certificate -q
-sudo wget "$URL/commands/acadapkg" --no-check-certificate -q
-echo "Done Installing updating packages"
-echo
-echo
-echo "Installing apps"
-sudo wget "$URL/commands/netlogo" --no-check-certificate -q
-sudo wget "$URL/apps/thunar" --no-check-certificate -q
+echo "Downloading secondary files"
+sudo wget -q --no-check-certificate "$URL/commands.txt" -O $CTEMP/commands.txt
+sudo chmod +x commands.txt
+NAMES="$(< commands.txt)" #names from names.txt file
+LINES=$(lineCount)
+NUMBERS=0
+for NAME in $NAMES; do
+    echo "File $NUMBERS/$LINES..."
+    let "NUMBERS += 1"
+    sudo wget -q --no-check-certificate $URL"$NAME" -O $CTEMP/$NAME
+    sudo chmod +x $NAME
+done
 echo "Done..."
 
 cd $CTEMP
