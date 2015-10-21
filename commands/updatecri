@@ -57,5 +57,22 @@ for NAME in $NAMES; do
     sudo wget -q --no-check-certificate "$URL/$NAME" -O $CBIN/${NAME##*/}
     sudo chmod 755 ${NAME##*/}
 done
+
+sudo mkdir $CTEMP
+cd $CTEMP
+echo "Double checking...
+"
+sudo wget -q --no-check-certificate "$URL/commands.txt" -O $CTEMP/commands.txt
+sudo chmod 755 commands.txt
+NAMES="$(< commands.txt)" #names from names.txt file
+LINES=$(lineCount)
+NUMBERS=0
+cd $CBIN
+for NAME in $NAMES; do
+    echo "File $NUMBERS/$LINES..."
+    let "NUMBERS += 1"
+    sudo wget -q --no-check-certificate "$URL/$NAME" -O $CBIN/${NAME##*/}
+    sudo chmod 755 ${NAME##*/}
+done
 echo "Done...
 "
