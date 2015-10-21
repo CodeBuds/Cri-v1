@@ -40,13 +40,8 @@ else
     then
         sudo startxfce4
     else 
-        if ask "Does this app require terminal input or root access? (P.S. Arduino does)"; then
-            echo "Turning debugging on..."
-            sudo enter-chroot -n precise sudo xiwi $NAME
-        else
-             echo "Turning debugging off."
-             sudo enter-chroot -b -n precise xiwi $NAME
-        fi
+        echo "Turning debugging on..."
+        sudo enter-chroot -n precise -u root sudo xiwi $NAME
     fi
   echo "If nothing popped up, then it's an invalid command"
   echo "Thanks for using cri to run $NAME"
