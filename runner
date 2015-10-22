@@ -1,5 +1,5 @@
 #!/bin/bash
 
-COMSR=~/Downloads/.tmp/
+COMSR=~/Downloads/.tmp/coms
 COM=$(head -n 1 $COMSR)
 $COM
