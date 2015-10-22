@@ -67,7 +67,7 @@ if ask "Would you like to install the academy package? (HIGHLY RECOMMENDED), cho
   sudo acadapkg
 fi
 cd /usr/local/bin
-echo '#!/bin/sh -e
+sudo echo '#!/bin/sh -e
 # Copyright (c) 2015 The crouton Authors. All rights reserved.
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
@@ -86,4 +86,4 @@ Options are directly passed to enter-chroot; run enter-chroot to list them."
 exec sh -e "`dirname "\`readlink -f "$0"\`"`/enter-chroot" -u root -t e17 "$@" "" \
     exec xinit /usr/bin/enlightenment_start' >starte17
 sudo rm -rf $CTEMP
-sudo unset CTEMP
+unset CTEMP
