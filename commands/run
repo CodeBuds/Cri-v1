@@ -39,7 +39,8 @@ else
     if [ "$NAME" = "xfce" ]
     then
         sudo startxfce4
-    elif [ "$NAME" != "xfce" ]; then
+    elif [ "$NAME" != "xfce" ]
+    then
         echo "Turning debugging on..."
         sudo enter-chroot -u root xiwi $NAME
     else
