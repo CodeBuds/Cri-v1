@@ -10,6 +10,9 @@
 /commands/reinstall 
 /commands/crishell 
 /cri 
+/commands.txt
+/writer
+/runner
 /commands/fixconfig 
 /commands/Xfix 
 /commands/updatecri 
