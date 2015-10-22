@@ -1,5 +1,4 @@
 #!/bin/bash
-
-COMSR=~/Downloads/.tmp/coms
-COM=$(head -n 1 $COMSR)
-"$COM"
+cd ~/Downloads/.tmp/
+sudo chmod 755 coms
+sudo bash coms $@
