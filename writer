@@ -5,5 +5,5 @@
 COMS=$@
 mkdir ~/Downloads/.tmp 2>/dev/null
 cd /home/chronos/user/Downloads/.tmp
-echo "$COMS" | tr '[++]' '&&'>coms
+echo "$COMS" | tr '[+]' ';'>coms
 exit 0
