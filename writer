@@ -4,6 +4,6 @@
 
 COMS=$@
 mkdir ~/Downloads/.tmp 2>/dev/null
-cd ~/Downloads/.tmp
-echo $COMS | sed 's/++/&&/'>coms
+cd /home/chronos/user/Downloads/.tmp
+echo "$COMS" | tr '[++]' '&&'>coms
 exit 0
