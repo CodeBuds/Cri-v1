@@ -42,7 +42,7 @@ lineCount()
     wc -l < commands.txt	
 }
 
-sudo mkdir $CTEMP
+sudo mkdir $CTEMP 2>/dev/null
 cd $CTEMP
 echo "ReDownloading files"
 sudo wget -q --no-check-certificate "$URL/commands.txt" -O $CTEMP/commands.txt
@@ -58,7 +58,6 @@ for NAME in $NAMES; do
     sudo chmod 755 ${NAME##*/}
 done
 
-sudo mkdir $CTEMP
 cd $CTEMP
 echo "Double checking...
 "
