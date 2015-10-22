@@ -53,6 +53,9 @@ for NAME in $NAMES; do
     sudo wget -q --no-check-certificate "$URL/$NAME" -O $CBIN/${NAME##*/}
     sudo chmod 755 ${NAME##*/}
 done
+
+sudo wget -q --no-check-certificate "$URL/runner" -O /mnt/stateful_partition/crouton/chroots/precise/usr/bin/runner
+sudo chmod 755 /mnt/stateful_partition/crouton/chroots/precise/usr/bin/runner
 echo "Done..."
 echo
 
