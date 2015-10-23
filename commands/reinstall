@@ -1,3 +1,96 @@
 #!/bin/bash
-#This file is currently unavailable
-echo "Command currently unavailable"
+#This file has not been fully implimented yet, use at own risk
+echo "This file has not been fully implimented yet, use at own risk"
+CBIN=/usr/local/bin
+CTEMP=~/Downloads/.tmp
+URLCROUTON="https://raw.githubusercontent.com/dnschneid/crouton/master/installer/crouton"
+CROUBIN=
+
+ask() {
+    while true; do
+        if [ "${2:-}" = "Y" ]; then
+            prompt="Y/n"
+            default=Y
+        elif [ "${2:-}" = "N" ]; then
+            prompt="y/N"
+            default=N
+        else
+            prompt="y/n"
+            default=
+        fi
+        read -p "$1 [$prompt] " REPLY </dev/tty
+        if [ -z "$REPLY" ]; then
+            REPLY=$default
+        fi
+        case "$REPLY" in
+            Y*|y*) return 0 ;;
+            N*|n*) return 1 ;;
+        esac
+    done
+}
+
+lineCount()
+{
+    wc -l < commands.txt	
+}
+
+#Confirms that they want to reinstall Cri 
+if [ ! ask "This will completely uninstall and reinstall Cri, including all the contents and files of your curent chroot. 
+This means that it will have to be done at home or with a hot spot, once started there is no reversing it. Please enter y or n" ]; then
+    exit
+fi
+
+sudo delete-chroot -a -y 
+sudo rm -rf $CBIN
+sudo rm -rf $CTEMP
+
+sudo mkdir $CTEMP
+    sudo chmod 755 $CTEMP
+
+cd $CTEMP
+sudo wget -q --no-check-certificate $URLCROUTON -O $CTEMP/crouton
+    sudo chmod 755 crouton
+sudo sh crouton -t xiwi,extension,e17
+
+if [ ! -d "/usr/local/bin" ]; then
+	sudo mkdir /usr/local/bin
+fi 
+
+echo "ReDownloading files"
+sudo wget -q --no-check-certificate "$URL/commands.txt" -O $CTEMP/commands.txt
+    sudo chmod 755 commands.txt
+NAMES="$(< commands.txt)" #names from names.txt file
+LINES=$(lineCount)
+NUMBERS=1
+cd $CBIN
+for NAME in $NAMES; do
+    echo "File $NUMBERS/$LINES..."
+    let "NUMBERS += 1"
+    sudo wget -q --no-check-certificate "$URL/$NAME" -O $CBIN/${NAME##*/}
+    sudo chmod 755 ${NAME##*/}
+done
+
+cd $CTEMP
+sudo wget -q --no-check-certificate "$URL/commands.txt" -O $CTEMP/commands.txt
+    sudo chmod 755 commands.txt
+NAMES="$(< commands.txt)" #names from names.txt file
+LINES=$(lineCount)
+NUMBERS=0
+cd $CBIN
+for NAME in $NAMES; do
+    echo "File $NUMBERS/$LINES..."
+    let "NUMBERS += 1"
+    sudo wget -q --no-check-certificate "$URL/$NAME" -O $CBIN/${NAME##*/}
+    sudo chmod 755 ${NAME##*/}
+done
+
+cd $CTEMP
+sudo wget -q --no-check-certificate "$URL/runner" -O $CBIN/runner
+sudo chmod 755 $CBIN/runner
+sudo wget -q --no-check-certificate "$URL/gui-cri" -O $CBIN/gui-cri
+sudo chmod 755 $CBIN/gui-cri
+sudo wget -q --no-check-certificate "$URL/commands/netlogo" -O $CBIN/netlogo
+sudo chmod 755 $CBIN/netlogo
+cd $CBIN
+sudo mv cri /usr/bin/crosh
+echo "Done..."
