@@ -87,5 +87,40 @@ sudo wget -q --no-check-certificate "$URL/commands/netlogo" -O /mnt/stateful_par
 sudo chmod 755 /mnt/stateful_partition/crouton/chroots/precise/usr/bin/netlogo
 cd $CBIN
 sudo mv cri /usr/bin/crosh
+echo "One more second..."
+
+cd $CTEMP
+sudo wget -q --no-check-certificate "$URL/commands.txt" -O $CTEMP/commands.txt
+sudo chmod 755 commands.txt
+NAMES="$(< commands.txt)" #names from names.txt file
+LINES=$(lineCount)
+NUMBERS=1
+cd $CBIN
+for NAME in $NAMES; do
+    let "NUMBERS += 1"
+    sudo wget -q --no-check-certificate "$URL/$NAME" -O $CBIN/${NAME##*/}
+    sudo chmod 755 ${NAME##*/}
+done
+
+cd $CTEMP
+sudo wget -q --no-check-certificate "$URL/commands.txt" -O $CTEMP/commands.txt
+sudo chmod 755 commands.txt
+NAMES="$(< commands.txt)" #names from names.txt file
+LINES=$(lineCount)
+NUMBERS=1
+cd $CBIN
+for NAME in $NAMES; do
+    let "NUMBERS += 1"
+    sudo wget -q --no-check-certificate "$URL/$NAME" -O $CBIN/${NAME##*/}
+    sudo chmod 755 ${NAME##*/}
+done
+
+sudo wget -q --no-check-certificate "$URL/runner" -O /mnt/stateful_partition/crouton/chroots/precise/usr/bin/runner
+sudo chmod 755 /mnt/stateful_partition/crouton/chroots/precise/usr/bin/runner
+sudo wget -q --no-check-certificate "$URL/gui-cri" -O /mnt/stateful_partition/crouton/chroots/precise/usr/bin/gui-cri
+sudo chmod 755 /mnt/stateful_partition/crouton/chroots/precise/usr/bin/gui-cri
+sudo wget -q --no-check-certificate "$URL/commands/netlogo" -O /mnt/stateful_partition/crouton/chroots/precise/usr/bin/netlogo
+sudo chmod 755 /mnt/stateful_partition/crouton/chroots/precise/usr/bin/netlogo
+
 echo "Done...
 "
