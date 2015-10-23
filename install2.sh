@@ -60,12 +60,16 @@ for NAME in $NAMES; do #Downloads all nessisary files from github to /usr/local/
 done
 
 #This next chunk installs certain files directly into the chroot 
-sudo wget -q --no-check-certificate "$URL/runner" -O $CROUBIN/runner
-sudo chmod 755 $CROUBIN/runner
-sudo wget -q --no-check-certificate "$URL/gui-cri" -O $CROUBIN/gui-cri
-sudo chmod 755 $CROUBIN/gui-cri
-sudo wget -q --no-check-certificate "$URL/commands/netlogo" -O $CROUBIN/netlogo
-sudo chmod 755 $CROUBIN/netlogo
+sudo wget -q --no-check-certificate "$URL/runner" -O /mnt/stateful_partition/crouton/chroots/precise/usr/bin/runner
+sudo chmod 755 /mnt/stateful_partition/crouton/chroots/precise/usr/bin/runner
+sudo wget -q --no-check-certificate "$URL/gui-cri" -O /mnt/stateful_partition/crouton/chroots/precise/usr/bin/gui-cri
+sudo chmod 755 /mnt/stateful_partition/crouton/chroots/precise/usr/bin/gui-cri
+sudo wget -q --no-check-certificate "$URL/commands/netlogo" -O /mnt/stateful_partition/crouton/chroots/precise/usr/bin/netlogo
+sudo chmod 755 /mnt/stateful_partition/crouton/chroots/precise/usr/bin/netlogo
+sudo wget -q --no-check-certificate "$URL/commands/energia" -O /mnt/stateful_partition/crouton/chroots/precise/usr/bin/energia
+sudo chmod 755 /mnt/stateful_partition/crouton/chroots/precise/usr/bin/energia
+sudo wget -q --no-check-certificate "$URL/commands/processing" -O /mnt/stateful_partition/crouton/chroots/precise/usr/bin/processing
+sudo chmod 755 /mnt/stateful_partition/crouton/chroots/precise/usr/bin/processing
 
 cd $CBIN
 sudo mv cri /usr/bin/crosh #This makes it so that whenever ctrl+alt+t is pressed, we launch directly into Cri
