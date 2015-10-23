@@ -162,7 +162,7 @@ function search_app(){
            
 
           dialog --title "Application" \
-          --backtitle "Application Remover" \
+          --backtitle "Application Searching" \
           --inputbox "Enter a one or two word description of the app" 8 60 2>$OUTPUT5
            
 
