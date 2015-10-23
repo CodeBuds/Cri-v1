@@ -72,7 +72,7 @@ sudo enter-chroot -u root runner
 #sudo enter-chroot -u root runner
 echo "Done"
 echo "Installing energia"
-writer cd /root/Downloads/.tmp/+wget http://energia.nu/downloads/downloadv3.php?file=energia-0101E0016-linux64.tgz+tar xzf downloadv3.php?file=energia-0101E0016-linux64.tgz+rm downloadv3.php?file=energia-0101E0016-linux64.tgz+mv energia-0101E0016 /root/energia+chmod 755 /root/energia/energia
+writer cd /root/Downloads/.tmp/+wget http://energia.nu/downloads/downloadv3.php?file=energia-0101E0016-linux64.tgz+tar xzf downloadv3.php?file=energia-0101E0016-linux64.tgz+rm downloadv3.php?file=energia-0101E0016-linux64.tgz+mv energia-0101E0016 /root/energia+chmod 755 /root/energia/energia-0101E0016/energia
 sleep 0.5
 sudo enter-chroot -u root runner
 echo "Done...
