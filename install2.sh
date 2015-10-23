@@ -63,7 +63,7 @@ sudo mv cri $CBIN/crosh
 echo "Done..."
 echo
 
-if ask "Would you like to fix the current config file?"; then
+if ask "Would you like to fix the current config file? (RECOMMENDED)"; then
   sudo fixconfig
 fi
 
@@ -91,3 +91,6 @@ exec sh -e "`dirname "\`readlink -f "$0"\`"`/enter-chroot" -u root -t e17 "$@" "
     exec xinit /usr/bin/enlightenment_start' > /usr/local/bin/starte17
 sudo rm -rf $CTEMP
 unset CTEMP
+writer apt-get -y install dialog+apt-get -y install thunar+apt-get -y install thunar+apt-get -y install gnome-icon-theme-extras+apt-get -y install gnome-icon-theme-full
+sleep 0.5
+sudo enter-chroot -u root runner
