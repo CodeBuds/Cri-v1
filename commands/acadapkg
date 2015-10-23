@@ -64,12 +64,17 @@ echo "Installed java 7 (True version)...
 sleep 1
 echo
 echo "Installing NetLogo..."
-writer cd /root/Downloads/.tmp/+wget https://ccl.northwestern.edu/netlogo/5.2.1/netlogo-5.2.1.tar.gz+tar xzf netlogo-5.2.1.tar.gz+rm netlogo-5.2.1.tar.gz+mv netlogo-5.2.1 /root/netlogo
+writer cd /root/Downloads/.tmp/+wget https://ccl.northwestern.edu/netlogo/5.2.1/netlogo-5.2.1.tar.gz+tar xzf netlogo-5.2.1.tar.gz+rm netlogo-5.2.1.tar.gz+mv netlogo-5.2.1 /root/netlogo+chmod 755 /root/netlogo/netlogo.sh
 sleep 0.5
 sudo enter-chroot -u root runner
 #writer wget https://raw.github.com/CodeBuds/Cri/master/commands/netlogo && sudo chmod +x netlogo+mv netlogo /usr/bin
 #sleep 0.5
 #sudo enter-chroot -u root runner
+echo "Done"
+echo "Installing energia"
+writer cd /root/Downloads/.tmp/+wget http://energia.nu/downloads/downloadv3.php?file=energia-0101E0016-linux64.tgz+tar xzf downloadv3.php?file=energia-0101E0016-linux64.tgz+rm downloadv3.php?file=energia-0101E0016-linux64.tgz+mv energia-0101E0016 /root/energia+chmod 755 /root/energia/energia
+sleep 0.5
+sudo enter-chroot -u root runner
 echo "Done...
 
 Need extra tools
