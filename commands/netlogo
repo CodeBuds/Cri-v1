@@ -1,4 +1,4 @@
 #!/bin/bash
 cd /root/netlogo
 chmod 755 netlogo.sh
-xterm -e ./netlogo.sh
+./netlogo.sh
