@@ -3,7 +3,9 @@
 #This is command args to run multi-line commands for crouton/cri
 
 COMS=$@
-mkdir ~/Downloads/.tmp 2>/dev/null
+if [ ! -d "~/Downloads/.tmp" ]; then
+  mkdir ~/Downloads/.tmp 2>/dev/null
+fi
 cd /home/chronos/user/Downloads/.tmp
 echo "$COMS" | tr '[+]' ';'>coms
 exit 0
