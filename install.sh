@@ -2,22 +2,24 @@
 AUTHORS="David Smerkous and Eli Smith"
 URL="https://raw.github.com/CodeBuds/Cri/master"
 CRIBIN=/usr/local/bin
-CTEMP=~/Downloads/tmp
+CTEMP=~/Downloads/.tmp
 CROUTON=/mnt/stateful_partition/crouton  
 URLCROUTON="https://raw.githubusercontent.com/dnschneid/crouton/master/installer/crouton"
 
-if [ ! -d "/usr/local/bin" ]; then
-	sudo mkdir $CRIBIN
+if [ ! -d "$CRIBIN" ]; then #Checks if the directory was there before (ex. prior crouton installation)
+	sudo mkdir $CRIBIN         #If there is no directory, we make one
 fi
 sudo mkdir $CTEMP
+sudo chmod +x ~/Downloads/.tmp
 cd $CTEMP
 user=$(whoami)
 echo "Welcome to the Cri installer"
-echo "You are running as $user, and on a $architecture computer"
 echo "Developed by $AUTHORS"
+sleep 0.5
+echo "You are running as $user, and on a $architecture computer"
 echo
 
-ask() {
+ask() {				   #This is the function we call for our yes/no situations 
     while true; do
         if [ "${2:-}" = "Y" ]; then
             prompt="Y/n"
@@ -40,13 +42,13 @@ ask() {
     done
 }
 
-lineCount()
+lineCount()			   #This is used to count the number of lines in the commands.txt file
 {
     wc -l < commands.txt	
 }
 
 cd $CTEMP
-if ask "Would you like to install cri?"; then
+if ask "Would you like to install cri?"; then #Goes through the process of installing crouton 
 	echo "Preparing for installation..."
 	echo
 	sudo wget -q --no-check-certificate $URLCROUTON -O $CTEMP/crouton
@@ -73,20 +75,21 @@ sleep 1
 
 
 cd $CTEMP
-sudo wget -q --no-check-certificate "$URL/commands/rootmount" -O $CTEMP/rootmount
-sudo chmod 755 rootmount
+sudo wget -q --no-check-certificate "$URL/commands/rootmount" -O $CTEMP/rootmount #This is a crutial step to mount root
+sudo chmod 755 rootmount							  #Into Read/write so we can modify system
 if [ ! -d "/usr/local/bin" ]; then
 	sudo mkdir /usr/local/bin
 fi 
-cd /usr/local/bin/
-sudo cp ~/Downloads/*tmp/rootmount ./
+cd $CRIBIN
+sudo cp $CTEMP/rootmount ./
 sudo chmod 755 rootmount
 if ask "Would you like to mount as root(Required if not done)?"; then
-   rootmount
+   rootmount			   #This actually mounts the system to RW, must be done twice, once before reboot, once after
 else
    echo
    if ask "Then would you like to install part two?"; then
-   	wget -q -O - https://raw.github.com/CodeBuds/Cri/master/install2.sh | bash
+   	wget -q -O - https://raw.github.com/CodeBuds/Cri/master/install2.sh | bash #Installs part two of the installation
    fi
 fi
 unset CTEMP
+unset CRIBIN
