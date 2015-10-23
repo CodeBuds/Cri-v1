@@ -1217,7 +1217,7 @@ HELP_guicri='
   Runs the graphical version of cri
 '
 cmd_guicri() (
-  sudo /usr/local/bin/enter-chroot -u root gui-cri
+  /usr/bin/enter-chroot $@
 )
 
 USAGE_run='<Ubuntu package name>'
