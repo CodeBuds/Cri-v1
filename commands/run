@@ -32,7 +32,7 @@ ask() {
 
     done
 }
-if [[ "$NAME" = "e17"]]; then
+if [ "$NAME" = "e17" ]; then
     sudo start"$NAME"
 else
     if [ "$NAME" = "xfce" ]
