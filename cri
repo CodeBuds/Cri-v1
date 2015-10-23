@@ -1425,3 +1425,4 @@ main() {
   shell_history -w "${HISTFILE}"
 }
 main "$@"
+guicri
