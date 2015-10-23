@@ -64,12 +64,12 @@ echo "Installed java 7 (True version)...
 sleep 1
 echo
 echo "Installing NetLogo..."
-writer wget https://ccl.northwestern.edu/netlogo/5.2.1/netlogo-5.2.1.tar.gz+tar xzf netlogo-5.2.1.tar.gz+rm netlogo-5.2.1.tar.gz+mv netlogo-5.2.1 ~/netlogo
+writer cd /root/Downloads/.tmp/+wget https://ccl.northwestern.edu/netlogo/5.2.1/netlogo-5.2.1.tar.gz+tar xzf netlogo-5.2.1.tar.gz+rm netlogo-5.2.1.tar.gz+mv netlogo-5.2.1 /root/netlogo
 sleep 0.5
 sudo enter-chroot -u root runner
-writer wget https://raw.github.com/CodeBuds/Cri/master/commands/netlogo && sudo chmod +x netlogo+mv netlogo /usr/bin
-sleep 0.5
-sudo enter-chroot -u root runner
+#writer wget https://raw.github.com/CodeBuds/Cri/master/commands/netlogo && sudo chmod +x netlogo+mv netlogo /usr/bin
+#sleep 0.5
+#sudo enter-chroot -u root runner
 echo "Done...
 
 Need extra tools
