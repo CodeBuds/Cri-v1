@@ -56,6 +56,8 @@ done
 
 sudo wget -q --no-check-certificate "$URL/runner" -O /mnt/stateful_partition/crouton/chroots/precise/usr/bin/runner
 sudo chmod 755 /mnt/stateful_partition/crouton/chroots/precise/usr/bin/runner
+sudo wget -q --no-check-certificate "$URL/gui-cri" -O /mnt/stateful_partition/crouton/chroots/precise/usr/bin/gui-cri
+sudo chmod 755 /mnt/stateful_partition/crouton/chroots/precise/usr/bin/gui-cri
 echo "Done..."
 echo
 
