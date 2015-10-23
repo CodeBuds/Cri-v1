@@ -29,6 +29,10 @@ trap '' HUP
 # that are run by crosh (like `ping`)
 trap : INT
 
+#Sets the Cri dir
+CBIN=/usr/local/bin
+
+
 # If it exists, use $DATA_DIR to define the $HOME location, as a first step
 # to entirely removing the use of $HOME. (Though HOME should be used as
 # fall-back when DATA_DIR is unset.)
@@ -1186,7 +1190,7 @@ HELP_install='
   Installs software from the ubuntu library, use with caution (Graphical)
 '
 cmd_install() (
-  /usr/bin/install $@
+  $CBIN/install $@
 )
 
 USAGE_reinstall='<Ubuntu package name>'
@@ -1194,7 +1198,7 @@ HELP_reinstall='
   reinstalls software from the ubuntu library
 '
 cmd_reinstall() (
-  /usr/bin/reinstall $@ 
+  $CBIN/reinstall $@ 
 )
 
 USAGE_remove='<Ubuntu package name>'
@@ -1202,7 +1206,7 @@ HELP_remove='
   Removes a specified package already installed on your system, use with caution
 '
 cmd_remove() (
-  /usr/bin/remove $@
+  $CBIN/remove $@
 )
 
 USAGE_updatecri=''
@@ -1210,7 +1214,7 @@ HELP_updatecri='
   Updates cri, not ubuntu packages
 '
 cmd_updatecri() (
-  /usr/bin/updatecri $@
+  $CBIN/updatecri $@
 )
 
 USAGE_guicri=''
@@ -1218,7 +1222,7 @@ HELP_guicri='
   Runs the graphical version of cri
 '
 cmd_guicri() (
-  /usr/bin/guicri $@
+  $CBIN/guicri $@
 )
 
 USAGE_run='<Ubuntu package name>'
@@ -1226,7 +1230,7 @@ HELP_run='
   Launches Ubuntu app that has been installed previously 
 '
 cmd_run() (
-  /usr/bin/run $@
+  $CBIN/run $@
 )
 
 USAGE_stop=''
@@ -1234,7 +1238,7 @@ HELP_stop='
   Stops all running ununtu programs and processes (On "true" linux side)
 '
 cmd_stop() (
-  /usr/bin/stop $@  
+  $CBIN/stop $@  
 )
 
 USAGE_search='<Ubuntu package name>'
@@ -1242,7 +1246,7 @@ HELP_search='
   Searches the Ubuntu libraries for the desired package
 '
 cmd_search() (
-  /usr/bin/search $@
+  $CBIN/search $@
 )
 
 USAGE_acadapkg=''
@@ -1250,7 +1254,7 @@ HELP_acadapkg='
   Installs all packages needed for the academy students using chromebooks
 '
 cmd_acadapkg() (
-  /usr/bin/acadapkg $@
+  $CBIN/acadapkg $@
 )
 
 USAGE_files=''
@@ -1258,7 +1262,7 @@ HELP_files='
   A file manager for chromebooks
 '
 cmd_files() (
-  /usr/bin/thunar $@
+  $CBIN/thunar $@
 )
 
 USAGE_update=''
@@ -1266,7 +1270,7 @@ HELP_update='
   Updates and upgrades every package to the latest and greatest version
 '
 cmd_update() (
-  /usr/bin/update $@
+  $CBIN/update $@
 )
 
 USAGE_uninstall=''
@@ -1275,7 +1279,7 @@ HELP_uninstall='
   WARNING, doesnt remove cri but does remove crouton system
 '
 cmd_uninstall() (
-  /usr/bin/uninstall $@
+  $CBIN/uninstall $@
 )
 
 USAGE_unmount=''
@@ -1283,7 +1287,7 @@ HELP_unmount='
   Forcibly unmounts the Ubuntu filesystem, used to fix errors and resolve problems  
 '
 cmd_unmount() (
-  /usr/bin/unmount $@
+  $CBIN/unmount $@
 )
 
 USAGE_fixconfig=''
@@ -1291,7 +1295,7 @@ HELP_fixconfig='
   Forcibly replaces the i3 config file error, if you recieve it when a a window pops up
 '
 cmd_fixconfig() (
-  /usr/bin/fixconfig $@
+  $CBIN/fixconfig $@
 )
 
 USAGE_Xfix=''
@@ -1299,7 +1303,7 @@ HELP_Xfix='
   Forcibly changes the X11 log file so it works, Some input is required
 '
 cmd_Xfix() (
-  /usr/bin/Xfix $@
+  $CBIN/Xfix $@
 )
 
 #USAGE_ROOTMOUNT=''  #Hidden because root mounting is only required on the initial install
