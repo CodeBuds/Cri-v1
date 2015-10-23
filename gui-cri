@@ -63,7 +63,7 @@ function install_app(){
 
           function installCommand(){
           	local n=${@-"random"}
-            apt-get -y install $n
+            apt-get install $n
             sleep 4
           	dialog --title "Installed" --clear --msgbox "Thanks for using Cri to install... ${n}" 7 30
           }
