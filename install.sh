@@ -72,8 +72,11 @@ sleep 1
 cd $CTEMP
 sudo wget -q --no-check-certificate "$URL/commands/rootmount" -O $CTEMP/rootmount
 sudo chmod 755 rootmount
-sudo cp rootmount /usr/local/bin
-cd /usr/local/bin
+if [ ! -d "/usr/local/bin" ]; then
+	sudo mkdir /usr/local/bin
+fi 
+cd /usr/local/bin/
+sudo cp ~/Downloads/*tmp/rootmount ./
 sudo chmod 755 rootmount
 if ask "Would you like to mount as root(Required if not done)?"; then
    rootmount
