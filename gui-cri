@@ -1,0 +1,224 @@
+#!/bin/bash
+
+INPUT=/tmp/menu.sh.$$
+OUTPUT=/tmp/output.sh.$$
+trap "rm $OUTPUT; rm $INPUT; exit" SIGHUP SIGINT SIGTERM
+
+function display_output(){
+	local h=${1-20}			# box height default 10
+	local w=${2-50} 		# box width default 41
+	local t=${3-Output} 	# box title
+	dialog --backtitle "Chrome gRaphical Interface" --title "${t}" --clear --msgbox "$(<$OUTPUT)" ${h} ${w}
+}
+
+
+
+function run_app(){
+          OUTPUT2="/tmp/input.txt"
+          >$OUTPUT2
+           
+
+          function runCommand(){
+          	local n=${@-"random"}
+            xiwi $n &>/dev/null &
+          	dialog --title "Thanks" --clear --msgbox "Thanks for using Cri to run... ${n} If correct command, then wait a couple of seconds, if nothing pops up within 10 seconds make sure your extension is on and the app is installed" 13 35
+          }
+          
+          trap "rm $OUTPUT2; exit" SIGHUP SIGINT SIGTERM
+           
+
+          dialog --title "Application" \
+          --backtitle "Application Runner" \
+          --inputbox "Enter the name of the application" 8 60 2>$OUTPUT2
+           
+
+          respose=$?
+           
+
+          name=$(<$OUTPUT2)
+           
+
+          case $respose in
+            0)
+            	runCommand ${name}
+            	;;
+            1)
+            	echo "Exiting Application Runner"
+            	;;
+            255)
+             echo "Exiting Application Runner"
+          esac
+
+
+          rm $OUTPUT2
+}
+
+
+
+
+function install_app(){
+          OUTPUT3="/tmp/input2.txt"
+          >$OUTPUT3
+           
+
+          function installCommand(){
+          	local n=${@-"random"}
+            apt-get -y install $n
+            sleep 4
+          	dialog --title "Installed" --clear --msgbox "Thanks for using Cri to install... ${n}" 7 30
+          }
+          
+          trap "rm $OUTPUT3; exit" SIGHUP SIGINT SIGTERM
+           
+
+          dialog --title "Application" \
+          --backtitle "Application Installer" \
+          --inputbox "Enter the name of the application" 8 60 2>$OUTPUT3
+           
+
+          respose=$?
+           
+
+          name=$(<$OUTPUT3)
+           
+
+          case $respose in
+            0)
+            	installCommand ${name}
+            	;;
+            1)
+            	echo "Exiting Application Installer"
+            	;;
+            255)
+             echo "Exiting Application Installer"
+          esac
+
+
+          rm $OUTPUT3
+}
+
+function files_app(){
+xiwi thunar &>/dev/null &
+dialog --title "File Manager" --clear --msgbox "Attempted to run file manager.. Give me a couple of seconds" 7 30
+}
+
+
+function remove_app(){
+          OUTPUT4="/tmp/input3.txt"
+          >$OUTPUT4
+           
+
+          function removeCommand(){
+          	local n=${@-"random"}
+            apt-get -y remove $n
+            sleep 4
+          	dialog --title "Removed" --clear --msgbox "Thanks for using Cri to remove... ${n}" 7 30
+          }
+          
+          trap "rm $OUTPUT4; exit" SIGHUP SIGINT SIGTERM
+           
+
+          dialog --title "Application" \
+          --backtitle "Application Remover" \
+          --inputbox "Enter the name of the application" 8 60 2>$OUTPUT4
+           
+
+          respose2=$?
+           
+
+          name2=$(<$OUTPUT4)
+           
+
+          case $respose2 in
+            0)
+            	removeCommand ${name2}
+            	;;
+            1)
+            	echo "Exiting Application Remover"
+            	;;
+            255)
+             echo "Exiting Application Remover"
+          esac
+
+
+          rm $OUTPUT4
+}
+
+function search_app(){
+          OUTPUT5="/tmp/input4.txt"
+          INPUT5="/tmp/output5.txt"
+          >$INPUT5
+          >$OUTPUT5
+           
+
+          function searchCommand(){
+          	local n=${@-"random"}
+            apt-cache search $n >$INPUT5
+            sleep 4
+          	dialog --title "Results for ${n}" --clear --msgbox "$(<$INPUT5)" 30 95
+          }
+          
+          trap "rm $OUTPUT5; exit" SIGHUP SIGINT SIGTERM
+           
+
+          dialog --title "Application" \
+          --backtitle "Application Remover" \
+          --inputbox "Enter a one or two word description of the app" 8 60 2>$OUTPUT5
+           
+
+          respose2=$?
+           
+
+          name2=$(<$OUTPUT5)
+           
+
+          case $respose2 in
+            0)
+            	searchCommand ${name2}
+            	;;
+            1)
+            	echo "Exiting Application Searching"
+            	;;
+            255)
+             echo "Exiting Application Searching"
+          esac
+
+
+          rm $OUTPUT5
+          rm $INPUT5
+}
+
+
+
+while true
+do
+ 
+
+dialog --clear  --help-button --backtitle "Chrome gRaphical Interface" \
+--title "[ Selection ]" \
+--menu "You can use the UP/DOWN arrow keys, the first \n\
+letter of the choice as a hot key, or the \n\
+number keys 1-9 to choose an option.\n\
+ " 20 50 6 \
+Run_App "Run a gui application" \
+Install "Install an application" \
+Remove "Remove an application" \
+Search "Search app online by context" \
+Files "A file explorer for chromebooks" \
+Shell "Go to the terminal" 2>"${INPUT}"
+menuitem=$(<"${INPUT}")
+
+case $menuitem in
+	Run_App) run_app;;
+	Install) install_app;;
+	Remove) remove_app;;
+  Search) search_app;;
+  Files) files_app;;
+	Shell) break;;
+esac
+done
+
+[ -f $OUTPUT ] && rm $OUTPUT
+[ -f $INPUT ] && rm $INPUT
+clear
+exit
