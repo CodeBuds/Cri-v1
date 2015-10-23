@@ -193,7 +193,7 @@ cmd_help() (
 
   case $# in
   0)
-    local cmds="files install reinstall remove run search stop uninstall unmount update updatecri fixconfig Xfix help_advanced exit"
+    local cmds="files guicri install reinstall remove run search stop uninstall unmount update updatecri fixconfig Xfix help_advanced exit"
     for cmd in ${cmds}; do
       cmd_help "${cmd}"
     done
