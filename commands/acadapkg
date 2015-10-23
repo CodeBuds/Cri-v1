@@ -56,7 +56,7 @@ sleep 0.5
 sudo enter-chroot -u root runner
 
 echo "Done now config for java 7..."
-writer sed -i '$ a\deb http://www.duinsoft.nl/pkg debs all' /etc/apt/sources.list+sudo apt-key adv --keyserver keys.gnupg.net --recv-keys 5CB26B26+apt-get update+apt-get install update-sun-jre 
+writer sed -i '$ a\deb http://www.duinsoft.nl/pkg debs all' /etc/apt/sources.list+sudo apt-key adv --keyserver keys.gnupg.net --recv-keys 5CB26B26+apt-get update+apt-get -y install update-sun-jre 
 sleep 0.5
 sudo enter-chroot -u root runner
 echo "Installed java 7 (True version)...
@@ -87,7 +87,7 @@ sudo enter-chroot -u root runner
 echo "Done..."
 echo "To run openshot just type into cri 'run openshot'"
 echo
-writer apt-get install -y gedit
+writer apt-get -y install gedit
 sleep 0.5
 sudo enter-chroot -u root runner
 echo
@@ -96,7 +96,7 @@ echo
 sleep 1
 echo
 echo "Installing 4digits"
-writer apt-get install -y 4digits
+writer apt-get -y install 4digits
 sleep 0.5
 sudo enter-chroot -u root runner
 echo
@@ -104,7 +104,7 @@ echo
 sleep 1
 echo
 echo "Installing photo editor (gimp)"
-writer apt-get install -y gimp
+writer apt-get -y install gimp
 sleep 0.5
 sudo enter-chroot -u root runner
 echo "Done installing gimp"
@@ -113,7 +113,7 @@ echo
 sleep 1
 echo
 echo "Installing geany"
-writer apt-get install -y geany
+writer apt-get -y install geany
 sleep 0.5
 sudo enter-chroot -u root runner
 echo "Done installing geany..."
