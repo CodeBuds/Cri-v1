@@ -2,7 +2,6 @@
 CBIN=/usr/local/bin
 URL="https://raw.github.com/CodeBuds/Cri/master"
 CTEMP=~/Downloads/.tmp #DO NOT CHANGE THIS TO ~/DOWNLOADS, WANNA KNOW WHY, LOOK AT BOTTOM OF SCRIPT
-CROUBIN=/usr/local/bin
 cd $CBIN
 
 echo "Welcome to the cri updater, please give me a minute to organize everything
