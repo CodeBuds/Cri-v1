@@ -49,7 +49,7 @@ fi
   echo
   sleep 1
   echo "If this is your second time running rootmount, you're done!
-  Now please run https://raw.github.com/CodeBuds/Cri/master/install2.sh | bash
+  Now please run wget https://raw.github.com/CodeBuds/Cri/master/install2.sh | bash
   "
   sleep 0.5
   echo
