@@ -20,15 +20,15 @@ function run_app(){
 
           function runCommand(){
           	local n=${@-"random"}
-           if[ -a /usr/bin/$n ]; then
+           if[ -f /usr/bin/$n ]; then
            	cd /usr/bin
            	xiwi ./$n &>/dev/null &
            else
-           	if[ -a /usr/games/$n ]; then
+           	if[ -f /usr/games/$n ]; then
            		cd /usr/games
                  	xiwi ./$n &>/dev/null &	
            	else
-           		if[ -a /usr/local/bin/$n ]; then
+           		if[ -f /usr/local/bin/$n ]; then
            			cd /usr/local/bin
            			xiwi ./$n &>/dev/null &
            		else
