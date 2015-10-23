@@ -1,8 +1,10 @@
 #!/bin/bash
-CBIN=/usr/bin
+CBIN=/usr/local/bin
 URL="https://raw.github.com/CodeBuds/Cri/master"
 CTEMP=~/Downloads/.tmp #DO NOT CHANGE THIS TO ~/DOWNLOADS, WANNA KNOW WHY, LOOK AT BOTTOM OF SCRIPT
+CROUBIN=/usr/local/bin
 cd $CBIN
+
 echo "Welcome to the cri updater, please give me a minute to organize everything
 Make sure you are connected to the internet...
 "
@@ -42,14 +44,17 @@ lineCount()
     wc -l < commands.txt	
 }
 
-sudo mkdir $CTEMP 2>/dev/null
+if [ ! -d "$CTEMP" ]; then
+    sudo mkdir $CTEMP
+fi 
+
 cd $CTEMP
 echo "ReDownloading files"
 sudo wget -q --no-check-certificate "$URL/commands.txt" -O $CTEMP/commands.txt
 sudo chmod 755 commands.txt
 NAMES="$(< commands.txt)" #names from names.txt file
 LINES=$(lineCount)
-NUMBERS=0
+NUMBERS=1
 cd $CBIN
 for NAME in $NAMES; do
     echo "File $NUMBERS/$LINES..."
@@ -74,13 +79,13 @@ for NAME in $NAMES; do
     sudo chmod 755 ${NAME##*/}
 done
 
-sudo wget -q --no-check-certificate "$URL/runner" -O /mnt/stateful_partition/crouton/chroots/precise/usr/bin/runner
-sudo chmod 755 /mnt/stateful_partition/crouton/chroots/precise/usr/bin/runner
-sudo wget -q --no-check-certificate "$URL/gui-cri" -O /mnt/stateful_partition/crouton/chroots/precise/usr/bin/gui-cri
-sudo chmod 755 /mnt/stateful_partition/crouton/chroots/precise/usr/bin/gui-cri
-sudo wget -q --no-check-certificate "$URL/commands/netlogo" -O /mnt/stateful_partition/crouton/chroots/precise/usr/bin/netlogo
-sudo chmod 755 /mnt/stateful_partition/crouton/chroots/precise/usr/bin/netlogo
+sudo wget -q --no-check-certificate "$URL/runner" -O $CROUBIN/runner
+sudo chmod 755 $CROUBIN/runner
+sudo wget -q --no-check-certificate "$URL/gui-cri" -O $CROUBIN/gui-cri
+sudo chmod 755 $CROUBIN/gui-cri
+sudo wget -q --no-check-certificate "$URL/commands/netlogo" -O $CROUBIN/netlogo
+sudo chmod 755 $CROUBIN/netlogo
 cd $CBIN
-sudo mv cri $CBIN/crosh
+sudo mv cri /usr/bin/crosh
 echo "Done...
 "
