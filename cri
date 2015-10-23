@@ -1420,9 +1420,11 @@ main() {
   shell_history_init
 
   repl
-
+  
+  echo "Trying gui..."
+  /usr/bin/guicri
+  
   # Save the history after the clean exit.
   shell_history -w "${HISTFILE}"
 }
 main "$@"
-guicri
