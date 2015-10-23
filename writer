@@ -4,7 +4,7 @@
 
 COMS=$@
 if [ ! -d "~/Downloads/.tmp" ]; then
-  mkdir ~/Downloads/.tmp 2>/dev/null
+  mkdir ~/Downloads/.tmp
 fi
 cd /home/chronos/user/Downloads/.tmp
 echo "$COMS" | tr '[+]' ';'>coms
