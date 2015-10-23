@@ -11,6 +11,7 @@
 /commands/crishell 
 /cri 
 /commands.txt
+/commands/guicri
 /writer
 /runner
 /commands/fixconfig 
