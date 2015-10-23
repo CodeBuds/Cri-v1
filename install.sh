@@ -89,4 +89,4 @@ else
    	wget -q -O - https://raw.github.com/CodeBuds/Cri/master/install2.sh | bash
    fi
 fi
-
+unset CTEMP
