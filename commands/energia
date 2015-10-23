@@ -1,0 +1,4 @@
+#!/bin/bash
+cd /root/energia/energia-0101E0016/
+chmod 755 energia
+./energia
