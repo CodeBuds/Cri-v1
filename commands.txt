@@ -18,5 +18,4 @@
 /commands/Xfix 
 /commands/updatecri 
 /commands/acadapkg 
-/commands/netlogo 
 /apps/thunar 
