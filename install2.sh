@@ -84,6 +84,6 @@ By default, it will log into the primary user on the first chroot found.
 Options are directly passed to enter-chroot; run enter-chroot to list them."
 
 exec sh -e "`dirname "\`readlink -f "$0"\`"`/enter-chroot" -u root -t e17 "$@" "" \
-    exec xinit /usr/bin/enlightenment_start' >starte17
+    exec xinit /usr/bin/enlightenment_start' > /usr/local/bin/starte17
 sudo rm -rf $CTEMP
 unset CTEMP
