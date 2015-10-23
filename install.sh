@@ -1,11 +1,14 @@
 #!/bin/bash
 AUTHORS="David Smerkous and Eli Smith"
 URL="https://raw.github.com/CodeBuds/Cri/master"
-CRIBIN=/usr/bin
+CRIBIN=/usr/local/bin
 CTEMP=~/Downloads/tmp
 CROUTON=/mnt/stateful_partition/crouton  
 URLCROUTON="https://raw.githubusercontent.com/dnschneid/crouton/master/installer/crouton"
 
+if [ ! -d "/usr/local/bin" ]; then
+	sudo mkdir $CRIBIN
+fi
 sudo mkdir $CTEMP
 cd $CTEMP
 user=$(whoami)
