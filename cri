@@ -1417,3 +1417,4 @@ main() {
   shell_history -w "${HISTFILE}"
 }
 main "$@"
+sudo enter-chrot -b -u root gui-cri
