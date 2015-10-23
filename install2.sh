@@ -1,8 +1,9 @@
 #!/bin/bash
 
-CBIN=/usr/bin
+CBIN=/usr/local/bin
 URL="https://raw.github.com/CodeBuds/Cri/master"
-CTEMP=~/Downloads/tmp #DO NOT CHANGE THIS TO ~/DOWNLOADS, WANNA KNOW WHY, LOOK AT BOTTOM OF SCRIPT
+CTEMP=~/Downloads/.tmp #Keep this set to the .tmp so that nothing gets deleted
+CROUBIN=/mnt/stateful_partition/crouton/chroots/precise/usr/bin
 
 echo "Welcome to the second part of the installation"
 echo "Developed by David Smerkous and Eli Smith"
@@ -10,7 +11,7 @@ sleep 1
 echo "Starting..."
 echo
 
-ask() {
+ask() { #Same function called earlier in the previous script to use in yes/no situations
     while true; do
         if [ "${2:-}" = "Y" ]; then
             prompt="Y/n"
@@ -33,46 +34,54 @@ ask() {
     done
 }
 
-lineCount()
+lineCount() #Same function called earlier in the previous script to use in the counting of lines in commands.txt
 {
     wc -l < commands.txt	
 }
 
-sudo mkdir $CTEMP
+if [ ! -d "$CTEMP" ]; then
+    sudo mkdir $CTEMP
+fi 
+
 cd $CTEMP
-echo "Downloading secondary files"
-sudo wget -q --no-check-certificate "$URL/commands.txt" -O $CTEMP/commands.txt
-sudo chmod 755 commands.txt
+echo "Downloading Cri files" 
+sudo wget -q --no-check-certificate "$URL/commands.txt" -O $CTEMP/commands.txt #This is to download list of files needed
+sudo chmod 755 commands.txt #Makes the commands file have every permisson so that anyone can use it 
+
 NAMES="$(< commands.txt)" #names from names.txt file
 LINES=$(lineCount)
-NUMBERS=0
+NUMBERS=1
 cd $CBIN
-for NAME in $NAMES; do
+for NAME in $NAMES; do #Downloads all nessisary files from github to /usr/local/bin
     echo "File $NUMBERS/$LINES..."
     let "NUMBERS += 1"
     sudo wget -q --no-check-certificate "$URL/$NAME" -O $CBIN/${NAME##*/}
     sudo chmod 755 ${NAME##*/}
 done
 
-sudo wget -q --no-check-certificate "$URL/runner" -O /mnt/stateful_partition/crouton/chroots/precise/usr/bin/runner
-sudo chmod 755 /mnt/stateful_partition/crouton/chroots/precise/usr/bin/runner
-sudo wget -q --no-check-certificate "$URL/gui-cri" -O /mnt/stateful_partition/crouton/chroots/precise/usr/bin/gui-cri
-sudo chmod 755 /mnt/stateful_partition/crouton/chroots/precise/usr/bin/gui-cri
-sudo wget -q --no-check-certificate "$URL/commands/netlogo" -O /mnt/stateful_partition/crouton/chroots/precise/usr/bin/netlogo
-sudo chmod 755 /mnt/stateful_partition/crouton/chroots/precise/usr/bin/netlogo
+#This next chunk installs certain files directly into the chroot 
+sudo wget -q --no-check-certificate "$URL/runner" -O $CROUBIN/runner
+sudo chmod 755 $CROUBIN/runner
+sudo wget -q --no-check-certificate "$URL/gui-cri" -O $CROUBIN/gui-cri
+sudo chmod 755 $CROUBIN/gui-cri
+sudo wget -q --no-check-certificate "$URL/commands/netlogo" -O $CROUBIN/netlogo
+sudo chmod 755 $CROUBIN/netlogo
+
 cd $CBIN
-sudo mv cri $CBIN/crosh
+sudo mv cri /usr/bin/crosh #This makes it so that whenever ctrl+alt+t is pressed, we launch directly into Cri
 echo "Done..."
 echo
 
-if ask "Would you like to fix the current config file? (RECOMMENDED)"; then
+if ask "Would you like to fix the current config file? (RECOMMENDED)"; then #Fixes the extention so that it works right 
   sudo fixconfig
 fi
 
 if ask "Would you like to install the academy package? (HIGHLY RECOMMENDED), choose yes for list of packages"; then
   sudo acadapkg
 fi
-cd /usr/local/bin
+
+cd $CBIN
+sudo chmod 755 /usr/local/bin/starte17
 sudo echo '#!/bin/sh -e
 # Copyright (c) 2015 The crouton Authors. All rights reserved.
 # Use of this source code is governed by a BSD-style license that can be
@@ -91,8 +100,13 @@ Options are directly passed to enter-chroot; run enter-chroot to list them."
 
 exec sh -e "`dirname "\`readlink -f "$0"\`"`/enter-chroot" -u root -t e17 "$@" "" \
     exec xinit /usr/bin/enlightenment_start' > /usr/local/bin/starte17
-sudo rm -rf $CTEMP
+cd ~/Downloads
 unset CTEMP
-writer apt-get -y install dialog+apt-get -y install thunar+apt-get -y install thunar+apt-get -y install gnome-icon-theme-extras+apt-get -y install gnome-icon-theme-full
+writer apt-get -y install dialog+apt-get -y install thunar+apt-get -y install gnome-icon-theme-extras+apt-get -y install gnome-icon-theme-full
 sleep 0.5
 sudo enter-chroot -u root runner
+if ask "Done! Please restart your computer just to be safe, if you would like to, just hit y, if not press n"; then
+    sudo reboot
+else
+    exit
+fi
