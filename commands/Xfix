@@ -1,11 +1,11 @@
 #!/bin/bash
 echo "Trying to fix permissions for Xorg Server"
-sudo enter-chroot -n precise sudo chmod +s /usr/bin/X11/Xorg
+sudo enter-chroot -u root precise sudo chmod +s /usr/bin/X11/Xorg
 sleep 1
-sudo enter-chroot -n precise sudo dpkg-reconfigure x11-common
+sudo enter-chroot -u root dpkg-reconfigure x11-common
 sleep 1
 #whoami doesn't work on this
 read -p "Please enter your crouton username, Sorry I can't auto do that..." name
-sudo enter-chroot -n precise sudo chown $name:$name /tmp
+sudo enter-chroot -u root chown $name /tmp
 echo "I fixed the xiwi permissions"
 #The above is just a double check
