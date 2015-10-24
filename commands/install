@@ -5,7 +5,7 @@ echo "Please be patient... (Time depends on size of package)"
 cd ~/Downloads/.tmp
 if [ grep $@ packages.txt !=0 ]; then
   echo $@ >> packages.txt
-  sudo enter-chroot -n precise sudo apt-get --force-yes install $name
+  sudo enter-chroot -n -u root precise sudo apt-get --force-yes install $name
   echo "Done installing... $NAME"
 else
   echo "package already exists, try running it with 'run <package name>'"
