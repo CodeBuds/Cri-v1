@@ -112,5 +112,5 @@ sudo enter-chroot -u root runner
 if ask "Done! Please restart your computer just to be safe, if you would like to, just hit y, if not press n"; then
     sudo reboot
 else
-    exit
+    exit 0
 fi
