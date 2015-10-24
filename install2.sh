@@ -47,10 +47,6 @@ cd $CTEMP
 echo "Downloading Cri files" 
 sudo wget -q --no-check-certificate "$URL/commands.txt" -O $CTEMP/commands.txt #This is to download list of files needed
 sudo chmod 755 commands.txt #Makes the commands file have every permisson so that anyone can use it 
-if [ -d "$CBIN" ]; then
-    sudo rm -rf $CBIN
-    sudo mkdir $CBIN
-fi
 
 NAMES="$(< commands.txt)" #names from names.txt file
 LINES=$(lineCount)
