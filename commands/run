@@ -37,7 +37,7 @@ if [ "$NAME" = "e17" ]; then
 else
     if [ "$NAME" != "e17" ]; then
         echo "Turning debugging on..."
-        sudo enter-chroot -b -u root -n precise xiwi $NAME
+        sudo enter-chroot -b -u root xiwi $NAME
     else
         echo "Sorry, didnt find $NAME on the list of installed programs"
         echo "If you believe you have this package, or want to install it"
