@@ -4,7 +4,7 @@
 
 COMS=$@
 if [ ! -d "~/Downloads/.tmp" ]; then
-  sudo mkdir ~/Downloads/.tmp &>/dev/null
+  mkdir ~/Downloads/.tmp &>/dev/null
 fi
 cd /home/chronos/user/Downloads/.tmp
 sudo echo >coms
