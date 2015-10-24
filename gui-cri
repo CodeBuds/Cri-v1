@@ -1,6 +1,5 @@
 #!/bin/bash
-CROUTON=/mnt/stateful_partition/crouton  
-if [ ! -d "$CROUTON" ]; then
+if [ ! -d /mnt/stateful_partition/crouton ]; then
 	echo "CROUTON isn't installed please install it"
 	sleep 1
 	exit 0
