@@ -244,7 +244,7 @@ case $menuitem in
 	Install) install_app;;
 	Remove) remove_app;;
   	Search) search_app;;
-  	Update update_app;;
+  	Update) update_app;;
   	Files) files_app;;
 	Shell) break;;
 esac
