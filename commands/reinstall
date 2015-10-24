@@ -4,7 +4,6 @@ echo "This file has not been fully implimented yet, use at own risk"
 CBIN=/usr/local/bin
 CTEMP=~/Downloads/.tmp
 URLCROUTON="https://raw.githubusercontent.com/dnschneid/crouton/master/installer/crouton"
-CROUBIN=
 
 ask() {
     while true; do
@@ -43,6 +42,7 @@ fi
 sudo delete-chroot -a -y 
 sudo rm -rf $CBIN
 sudo rm -rf $CTEMP
+sudo rm -rf /usr/local/chroots/*
 
 sudo mkdir $CTEMP
     sudo chmod 755 $CTEMP
