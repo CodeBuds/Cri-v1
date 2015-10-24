@@ -46,7 +46,7 @@ sudo rm -rf $CTEMP
 sudo rm -rf /usr/local/chroots/*
 sudo rm -rf /mnt/stateful_partitions/crouton
 
-sudo mkdir $CTEMP
+mkdir $CTEMP
     sudo chmod 755 $CTEMP
 
 cd $CTEMP
