@@ -40,7 +40,7 @@ lineCount() #Same function called earlier in the previous script to use in the c
 }
 
 if [ ! -d "$CTEMP" ]; then
-    sudo mkdir $CTEMP
+    mkdir $CTEMP
 fi 
 
 cd $CTEMP
