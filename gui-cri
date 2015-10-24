@@ -252,6 +252,3 @@ done
 
 [ -f $OUTPUT ] && rm $OUTPUT
 [ -f $INPUT ] && rm $INPUT
-clear
-clear
-exit
