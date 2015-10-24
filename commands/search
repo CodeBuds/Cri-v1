@@ -1,2 +1,2 @@
 #!/bin/bash
-sudo enter-chroot -n precise sudo apt-cache search $@
+sudo enter-chroot -u root -n precise sudo apt-cache search $@
