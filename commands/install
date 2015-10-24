@@ -1,9 +1,10 @@
 #!/bin/bash
 name=$@
+sudo chown chronos:chronos ~/Downloads/.tmp/packages.txt
 echo "Trying to install... $NAME"
 echo "Please be patient... (Time depends on size of package)"
 cd ~/Downloads/.tmp
-if [ grep -q $@ packages.txt ]; then
+if grep -q $@ packages.txt; then
   echo "package already exists, try running it with 'run <package name>'"
 else
   echo $@ >> packages.txt
