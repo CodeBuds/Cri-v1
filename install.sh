@@ -1,13 +1,14 @@
 #!/bin/bash
 AUTHORS="David Smerkous and Eli Smith"
 URL="https://raw.github.com/CodeBuds/Cri/master"
-CRIBIN=/usr/local/bin
+CBIN=/usr/local/bin
 CTEMP=~/Downloads/.tmp
 CROUTON=/mnt/stateful_partition/crouton  
 URLCROUTON="https://raw.githubusercontent.com/dnschneid/crouton/master/installer/crouton"
 
-if [ ! -d "$CRIBIN" ]; then #Checks if the directory was there before (ex. prior crouton installation)
-	sudo mkdir $CRIBIN         #If there is no directory, we make one
+if [ -d "$CBIN" ]; then #Checks if the directory was there before (ex. prior crouton installation)
+	sudo rm -rf $CBIN
+	sudo mkdir $CBIN         #If there is no directory, we make one
 fi
 sudo mkdir $CTEMP
 sudo chmod +x ~/Downloads/.tmp
@@ -80,7 +81,7 @@ sudo chmod 755 rootmount							  #Into Read/write so we can modify system
 if [ ! -d "/usr/local/bin" ]; then
 	sudo mkdir /usr/local/bin
 fi 
-cd $CRIBIN
+cd $CBIN
 sudo cp $CTEMP/rootmount ./
 sudo chmod 755 rootmount
 if ask "Would you like to mount as root(Required if not done)?"; then
@@ -92,4 +93,4 @@ else
    fi
 fi
 unset CTEMP
-unset CRIBIN
+unset CBIN
