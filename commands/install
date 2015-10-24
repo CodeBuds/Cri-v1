@@ -1,6 +1,8 @@
 #!/bin/bash
 name=$@
-sudo chown chronos:chronos ~/Downloads/.tmp/packages.txt
+if [ ! -e ~/Downloads/.tmp/packages.txt ]; then
+  sudo chown chronos:chronos ~/Downloads/.tmp/packages.txt
+fi
 echo "Trying to install... $NAME"
 echo "Please be patient... (Time depends on size of package)"
 cd ~/Downloads/.tmp
