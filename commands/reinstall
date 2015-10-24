@@ -43,6 +43,7 @@ sudo delete-chroot -a -y
 sudo rm -rf $CBIN
 sudo rm -rf $CTEMP
 sudo rm -rf /usr/local/chroots/*
+sudo rm -rf /mnt/stateful_partitions/crouton
 
 sudo mkdir $CTEMP
     sudo chmod 755 $CTEMP
