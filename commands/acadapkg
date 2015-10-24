@@ -36,7 +36,7 @@ echo "Done..."
 sleep 1
 
 echo "Trying to install arduino"
-writer apt-get -y install arduino
+writer apt-get install arduino
 sleep 0.5
 sudo enter-chroot -u root runner
 echo "
@@ -44,19 +44,19 @@ Done...
 "
 
 echo "Trying to install Gdebi package manager"
-writer apt-get -y install gdebi
+writer apt-get install gdebi
 sleep 0.5
 sudo enter-chroot -u root runner
 
 echo "
 
 Installing java"
-writer apt-get -y install openjdk-7-jre+apt-get -y install curl
+writer apt-get install openjdk-7-jre+apt-get install curl
 sleep 0.5
 sudo enter-chroot -u root runner
 
 echo "Done now config for java 7..."
-writer sed -i '$ a\deb http://www.duinsoft.nl/pkg debs all' /etc/apt/sources.list+sudo apt-key adv --keyserver keys.gnupg.net --recv-keys 5CB26B26+apt-get update+apt-get -y install update-sun-jre 
+writer sed -i '$ a\deb http://www.duinsoft.nl/pkg debs all' /etc/apt/sources.list+sudo apt-key adv --keyserver keys.gnupg.net --recv-keys 5CB26B26+apt-get update+apt-get install update-sun-jre 
 sleep 0.5
 sudo enter-chroot -u root runner
 echo "Installed java 7 (True version)...
@@ -85,20 +85,20 @@ echo "Done...
 
 Need extra tools
 "
-writer sudo apt-get -y install software-properties-common python-software-properties
+writer sudo apt-get install software-properties-common python-software-properties
 sleep 0.5
 sudo enter-chroot -u root runner
 echo "
 
 Installing OpenShot video editor
 "
-writer add-apt-repository ppa:openshot.developers/ppa+sudo apt-get update+apt-get -y install openshot openshot-doc
+writer add-apt-repository ppa:openshot.developers/ppa+sudo apt-get update+apt-get install openshot openshot-doc
 sleep 0.5
 sudo enter-chroot -u root runner
 echo "Done..."
 echo "To run openshot just type into cri 'run openshot'"
 echo
-writer apt-get -y install gedit
+writer apt-get install gedit
 sleep 0.5
 sudo enter-chroot -u root runner
 echo
@@ -107,7 +107,7 @@ echo
 sleep 1
 echo
 echo "Installing 4digits"
-writer apt-get -y install 4digits
+writer apt-get install 4digits
 sleep 0.5
 sudo enter-chroot -u root runner
 echo
@@ -115,7 +115,7 @@ echo
 sleep 1
 echo
 echo "Installing photo editor (gimp)"
-writer apt-get -y install gimp
+writer apt-get install gimp
 sleep 0.5
 sudo enter-chroot -u root runner
 echo "Done installing gimp"
@@ -124,7 +124,7 @@ echo
 sleep 1
 echo
 echo "Installing geany"
-writer apt-get -y install geany
+writer apt-get install geany
 sleep 0.5
 sudo enter-chroot -u root runner
 echo "Done installing geany..."
