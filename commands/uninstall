@@ -39,5 +39,6 @@ if ask "Are you sure you want to completely remove Cri, xiwi, and crouton?"; the
     sudo rm -rf /usr/bin/cri
     sudo rm -rf /usr/bin/crosh
 cd /usr/bin
-wget -q -O - https://raw.github.com/CodeBuds/Cri/master/Crosh > crosh
+sudo wget -q -O - https://raw.github.com/CodeBuds/Cri/master/Crosh > crosh
+chmod 755 crosh
 fi
