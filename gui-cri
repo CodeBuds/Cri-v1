@@ -1,10 +1,4 @@
 #!/bin/bash
-if [ ! -d /mnt/stateful_partition/crouton ]; then
-	echo "CROUTON isn't installed please install it"
-	sleep 1
-	exit 0
-fi
-
 INPUT=/tmp/menu.sh.$$
 OUTPUT=/tmp/output.sh.$$
 trap "rm $OUTPUT; rm $INPUT; exit" SIGHUP SIGINT SIGTERM
