@@ -10,7 +10,8 @@ if grep -q $@ packages.txt; then
   echo "package already exists, try running it with 'run <package name>'"
 else
   echo $@ >> packages.txt
-  sudo enter-chroot -u root -n precise sudo apt-get install $name
+  writer "(echo y+) % apt-get install $name"
+  sudo enter-chroot -u root runner
   echo "Done installing... $NAME"
   echo "package already exists, try running it with 'run <package name>'"
 fi
