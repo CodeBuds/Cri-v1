@@ -4,7 +4,7 @@ if [ ! -d "$CROUTON" ]; then
 	echo "CROUTON isn't installed please install it"
 	sleep 1
 	exit 0
-else
+fi
 
 INPUT=/tmp/menu.sh.$$
 OUTPUT=/tmp/output.sh.$$
@@ -252,3 +252,5 @@ done
 
 [ -f $OUTPUT ] && rm $OUTPUT
 [ -f $INPUT ] && rm $INPUT
+clear
+exit
