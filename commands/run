@@ -35,11 +35,7 @@ ask() {
 if [ "$NAME" = "e17" ]; then
     sudo start"$NAME"
 else
-    if [ "$NAME" = "xfce" ]
-    then
-        sudo startxfce4
-    elif [ "$NAME" != "xfce" ]
-    then
+    if [ "$NAME" != "e17" ]; then
         echo "Turning debugging on..."
         sudo enter-chroot -u root xiwi $NAME
     else
