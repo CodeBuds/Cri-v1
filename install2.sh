@@ -85,7 +85,7 @@ if ask "Would you like to install the academy package? (HIGHLY RECOMMENDED), cho
 fi
 
 cd $CBIN
-sudo chmod 755 /usr/local/bin/starte17
+sudo chmod 755 /usr/local/bin/starte17 &>/dev/null
 sudo echo '#!/bin/sh -e
 # Copyright (c) 2015 The crouton Authors. All rights reserved.
 # Use of this source code is governed by a BSD-style license that can be
