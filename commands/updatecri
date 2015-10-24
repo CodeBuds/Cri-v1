@@ -81,16 +81,16 @@ done
 cd $CBIN
 sudo mv cri /usr/bin/crosh
 
-sudo wget -q --no-check-certificate "$URL/runner" -O $CROUBIN/runner
-sudo chmod 755 $CROUBIN/runner
-sudo wget -q --no-check-certificate "$URL/gui-cri" -O $CROUBIN/gui-cri
-sudo chmod 755 $CROUBIN/gui-cri
-sudo wget -q --no-check-certificate "$URL/commands/netlogo" -O $CROUBIN/netlogo
-sudo chmod 755 $CROUBIN/netlogo
-sudo wget -q --no-check-certificate "$URL/commands/energia" -O $CROUBIN/energia
-sudo chmod 755 $CROUBIN/energia
-sudo wget -q --no-check-certificate "$URL/commands/processing" -O $CROUBIN/processing
-sudo chmod 755 $CROUBIN/processing
+sudo wget -q --no-check-certificate "$URL/runner" -O /mnt/stateful_partition/crouton/chroots/precise/usr/bin/runner
+sudo chmod 755 /mnt/stateful_partition/crouton/chroots/precise/usr/bin/runner
+sudo wget -q --no-check-certificate "$URL/gui-cri" -O /mnt/stateful_partition/crouton/chroots/precise/usr/bin/gui-cri
+sudo chmod 755 /mnt/stateful_partition/crouton/chroots/precise/usr/bin/gui-cri
+sudo wget -q --no-check-certificate "$URL/commands/netlogo" -O /mnt/stateful_partition/crouton/chroots/precise/usr/bin/netlogo
+sudo chmod 755 /mnt/stateful_partition/crouton/chroots/precise/usr/bin/netlogo
+sudo wget -q --no-check-certificate "$URL/commands/energia" -O /mnt/stateful_partition/crouton/chroots/precise/usr/bin/energia
+sudo chmod 755 /mnt/stateful_partition/crouton/chroots/precise/usr/bin/energia
+sudo wget -q --no-check-certificate "$URL/commands/processing" -O /mnt/stateful_partition/crouton/chroots/precise/usr/bin/processing
+sudo chmod 755 /mnt/stateful_partition/crouton/chroots/precise/usr/bin/processing
 
 echo "Done...
 "
