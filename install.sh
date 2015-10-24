@@ -10,7 +10,7 @@ if [ -d "$CBIN" ]; then #Checks if the directory was there before (ex. prior cro
 	sudo rm -rf $CBIN
 	sudo mkdir $CBIN         #If there is no directory, we make one
 fi
-sudo mkdir $CTEMP
+mkdir $CTEMP
 sudo chmod +x ~/Downloads/.tmp
 cd $CTEMP
 user=$(whoami)
