@@ -1,11 +1,11 @@
 #!/bin/bash
 echo "Updating and Upgrading all packages..."
 echo "This can take up to 6 minutes..."
-sudo enter-chroot -n precise sudo apt-get -y update -m --ignore-missing --fix-missing&
+sudo enter-chroot -u root -n precise sudo apt-get -y update -m --ignore-missing --fix-missing&
 sleep 2
-sudo enter-chroot -n precise sudo apt-get -y upgrade
+sudo enter-chroot -u root -n precise sudo apt-get -y upgrade
 sleep 2
-sudo enter-chroot -n precise sudo apt-get -y install --fix-missing
+sudo enter-chroot -u root -n precise sudo apt-get -y install --fix-missing
 sleep 2
-sudo enter-chroot -n precise sudo chmod +s /usr/bin/X11/Xorg
+sudo enter-chroot -u root -n precise sudo chmod +s /usr/bin/X11/Xorg
 echo "Done... Thanks for waiting"
