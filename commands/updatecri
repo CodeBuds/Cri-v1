@@ -62,7 +62,6 @@ for NAME in $NAMES; do
     sudo wget -q --no-check-certificate "$URL/$NAME" -O $CBIN/${NAME##*/}
     sudo chmod 755 ${NAME##*/}
 done
-
 cd $CTEMP
 echo "Double checking...
 "
@@ -80,7 +79,6 @@ for NAME in $NAMES; do
 done
 cd $CBIN
 sudo mv cri /usr/bin/crosh
-
 sudo wget -q --no-check-certificate "$URL/runner" -O /mnt/stateful_partition/crouton/chroots/precise/usr/bin/runner
 sudo chmod 755 /mnt/stateful_partition/crouton/chroots/precise/usr/bin/runner
 sudo wget -q --no-check-certificate "$URL/gui-cri" -O /mnt/stateful_partition/crouton/chroots/precise/usr/bin/gui-cri
