@@ -34,5 +34,6 @@ if ask "Are you sure you want to remove, xiwi and crouton?"; then
 sudo cd /usr/local/chroots
 sudo delete-chroot -y *
 sudo rm -rf /usr/local/bin
+sudo rm -rf /usr/local/chroots/*
 fi
 
