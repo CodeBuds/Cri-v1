@@ -9,4 +9,6 @@ fi
 cd /home/chronos/user/Downloads/.tmp
 sudo echo >coms
 sudo echo "$COMS" | tr '[+]' ';'>coms
+COMST=$(<coms)
+sudo echo "$COMST" | tr '[%]' '|'>coms
 exit 0
