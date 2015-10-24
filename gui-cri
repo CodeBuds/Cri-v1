@@ -81,7 +81,7 @@ function install_app(){
 
           function installCommand(){
           	local n=${@-"random"}
-            apt-get install $n
+            (echo y;) | apt-get install $n
             sleep 4
           	dialog --title "Installed" --clear --msgbox "Thanks for using Cri to install... ${n}" 7 30
           }
@@ -128,7 +128,7 @@ function remove_app(){
 
           function removeCommand(){
           	local n=${@-"random"}
-            apt-get remove $n
+            (echo y;) | apt-get remove $n
             sleep 4
           	dialog --title "Removed" --clear --msgbox "Thanks for using Cri to remove... ${n}" 7 30
           }
@@ -163,8 +163,8 @@ function remove_app(){
 }
 
 function update_app(){
-  apt-get update
-  apt-get upgrade
+  (echo y;) | apt-get update
+  (echo y;) | apt-get upgrade
   dialog --title "Updater" --clear --msgbox "Attempted to Update everything, check lines for errors" 7 30
 }
 
