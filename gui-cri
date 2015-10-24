@@ -1,4 +1,10 @@
 #!/bin/bash
+CROUTON=/mnt/stateful_partition/crouton  
+if [ ! -d "$CROUTON" ]; then
+	echo "CROUTON isn't installed please install it"
+	sleep 1
+	exit 0
+else
 
 INPUT=/tmp/menu.sh.$$
 OUTPUT=/tmp/output.sh.$$
@@ -129,7 +135,7 @@ function remove_app(){
 
           function removeCommand(){
           	local n=${@-"random"}
-            apt-get -y remove $n
+            apt-get remove $n
             sleep 4
           	dialog --title "Removed" --clear --msgbox "Thanks for using Cri to remove... ${n}" 7 30
           }
@@ -161,6 +167,12 @@ function remove_app(){
 
 
           rm $OUTPUT4
+}
+
+function update_app(){
+  apt-get update
+  apt-get upgrade
+  dialog --title "Updater" --clear --msgbox "Attempted to Update everything, check lines for errors" 7 30
 }
 
 function search_app(){
@@ -209,8 +221,7 @@ function search_app(){
 
 
 
-while true
-do
+while true; do
  
 
 dialog --clear  --help-button --backtitle "Chrome gRaphical Interface" \
@@ -218,26 +229,29 @@ dialog --clear  --help-button --backtitle "Chrome gRaphical Interface" \
 --menu "You can use the UP/DOWN arrow keys, the first \n\
 letter of the choice as a hot key, or the \n\
 number keys 1-9 to choose an option.\n\
- " 20 50 6 \
-Run_App "Run a gui application" \
+ " 20 50 7 \
+Run_app "Run an application" \
 Install "Install an application" \
 Remove "Remove an application" \
 Search "Search app online by context" \
+Update "Update/Upgrade all applications" \
 Files "A file explorer for chromebooks" \
 Shell "Go to the terminal" 2>"${INPUT}"
 menuitem=$(<"${INPUT}")
 
 case $menuitem in
-	Run_App) run_app;;
+	Run_app) run_app;;
 	Install) install_app;;
 	Remove) remove_app;;
-  Search) search_app;;
-  Files) files_app;;
+  	Search) search_app;;
+  	Update update_app;;
+  	Files) files_app;;
 	Shell) break;;
 esac
 done
 
 [ -f $OUTPUT ] && rm $OUTPUT
 [ -f $INPUT ] && rm $INPUT
+clear
 clear
 exit
