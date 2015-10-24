@@ -6,12 +6,9 @@
 
 #This is just to clear the screen of all clutter
 clear
-if [ ! -d /mnt/stateful_partition/crouton ]; then 
-echo "CROUTON not installed, please install for graphical interface"
-else
-  /usr/bin/guicri
-  clear
-fi
+echo "If you hang up here press Ctrl+c"
+/usr/bin/guicri
+clear
 # NOTE: This script works in dash, but is not as featureful.  Specifically,
 # dash omits readline support (history & command line editing).  So we try
 # to run through bash if it exists, otherwise we stick to dash.  All other
