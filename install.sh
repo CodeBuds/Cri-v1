@@ -17,7 +17,7 @@ user=$(whoami)
 echo "Welcome to the Cri installer"
 echo "Developed by $AUTHORS"
 sleep 0.5
-echo "You are running as $user, and on a $architecture computer"
+echo "You are running as $user"
 echo
 
 ask() {				   #This is the function we call for our yes/no situations 
