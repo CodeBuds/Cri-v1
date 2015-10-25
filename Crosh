@@ -44,6 +44,8 @@ try_bash "$@"
 INTRO_TEXT="Welcome to the Cri
 Developed by annoying chrome os developers
 Modified by David Smerkous and Eli Smith
+This is the original crosh except this text
+and this uses bash not dash
 "
 
 CHROMEOS_INSTALL=/usr/sbin/chromeos-install
