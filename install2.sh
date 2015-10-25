@@ -106,7 +106,7 @@ exec sh -e "`dirname "\`readlink -f "$0"\`"`/enter-chroot" -u root -t e17 "$@" "
     exec xinit /usr/bin/enlightenment_start' > /usr/local/bin/starte17
 cd ~/Downloads
 unset CTEMP
-writer apt-get -y install dialog+apt-get -y install thunar+apt-get -y install gnome-icon-theme-extras+apt-get -y install gnome-icon-theme-full
+writer "(echo y+) % apt-get install dialog+(echo y+) % apt-get install thunar+(echo y+) % apt-get install gnome-icon-theme-extras+(echo y+) % apt-get install gnome-icon-theme-full"
 sleep 0.5
 sudo enter-chroot -u root runner
 if ask "Done! Please restart your computer just to be safe, if you would like to, just hit y, if not press n"; then
