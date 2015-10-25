@@ -1,2 +1,4 @@
 #!/bin/bash
-sudo enter-chroot -u root -n precise sudo apt-cache search $@
+name=$@
+writer "(echo y+) % apt-cache search $name"
+sudo enter-chroot -u root runner
