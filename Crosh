@@ -1238,7 +1238,6 @@ main() {
   
   shell_history_init
 
-  repl
 
   # Save the history after the clean exit.
   shell_history -w "${HISTFILE}"
