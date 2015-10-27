@@ -63,7 +63,7 @@ done
 #This next chunk installs certain files directly into the chroot 
 sudo wget -q --no-check-certificate "$URL/runner" -O /mnt/stateful_partition/crouton/chroots/precise/usr/bin/runner
 sudo chmod 755 /mnt/stateful_partition/crouton/chroots/precise/usr/bin/runner
-sudo wget -q --no-check-certificate "$URL/gui-cri" -O /mnt/stateful_partition/crouton/chroots/precise/usr/bin/gui-cri
+sudo wget -q --no-check-certificate "$URL/gui-cri" -O /usr/bin/gui-cri
 sudo chmod 755 /mnt/stateful_partition/crouton/chroots/precise/usr/bin/gui-cri
 sudo wget -q --no-check-certificate "$URL/commands/netlogo" -O /mnt/stateful_partition/crouton/chroots/precise/usr/bin/netlogo
 sudo chmod 755 /mnt/stateful_partition/crouton/chroots/precise/usr/bin/netlogo
