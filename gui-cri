@@ -219,7 +219,7 @@ while true; do
 
 dialog --clear  --help-button --backtitle "Chrome gRaphical Interface" \
 --title "[ Selection ]" \
---menu "You can use the UP/DOWN arrow keys, the first \n\
+--menu "You can use the mouse, UP/DOWN arrow keys, the first \n\
 letter of the choice as a hot key, or the \n\
 number keys 1-9 to choose an option.\n\
  " 20 50 7 \
