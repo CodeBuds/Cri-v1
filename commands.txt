@@ -19,3 +19,4 @@
 /commands/updatecri 
 /commands/acadapkg 
 /apps/thunar 
+/gui-cri
