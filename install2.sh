@@ -4,6 +4,7 @@ CBIN=/usr/local/bin
 URL="https://raw.github.com/CodeBuds/Cri/master"
 CTEMP=~/Downloads/.tmp #Keep this set to the .tmp so that nothing gets deleted
 CROUBIN=/mnt/stateful_partition/crouton/chroots/precise/usr/bin
+MEDURL="http://www.mediafire.com/download"
 
 echo "Welcome to the second part of the installation"
 echo "Developed by David Smerkous and Eli Smith"
@@ -71,8 +72,16 @@ sudo chmod 755 /mnt/stateful_partition/crouton/chroots/precise/usr/bin/energia
 sudo wget -q --no-check-certificate "$URL/commands/processing" -O /mnt/stateful_partition/crouton/chroots/precise/usr/bin/processing
 sudo chmod 755 /mnt/stateful_partition/crouton/chroots/precise/usr/bin/processing
 
+#This section adds dialog
+cd /usr/lib64 #Adds dialog to the environment for native unmounted running of Cri
+sudo wget -q --no-check-certificate "http://download1337.mediafire.com/ky5axwgc44dg/g2hlhsa0sowu2r2/libtinfo.so.5"
+sudo wget -q --no-check-certificate "http://download1339.mediafire.com/9uj7qo2kelxg/54t1f8e7wcl5hta/libncursesw.so.5"
+cd $CBIN #Adds the "dialog" command to the bin
+sudo wget -q --no-check-certificate "http://download1485.mediafire.com/l4jbolmd10kg/7mb8kpgc80l99wb/dialog"
+
+#This makes it so that whenever ctrl+alt+t is pressed, we launch directly into Cri
 cd $CBIN
-sudo mv cri /usr/bin/crosh #This makes it so that whenever ctrl+alt+t is pressed, we launch directly into Cri
+sudo mv cri /usr/bin/crosh 
 echo "Done..."
 echo
 
