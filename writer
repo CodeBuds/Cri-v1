@@ -3,11 +3,13 @@
 #This is command args to run multi-line commands for crouton/cri
 
 COMS=$@
+ 
 if [ ! -d "~/Downloads/.tmp" ]; then
   mkdir ~/Downloads/.tmp &>/dev/null
 fi
 cd /home/chronos/user/Downloads/.tmp
 sudo echo >coms
+sudo chmod 755 coms
 sudo echo "$COMS" | tr '[+]' ';'>coms
 COMST=$(<coms)
 sudo echo "$COMST" | tr '[%]' '|'>coms
