@@ -9,8 +9,8 @@ if [ ! -d "~/Downloads/.tmp" ]; then
 fi
 cd /home/chronos/user/Downloads/.tmp
 echo >coms
-sudo chmod 755 coms
-sudo echo "$COMS" | tr '[+]' ';'>coms
+chmod 755 coms
+echo "$COMS" | tr '[+]' ';'>coms
 COMST=$(<coms)
-sudo echo "$COMST" | tr '[%]' '|'>coms
+echo "$COMST" | tr '[%]' '|'>coms
 exit 0
