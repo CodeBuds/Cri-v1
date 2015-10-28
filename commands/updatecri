@@ -38,55 +38,11 @@ else
   echo "Exiting..."
   exit 0
 fi  
-
-lineCount()
-{
-    wc -l < commands.txt	
-}
-
-if [ ! -d "$CTEMP" ]; then
-    mkdir $CTEMP
-fi 
-
-cd $CTEMP
-echo "ReDownloading files"
-sudo wget -q --no-check-certificate "$URL/commands.txt" -O $CTEMP/commands.txt
-sudo chmod 755 commands.txt
-NAMES="$(< commands.txt)" #names from names.txt file
-LINES=$(lineCount)
-NUMBERS=1
-cd $CBIN
-for NAME in $NAMES; do
-    echo "File $NUMBERS/$LINES..."
-    let "NUMBERS += 1"
-    sudo wget -q --no-check-certificate "$URL/$NAME" -O $CBIN/${NAME##*/}
-    sudo chmod 755 ${NAME##*/}
-done
-cd $CTEMP
-echo "Double checking...
+echo "reDownloading..."
+wget -q -O - https://raw.github.com/CodeBuds/Cri/master/install2.sh | bash
+echo "
+Double Checking...
 "
-sudo wget -q --no-check-certificate "$URL/commands.txt" -O $CTEMP/commands.txt
-sudo chmod 755 commands.txt
-NAMES="$(< commands.txt)" #names from names.txt file
-LINES=$(lineCount)
-NUMBERS=1
-cd $CBIN
-for NAME in $NAMES; do
-    echo "File $NUMBERS/$LINES..."
-    let "NUMBERS += 1"
-    sudo wget -q --no-check-certificate "$URL/$NAME" -O $CBIN/${NAME##*/}
-    sudo chmod 755 ${NAME##*/}
-done
-cd $CBIN
-sudo mv cri /usr/bin/crosh
-sudo wget -q --no-check-certificate "$URL/runner" -O /mnt/stateful_partition/crouton/chroots/precise/usr/bin/runner
-sudo chmod 755 /mnt/stateful_partition/crouton/chroots/precise/usr/bin/runner
-sudo wget -q --no-check-certificate "$URL/commands/netlogo" -O /mnt/stateful_partition/crouton/chroots/precise/usr/bin/netlogo
-sudo chmod 755 /mnt/stateful_partition/crouton/chroots/precise/usr/bin/netlogo
-sudo wget -q --no-check-certificate "$URL/commands/energia" -O /mnt/stateful_partition/crouton/chroots/precise/usr/bin/energia
-sudo chmod 755 /mnt/stateful_partition/crouton/chroots/precise/usr/bin/energia
-sudo wget -q --no-check-certificate "$URL/commands/processing" -O /mnt/stateful_partition/crouton/chroots/precise/usr/bin/processing
-sudo chmod 755 /mnt/stateful_partition/crouton/chroots/precise/usr/bin/processing
-
+wget -q -O - https://raw.github.com/CodeBuds/Cri/master/install2.sh | bash
 echo "Done...
 "
