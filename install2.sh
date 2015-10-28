@@ -141,6 +141,8 @@ Options are directly passed to enter-chroot; run enter-chroot to list them."
 exec sh -e "`dirname "\`readlink -f "$0"\`"`/enter-chroot" -u root -t e17 "$@" "" \
     exec xinit /usr/bin/enlightenment_start' > /usr/local/bin/starte17
 cd ~/Downloads
+sudo mkdir ~/Downloads/.tmp 2&>/dev/null
+echo >~/Downloads/.tmp/coms
 unset CTEMP
 writer "(echo y+) % apt-get install dialog+(echo y+) % apt-get install thunar+(echo y+) % apt-get install gnome-icon-theme-extras+(echo y+) % apt-get install gnome-icon-theme-full"
 sleep 0.5
