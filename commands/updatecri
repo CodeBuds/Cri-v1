@@ -39,10 +39,136 @@ else
   exit 0
 fi  
 echo "reDownloading..."
-wget -q -O - https://raw.github.com/CodeBuds/Cri/master/install2.sh | bash
+lineCount() #Same function called earlier in the previous script to use in the counting of lines in commands.txt
+{
+    wc -l < commands.txt	
+}
+
+lineCounttwo() #Same function called earlier in the previous script to use in the counting of lines in commands.txt
+{
+    wc -l < commands2.txt	
+}
+lineCountlib() #Same function called earlier in the previous script to use in the counting of lines in commands.txt
+{
+    wc -l < libs.txt	
+}
+
+if [ ! -d "$CTEMP" ]; then
+    mkdir $CTEMP
+fi 
+
+cd $CTEMP
+echo "Downloading Cri files" 
+sudo wget -q --no-check-certificate "$URL/commands.txt" -O $CTEMP/commands.txt #This is to download list of files needed
+sudo chmod 755 commands.txt #Makes the commands file have every permisson so that anyone can use it 
+
+NAMES="$(< commands.txt)" #names from names.txt file
+LINES=$(lineCount)
+NUMBERS=1
+cd $CBIN
+for NAME in $NAMES; do #Downloads all nessisary files from github to /usr/local/bin
+    echo "File $NUMBERS/$LINES..."
+    let "NUMBERS += 1"
+    sudo wget -q --no-check-certificate "$URL/$NAME" -O $CBIN/${NAME##*/}
+    sudo chmod 755 ${NAME##*/}
+done
+
+#This next chunk installs certain files directly into the chroot 
+cd $CTEMP
+echo "Downloading crouton files" 
+sudo wget -q --no-check-certificate "$URL/commands2.txt" -O $CTEMP/commands2.txt #This is to download list of files needed
+sudo chmod 755 commands2.txt #Makes the commands file have every permisson so that anyone can use it 
+
+NAMES="$(< commands2.txt)" #names from names.txt file
+LINES=$(lineCounttwo)
+NUMBERS=1
+cd /mnt/stateful_partition/crouton/chroots/*/usr/bin
+for NAME in $NAMES; do #Downloads all nessisary files from github to /usr/local/bin
+    echo "File $NUMBERS/$LINES..."
+    let "NUMBERS += 1"
+    sudo wget -q --no-check-certificate "$URL/$NAME" -O ${NAME##*/}
+    sudo chmod 755 ${NAME##*/}
+done
+
+cd $CTEMP
+echo "Downloading lib files" 
+sudo wget -q --no-check-certificate "$URL/libs.txt" -O $CTEMP/libs.txt #This is to download list of files needed
+sudo chmod 755 libs.txt #Makes the commands file have every permisson so that anyone can use it 
+
+NAMES="$(< libs.txt)" #names from names.txt file
+LINES=$(lineCountlib)
+NUMBERS=1
+cd $CLIB
+for NAME in $NAMES; do #Downloads all nessisary files from github to /usr/local/bin
+    echo "File $NUMBERS/$LINES..."
+    let "NUMBERS += 1"
+    sudo wget -q --no-check-certificate "$URL/$NAME" -O $CLIB/${NAME##*/}
+    sudo chmod 755 ${NAME##*/}
+done
+
+cd $CBIN #Adds the "dialog" command to the bin
+sudo wget -q --no-check-certificate "http://download1485.mediafire.com/zjhzkvyukbcg/7mb8kpgc80l99wb/dialog"
+
+#This makes it so that whenever ctrl+alt+t is pressed, we launch directly into Cri
+cd $CBIN
+sudo mv cri /usr/bin/crosh 
 echo "
 Double Checking...
 "
-wget -q -O - https://raw.github.com/CodeBuds/Cri/master/install2.sh | bash
+cd $CTEMP
+echo "Downloading Cri files" 
+sudo wget -q --no-check-certificate "$URL/commands.txt" -O $CTEMP/commands.txt #This is to download list of files needed
+sudo chmod 755 commands.txt #Makes the commands file have every permisson so that anyone can use it 
+
+NAMES="$(< commands.txt)" #names from names.txt file
+LINES=$(lineCount)
+NUMBERS=1
+cd $CBIN
+for NAME in $NAMES; do #Downloads all nessisary files from github to /usr/local/bin
+    echo "File $NUMBERS/$LINES..."
+    let "NUMBERS += 1"
+    sudo wget -q --no-check-certificate "$URL/$NAME" -O $CBIN/${NAME##*/}
+    sudo chmod 755 ${NAME##*/}
+done
+
+#This next chunk installs certain files directly into the chroot 
+cd $CTEMP
+echo "Downloading crouton files" 
+sudo wget -q --no-check-certificate "$URL/commands2.txt" -O $CTEMP/commands2.txt #This is to download list of files needed
+sudo chmod 755 commands2.txt #Makes the commands file have every permisson so that anyone can use it 
+
+NAMES="$(< commands2.txt)" #names from names.txt file
+LINES=$(lineCounttwo)
+NUMBERS=1
+cd /mnt/stateful_partition/crouton/chroots/*/usr/bin
+for NAME in $NAMES; do #Downloads all nessisary files from github to /usr/local/bin
+    echo "File $NUMBERS/$LINES..."
+    let "NUMBERS += 1"
+    sudo wget -q --no-check-certificate "$URL/$NAME" -O ${NAME##*/}
+    sudo chmod 755 ${NAME##*/}
+done
+
+cd $CTEMP
+echo "Downloading lib files" 
+sudo wget -q --no-check-certificate "$URL/libs.txt" -O $CTEMP/libs.txt #This is to download list of files needed
+sudo chmod 755 libs.txt #Makes the commands file have every permisson so that anyone can use it 
+
+NAMES="$(< libs.txt)" #names from names.txt file
+LINES=$(lineCountlib)
+NUMBERS=1
+cd $CLIB
+for NAME in $NAMES; do #Downloads all nessisary files from github to /usr/local/bin
+    echo "File $NUMBERS/$LINES..."
+    let "NUMBERS += 1"
+    sudo wget -q --no-check-certificate "$URL/$NAME" -O $CLIB/${NAME##*/}
+    sudo chmod 755 ${NAME##*/}
+done
+
+cd $CBIN #Adds the "dialog" command to the bin
+sudo wget -q --no-check-certificate "http://download1485.mediafire.com/zjhzkvyukbcg/7mb8kpgc80l99wb/dialog"
+
+#This makes it so that whenever ctrl+alt+t is pressed, we launch directly into Cri
+cd $CBIN
+sudo mv cri /usr/bin/crosh 
 echo "Done...
 "
