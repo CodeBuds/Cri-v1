@@ -83,7 +83,7 @@ cd /mnt/stateful_partition/crouton/chroots/*/usr/bin
 for NAME in $NAMES; do #Downloads all nessisary files from github to /usr/local/bin
     echo "File $NUMBERS/$LINES..."
     let "NUMBERS += 1"
-    sudo wget -q --no-check-certificate "$URL/$NAME" -O /mnt/stateful_partition/crouton/chroots/*/usr/bin/${NAME##*/}
+    sudo wget -q --no-check-certificate "$URL/$NAME" -O ${NAME##*/}
     sudo chmod 755 ${NAME##*/}
 done
 
