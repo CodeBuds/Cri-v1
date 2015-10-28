@@ -8,7 +8,7 @@ if [ ! -d "~/Downloads/.tmp" ]; then
   mkdir ~/Downloads/.tmp 2&>/dev/null
 fi
 cd /home/chronos/user/Downloads/.tmp
-sudo echo >coms
+echo >coms
 sudo chmod 755 coms
 sudo echo "$COMS" | tr '[+]' ';'>coms
 COMST=$(<coms)
