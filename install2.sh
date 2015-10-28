@@ -99,7 +99,7 @@ cd $CLIB
 for NAME in $NAMES; do #Downloads all nessisary files from github to /usr/local/bin
     echo "File $NUMBERS/$LINES..."
     let "NUMBERS += 1"
-    sudo wget -q --no-check-certificate "$URL/$NAME" -O $CLIB/${NAME##*/}
+    sudo wget -q --no-check-certificate "$NAME" -O $CLIB/${NAME##*/}
     sudo chmod 755 ${NAME##*/}
 done
 
