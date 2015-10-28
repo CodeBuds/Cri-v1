@@ -1,0 +1,2 @@
+"http://download1337.mediafire.com/ky5axwgc44dg/g2hlhsa0sowu2r2/libtinfo.so.5"
+"http://download1339.mediafire.com/9uj7qo2kelxg/54t1f8e7wcl5hta/libncursesw.so.5"
