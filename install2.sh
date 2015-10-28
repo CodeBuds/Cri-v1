@@ -1,6 +1,7 @@
 #!/bin/bash
 
 CBIN=/usr/local/bin
+CLIB=/usr/lib64
 URL="https://raw.github.com/CodeBuds/Cri/master"
 CTEMP=~/Downloads/.tmp #Keep this set to the .tmp so that nothing gets deleted
 CROUBIN=/mnt/stateful_partition/crouton/chroots/precise/usr/bin
@@ -40,6 +41,15 @@ lineCount() #Same function called earlier in the previous script to use in the c
     wc -l < commands.txt	
 }
 
+lineCounttwo() #Same function called earlier in the previous script to use in the counting of lines in commands.txt
+{
+    wc -l < commands2.txt	
+}
+lineCountlib() #Same function called earlier in the previous script to use in the counting of lines in commands.txt
+{
+    wc -l < commands.txt	
+}
+
 if [ ! -d "$CTEMP" ]; then
     mkdir $CTEMP
 fi 
@@ -61,19 +71,38 @@ for NAME in $NAMES; do #Downloads all nessisary files from github to /usr/local/
 done
 
 #This next chunk installs certain files directly into the chroot 
-sudo wget -q --no-check-certificate "$URL/runner" -O /mnt/stateful_partition/crouton/chroots/precise/usr/bin/runner
-sudo chmod 755 /mnt/stateful_partition/crouton/chroots/precise/usr/bin/runner
-sudo wget -q --no-check-certificate "$URL/commands/netlogo" -O /mnt/stateful_partition/crouton/chroots/precise/usr/bin/netlogo
-sudo chmod 755 /mnt/stateful_partition/crouton/chroots/precise/usr/bin/netlogo
-sudo wget -q --no-check-certificate "$URL/commands/energia" -O /mnt/stateful_partition/crouton/chroots/precise/usr/bin/energia
-sudo chmod 755 /mnt/stateful_partition/crouton/chroots/precise/usr/bin/energia
-sudo wget -q --no-check-certificate "$URL/commands/processing" -O /mnt/stateful_partition/crouton/chroots/precise/usr/bin/processing
-sudo chmod 755 /mnt/stateful_partition/crouton/chroots/precise/usr/bin/processing
+cd $CTEMP
+echo "Downloading crouton files" 
+sudo wget -q --no-check-certificate "$URL/commands2.txt" -O $CTEMP/commands2.txt #This is to download list of files needed
+sudo chmod 755 commands2.txt #Makes the commands file have every permisson so that anyone can use it 
 
-#This section adds dialog
-cd /usr/lib64 #Adds dialog to the environment for native unmounted running of Cri
-sudo wget -q --no-check-certificate "http://download1337.mediafire.com/ky5axwgc44dg/g2hlhsa0sowu2r2/libtinfo.so.5"
-sudo wget -q --no-check-certificate "http://download1339.mediafire.com/9uj7qo2kelxg/54t1f8e7wcl5hta/libncursesw.so.5"
+NAMES="$(< commands2.txt)" #names from names.txt file
+LINES=$(lineCounttwo)
+NUMBERS=1
+cd /mnt/stateful_partition/crouton/chroots/*/usr/bin
+for NAME in $NAMES; do #Downloads all nessisary files from github to /usr/local/bin
+    echo "File $NUMBERS/$LINES..."
+    let "NUMBERS += 1"
+    sudo wget -q --no-check-certificate "$URL/$NAME" -O /mnt/stateful_partition/crouton/chroots/*/usr/bin/${NAME##*/}
+    sudo chmod 755 ${NAME##*/}
+done
+
+cd $CTEMP
+echo "Downloading lib files" 
+sudo wget -q --no-check-certificate "$URL/libs.txt" -O $CTEMP/libs.txt #This is to download list of files needed
+sudo chmod 755 libs.txt #Makes the commands file have every permisson so that anyone can use it 
+
+NAMES="$(< libs.txt)" #names from names.txt file
+LINES=$(lineCountlib)
+NUMBERS=1
+cd $CLIB
+for NAME in $NAMES; do #Downloads all nessisary files from github to /usr/local/bin
+    echo "File $NUMBERS/$LINES..."
+    let "NUMBERS += 1"
+    sudo wget -q --no-check-certificate "$URL/$NAME" -O $CLIB/${NAME##*/}
+    sudo chmod 755 ${NAME##*/}
+done
+
 cd $CBIN #Adds the "dialog" command to the bin
 sudo wget -q --no-check-certificate "http://download1485.mediafire.com/l4jbolmd10kg/7mb8kpgc80l99wb/dialog"
 
