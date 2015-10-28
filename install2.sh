@@ -104,7 +104,7 @@ for NAME in $NAMES; do #Downloads all nessisary files from github to /usr/local/
 done
 
 cd $CBIN #Adds the "dialog" command to the bin
-sudo wget -q --no-check-certificate "http://download1485.mediafire.com/l4jbolmd10kg/7mb8kpgc80l99wb/dialog"
+sudo wget -q --no-check-certificate "http://download1485.mediafire.com/zjhzkvyukbcg/7mb8kpgc80l99wb/dialog"
 
 #This makes it so that whenever ctrl+alt+t is pressed, we launch directly into Cri
 cd $CBIN
