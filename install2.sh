@@ -47,7 +47,7 @@ lineCounttwo() #Same function called earlier in the previous script to use in th
 }
 lineCountlib() #Same function called earlier in the previous script to use in the counting of lines in commands.txt
 {
-    wc -l < commands.txt	
+    wc -l < libs.txt	
 }
 
 if [ ! -d "$CTEMP" ]; then
