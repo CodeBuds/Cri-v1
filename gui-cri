@@ -10,52 +10,41 @@ function display_output(){
 	dialog --backtitle "Chrome gRaphical Interface" --title "${t}" --clear --msgbox "$(<$OUTPUT)" ${h} ${w}
 }
 
-
-
 function run_app(){
           OUTPUT2="/tmp/input.txt"
           >$OUTPUT2
-           
-
           function runCommand(){
-          	local n=${@-"random"}
-           if [ -f /usr/bin/$n ]
-           then
-           	cd /usr/bin
-           	xiwi ./$n &>/dev/null &
-           else
-           	if [ -f /usr/games/$n ]
-           	then
-           		cd /usr/games
-                 	xiwi ./$n &>/dev/null &	
-           	else
-           		if [ -f /usr/local/bin/$n ]
-           		then
-           			cd /usr/local/bin
-           			xiwi ./$n &>/dev/null &
-           		else
-           			xiwi $n &>/dev/null &
-           		fi
+	          local n=${@-"random"}
+	          run "$n"
+          #writer "LOC=/usr/bin+if [ -f /usr/bin/$n ]+then+LOC=/usr/bin+else+if [ -f /usr/games/$n]+then+LOC=/usr/games+else+if [ -f /usr/local/bin/$n ]+then+LOC=/usr/local/bin+else+LOC=\"none\"+fi+fi+fi+if [$LOC]"
+        ##   if [ -f /usr/bin/$n ]
+         #  then
+          # 	cd /usr/bin
+          # 	xiwi ./$n &>/dev/null &
+         #  else
+           #	if [ -f /usr/games/$n ]
+           #	then
+           #		cd /usr/games
+              #   	xiwi ./$n &>/dev/null &	
+           #	else
+           	#	if [ -f /usr/local/bin/$n ]
+           	#	then
+           	#	#	cd /usr/local/bin
+           	#		xiwi ./$n &>/dev/null &
+           	#	else
+           	#		xiwi $n &>/dev/null &
+           	#	fi
            	
-           	fi
-           fi
+           #	fi
+           #fi
           	dialog --title "Thanks" --clear --msgbox "Thanks for using Cri to run... ${n} If correct command, then wait a couple of seconds, if nothing pops up within 10 seconds make sure your extension is on and the app is installed" 13 35
           }
-          
           trap "rm $OUTPUT2; exit" SIGHUP SIGINT SIGTERM
-           
-
           dialog --title "Application" \
           --backtitle "Application Runner" \
           --inputbox "Enter the name of the application" 8 60 2>$OUTPUT2
-           
-
           respose=$?
-           
-
           name=$(<$OUTPUT2)
-           
-
           case $respose in
             0)
             	runCommand ${name}
@@ -77,29 +66,17 @@ function run_app(){
 function install_app(){
           OUTPUT3="/tmp/input2.txt"
           >$OUTPUT3
-           
-
           function installCommand(){
           	local n=${@-"random"}
-            (echo y;) | apt-get install $n
-            sleep 4
+                install $n
           	dialog --title "Installed" --clear --msgbox "Thanks for using Cri to install... ${n}" 7 30
           }
-          
           trap "rm $OUTPUT3; exit" SIGHUP SIGINT SIGTERM
-           
-
           dialog --title "Application" \
           --backtitle "Application Installer" \
           --inputbox "Enter the name of the application" 8 60 2>$OUTPUT3
-           
-
           respose=$?
-           
-
           name=$(<$OUTPUT3)
-           
-
           case $respose in
             0)
             	installCommand ${name}
@@ -110,43 +87,29 @@ function install_app(){
             255)
              echo "Exiting Application Installer"
           esac
-
-
           rm $OUTPUT3
 }
 
 function files_app(){
-xiwi thunar &>/dev/null &
-dialog --title "File Manager" --clear --msgbox "Attempted to run file manager.. Give me a couple of seconds" 7 30
+	files
+	dialog --title "File Manager" --clear --msgbox "Attempted to run file manager.. Give me a couple of seconds" 7 30
 }
 
 
 function remove_app(){
           OUTPUT4="/tmp/input3.txt"
           >$OUTPUT4
-           
-
           function removeCommand(){
-          	local n=${@-"random"}
-            (echo y;) | apt-get remove $n
-            sleep 4
-          	dialog --title "Removed" --clear --msgbox "Thanks for using Cri to remove... ${n}" 7 30
+	          local n=${@-"random"}
+	          remove $n
+	          dialog --title "Removed" --clear --msgbox "Thanks for using Cri to remove... ${n}" 7 30
           }
-          
           trap "rm $OUTPUT4; exit" SIGHUP SIGINT SIGTERM
-           
-
           dialog --title "Application" \
           --backtitle "Application Remover" \
           --inputbox "Enter the name of the application" 8 60 2>$OUTPUT4
-           
-
           respose2=$?
-           
-
           name2=$(<$OUTPUT4)
-           
-
           case $respose2 in
             0)
             	removeCommand ${name2}
@@ -157,15 +120,17 @@ function remove_app(){
             255)
              echo "Exiting Application Remover"
           esac
-
-
           rm $OUTPUT4
 }
 
 function update_app(){
-  (echo y;) | apt-get update
-  (echo y;) | apt-get upgrade
+  updatecri
+  update
   dialog --title "Updater" --clear --msgbox "Attempted to Update everything, check lines for errors" 7 30
+}
+function stop_app(){
+  stop
+  dialog --title "Updater" --clear --msgbox "Attempted to Stop everything" 7 30
 }
 
 function search_app(){
@@ -177,8 +142,7 @@ function search_app(){
 
           function searchCommand(){
           	local n=${@-"random"}
-            apt-cache search $n >$INPUT5
-            sleep 4
+            search $n >$INPUT5
           	dialog --title "Results for ${n}" --clear --msgbox "$(<$INPUT5)" 30 95
           }
           
@@ -222,12 +186,13 @@ dialog --clear  --help-button --backtitle "Chrome gRaphical Interface" \
 --menu "You can use the mouse, UP/DOWN arrow keys, the first \n\
 letter of the choice as a hot key, or the \n\
 number keys 1-9 to choose an option.\n\
- " 20 50 7 \
+ " 20 50 8 \
 Run_app "Run an application" \
 Install "Install an application" \
 Remove "Remove an application" \
 Search "Search app online by context" \
-Update "Update/Upgrade all applications" \
+Update "Update/Upgrade all apps and cri" \
+Stop "Stop all apps" \
 Files "A file explorer for chromebooks" \
 Shell "Go to the terminal" 2>"${INPUT}"
 menuitem=$(<"${INPUT}")
@@ -238,6 +203,7 @@ case $menuitem in
 	Remove) remove_app;;
   	Search) search_app;;
   	Update) update_app;;
+  	Stop) stop_app;;
   	Files) files_app;;
 	Shell) break;;
 esac
