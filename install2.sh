@@ -100,10 +100,10 @@ NAMES=$(< libs.txt) #names from names.txt file
 LINES=$(lineCountlib)
 NUMBERS=1
 cd $CLIB
-for NAME in "$NAMES"; do #Downloads all nessisary files from github to /usr/local/bin
+for NAME in $NAMES; do #Downloads all nessisary files from github to /usr/local/bin
     echo "File $NUMBERS/$LINES..."
     let "NUMBERS += 1"
-    sudo wget -q $NAME
+    sudo wget -q "$NAME"
     sudo chmod 755 $(echo "$NAME" | cut -d " " -f3)
 done
 
@@ -144,6 +144,7 @@ Options are directly passed to enter-chroot; run enter-chroot to list them."
 
 exec sh -e "`dirname "\`readlink -f "$0"\`"`/enter-chroot" -u root -t e17 "$@" "" \
     exec xinit /usr/bin/enlightenment_start' > /usr/local/bin/starte17
+sudo chmod 755 ./*
 cd ~/Downloads
 sudo mkdir ~/Downloads/.tmp 2&>/dev/null
 echo >~/Downloads/.tmp/coms
