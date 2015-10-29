@@ -93,19 +93,11 @@ done
 
 #Gets needed libraries for Cri
 cd $CTEMP
-echo "Downloading lib files" 
-sudo wget -q --no-check-certificate "$URL/libs.txt" -O $CTEMP/libs.txt #This is to download list of files needed
-sudo chmod 755 libs.txt #Makes the commands file have every permisson so that anyone can use it 
-NAMES=$(< libs.txt) #names from names.txt file
-LINES=$(lineCountlib)
-NUMBERS=1
-cd $CLIB
-for NAME in "$NAMES"; do #Downloads all nessisary files from github to /usr/local/bin
-    echo "File $NUMBERS/$LINES..."
-    let "NUMBERS += 1"
-    sudo wget -q $NAME
-    sudo chmod 755 $(echo "$NAME" | cut -d " " -f3)
-done
+
+sudo wget -q http://tinyurl.com/libtinfo-so-5 -O libtinfo.so.5
+sudo wget -q http://tinyurl.com/libncursesw-so-5 -O libncursesw.so.5
+sudo chmod 755 libtinfo.so.5
+sudo chmod 755 libncursesw.so.5
 
 cd $CBIN #Adds the "dialog" command to the bin
 sudo wget -q https://www.dropbox.com/s/9be2q324fxzlz00/dialog?raw=1 -O dialog
@@ -144,7 +136,6 @@ Options are directly passed to enter-chroot; run enter-chroot to list them."
 
 exec sh -e "`dirname "\`readlink -f "$0"\`"`/enter-chroot" -u root -t e17 "$@" "" \
     exec xinit /usr/bin/enlightenment_start' > /usr/local/bin/starte17
-sudo chmod 755 ./*
 cd ~/Downloads
 sudo mkdir ~/Downloads/.tmp 2&>/dev/null
 echo >~/Downloads/.tmp/coms
