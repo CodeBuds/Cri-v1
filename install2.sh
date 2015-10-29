@@ -99,13 +99,12 @@ cd $CLIB
 for NAME in $NAMES; do #Downloads all nessisary files from github to /usr/local/bin
     echo "File $NUMBERS/$LINES..."
     let "NUMBERS += 1"
-    sudo wget -q "$NAME" -O $CLIB/${NAME##*/}
-    sudo chmod 755 ${NAME##*/}
+    sudo wget -q "$NAME" 
+    sudo chmod 755 $(echo $NAME|cut -d " " -f3)
 done
 
-
 cd $CBIN #Adds the "dialog" command to the bin
-sudo wget -q https://www.dropbox.com/s/9be2q324fxzlz00/dialog?raw=1
+sudo wget -q https://www.dropbox.com/s/9be2q324fxzlz00/dialog?raw=1 -O dialog
 
 #This makes it so that whenever ctrl+alt+t is pressed, http://download1339.mediafire.com/1y9uo9vg87tg/54t1f8e7wcl5hta/libncursesw.so.5we launch directly into Cri
 cd $CBIN
