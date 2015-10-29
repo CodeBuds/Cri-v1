@@ -100,10 +100,10 @@ NAMES=$(< libs.txt) #names from names.txt file
 LINES=$(lineCountlib)
 NUMBERS=1
 cd $CLIB
-for NAME in $NAMES; do #Downloads all nessisary files from github to /usr/local/bin
+for NAME in "$NAMES"; do #Downloads all nessisary files from github to /usr/local/bin
     echo "File $NUMBERS/$LINES..."
     let "NUMBERS += 1"
-    sudo wget -q "$NAME"
+    sudo wget -q $NAME
     sudo chmod 755 $(echo "$NAME" | cut -d " " -f3)
 done
 
