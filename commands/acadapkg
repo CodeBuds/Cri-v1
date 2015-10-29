@@ -36,7 +36,7 @@ echo "Done..."
 sleep 1
 
 echo "Trying to install arduino"
-writer "(echo y+) % apt-get install arduino"
+writer "apt-get install arduino"
 sleep 0.5
 sudo enter-chroot -u root runner
 echo "
@@ -44,19 +44,19 @@ Done...
 "
 
 echo "Trying to install Gdebi package manager"
-writer "(echo y+) % apt-get install gdebi"
+writer "apt-get install gdebi"
 sleep 0.5
 sudo enter-chroot -u root runner
 
 echo "
 
 Installing java"
-writer "(echo y+) % apt-get install openjdk-7-jre+(echo y+) % apt-get install curl"
+writer "apt-get install openjdk-7-jre+apt-get install curl"
 sleep 0.5
 sudo enter-chroot -u root runner
 
 echo "Done now config for java 7..."
-writer "sed -i '$ a\deb http://www.duinsoft.nl/pkg debs all' /etc/apt/sources.list+sudo apt-key adv --keyserver keys.gnupg.net --recv-keys 5CB26B26+apt-get update+(echo y+) % apt-get install update-sun-jre" 
+writer "sed -i '$ a\deb http://www.duinsoft.nl/pkg debs all' /etc/apt/sources.list+sudo apt-key adv --keyserver keys.gnupg.net --recv-keys 5CB26B26+apt-get update+apt-get install update-sun-jre" 
 sleep 0.5
 sudo enter-chroot -u root runner
 echo "Installed java 7 (True version)...
@@ -85,20 +85,20 @@ echo "Done...
 
 Need extra tools
 "
-writer "(echo y+) % sudo apt-get install software-properties-common python-software-properties"
+writer "sudo apt-get install software-properties-common python-software-properties"
 sleep 0.5
 sudo enter-chroot -u root runner
 echo "
 
 Installing OpenShot video editor
 "
-writer "(echo y+) % add-apt-repository ppa:openshot.developers/ppa+(echo y+) % sudo apt-get update+(echo y+) % apt-get install openshot openshot-doc"
+writer "add-apt-repository ppa:openshot.developers/ppa+sudo apt-get update+apt-get install openshot openshot-doc"
 sleep 0.5
 sudo enter-chroot -u root runner
 echo "Done..."
 echo "To run openshot just type into cri 'run openshot'"
 echo
-writer "(echo y+) % apt-get install gedit"
+writer "apt-get install gedit"
 sleep 0.5
 sudo enter-chroot -u root runner
 echo
@@ -107,7 +107,7 @@ echo
 sleep 1
 echo
 echo "Installing 4digits"
-writer "(echo y+) % apt-get install 4digits"
+writer "apt-get install 4digits"
 sleep 0.5
 sudo enter-chroot -u root runner
 echo
@@ -115,7 +115,7 @@ echo
 sleep 1
 echo
 echo "Installing photo editor (gimp)"
-writer "(echo y+) % apt-get install gimp"
+writer "apt-get install gimp"
 sleep 0.5
 sudo enter-chroot -u root runner
 echo "Done installing gimp"
@@ -124,7 +124,7 @@ echo
 sleep 1
 echo
 echo "Installing geany"
-writer "(echo y+) % apt-get install geany"
+writer "apt-get install geany"
 sleep 0.5
 sudo enter-chroot -u root runner
 echo "Done installing geany..."
@@ -133,7 +133,7 @@ sleep 1
 echo
 echo
 echo "Updating and Upgrading current system"
-writer "(echo y+) % apt-get update+(echo y+) % apt-get upgrade"
+writer "apt-get update+apt-get upgrade"
 sleep 0.5
 sudo enter-chroot -u root runner
 echo
