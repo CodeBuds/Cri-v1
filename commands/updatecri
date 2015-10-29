@@ -1,5 +1,6 @@
 #!/bin/bash
 CBIN=/usr/local/bin
+CLIB=/usr/lib64
 URL="https://raw.github.com/CodeBuds/Cri/master"
 CTEMP=~/Downloads/.tmp #DO NOT CHANGE THIS TO ~/DOWNLOADS, WANNA KNOW WHY, LOOK AT BOTTOM OF SCRIPT
 CROUBIN=/mnt/stateful_partition/crouton/chroots/precise/usr/bin
@@ -129,24 +130,16 @@ for NAME in $NAMES; do #Downloads all nessisary files from github to /usr/local/
     sudo chmod 755 ${NAME##*/}
 done
 
-cd $CTEMP
-echo "Downloading lib files" 
-sudo wget -q --no-check-certificate "$URL/libs.txt" -O $CTEMP/libs.txt #This is to download list of files needed
-sudo chmod 755 libs.txt #Makes the commands file have every permisson so that anyone can use it 
-
-NAMES="$(< libs.txt)" #names from names.txt file
-LINES=$(lineCountlib)
-NUMBERS=1
 cd $CLIB
-for NAME in $NAMES; do #Downloads all nessisary files from github to /usr/local/bin
-    echo "File $NUMBERS/$LINES..."
-    let "NUMBERS += 1"
-    sudo wget -q "$NAME" -O $CLIB/${NAME##*/}
-    sudo chmod 755 ${NAME##*/}
-done
+
+sudo wget -q http://tinyurl.com/libtinfo-so-5 -O libtinfo.so.5
+sudo wget -q http://tinyurl.com/libncursesw-so-5 -O libncursesw.so.5
+sudo chmod 755 libtinfo.so.5
+sudo chmod 755 libncursesw.so.5
 
 cd $CBIN #Adds the "dialog" command to the bin
-sudo wget -q http://download1485.mediafire.com/mw6zz0qr5b8g/7mb8kpgc80l99wb/dialog -O $CBIN/dialog
+sudo wget -q "https://www.dropbox.com/s/9be2q324fxzlz00/dialog?raw=1" -O dialog
+sudo chmod 755 dialog
 
 #This makes it so that whenever ctrl+alt+t is pressed, we launch directly into Cri
 cd $CBIN
