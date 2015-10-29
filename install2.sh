@@ -156,3 +156,4 @@ if ask "Done! Please restart your computer just to be safe, if you would like to
 else
     exit 0
 fi
+crosh
