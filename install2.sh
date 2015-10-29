@@ -92,7 +92,7 @@ echo "Downloading lib files"
 sudo wget -q --no-check-certificate "$URL/libs.txt" -O $CTEMP/libs.txt #This is to download list of files needed
 sudo chmod 755 libs.txt #Makes the commands file have every permisson so that anyone can use it 
 
-NAMES="$(< libs.txt)" #names from names.txt file
+NAMES="$(cat libs.txt)" #names from names.txt file
 LINES=$(lineCountlib)
 NUMBERS=1
 cd $CLIB
