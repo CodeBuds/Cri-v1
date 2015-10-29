@@ -103,9 +103,9 @@ for NAME in $NAMES; do #Downloads all nessisary files from github to /usr/local/
     sudo chmod 755 ${NAME##*/}
 done
 
+
 cd $CBIN #Adds the "dialog" command to the bin
-sudo rm -rf dialog
-sudo wget -q http://download1485.mediafire.com/zh1w6bg1k12g/7mb8kpgc80l99wb/dialog -O $CBIN/dialog
+sudo wget -q https://www.dropbox.com/s/9be2q324fxzlz00/dialog?raw=1
 
 #This makes it so that whenever ctrl+alt+t is pressed, http://download1339.mediafire.com/1y9uo9vg87tg/54t1f8e7wcl5hta/libncursesw.so.5we launch directly into Cri
 cd $CBIN
