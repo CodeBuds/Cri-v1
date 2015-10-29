@@ -50,15 +50,20 @@ lineCountlib() #Same function called earlier in the previous script to use in th
     wc -l < libs.txt	
 }
 
+libNames()
+{
+    cat libs.txt
+}
+
 if [ ! -d "$CTEMP" ]; then
     mkdir $CTEMP
 fi 
 
+#Gets all needed commands for Cri
 cd $CTEMP
 echo "Downloading Cri files" 
 sudo wget -q --no-check-certificate "$URL/commands.txt" -O $CTEMP/commands.txt #This is to download list of files needed
 sudo chmod 755 commands.txt #Makes the commands file have every permisson so that anyone can use it 
-
 NAMES="$(< commands.txt)" #names from names.txt file
 LINES=$(lineCount)
 NUMBERS=1
@@ -75,7 +80,6 @@ cd $CTEMP
 echo "Downloading crouton files" 
 sudo wget -q --no-check-certificate "$URL/commands2.txt" -O $CTEMP/commands2.txt #This is to download list of files needed
 sudo chmod 755 commands2.txt #Makes the commands file have every permisson so that anyone can use it 
-
 NAMES="$(< commands2.txt)" #names from names.txt file
 LINES=$(lineCounttwo)
 NUMBERS=1
@@ -87,19 +91,19 @@ for NAME in $NAMES; do #Downloads all nessisary files from github to /usr/local/
     sudo chmod 755 ${NAME##*/}
 done
 
+#Gets needed libraries for Cri
 cd $CTEMP
 echo "Downloading lib files" 
 sudo wget -q --no-check-certificate "$URL/libs.txt" -O $CTEMP/libs.txt #This is to download list of files needed
 sudo chmod 755 libs.txt #Makes the commands file have every permisson so that anyone can use it 
-
-NAMES="$(cat libs.txt)" #names from names.txt file
+NAMES=$(< libs.txt) #names from names.txt file
 LINES=$(lineCountlib)
 NUMBERS=1
 cd $CLIB
-for NAME in $NAMES; do #Downloads all nessisary files from github to /usr/local/bin
+for NAME in "$NAMES"; do #Downloads all nessisary files from github to /usr/local/bin
     echo "File $NUMBERS/$LINES..."
     let "NUMBERS += 1"
-    sudo wget -q "$NAME" 
+    sudo wget -q $NAME
     sudo chmod 755 $(echo "$NAME" | cut -d " " -f3)
 done
 
