@@ -92,7 +92,7 @@ for NAME in $NAMES; do #Downloads all nessisary files from github to /usr/local/
 done
 
 #Gets needed libraries for Cri
-cd $CTEMP
+cd $CLIB
 
 sudo wget -q http://tinyurl.com/libtinfo-so-5 -O libtinfo.so.5
 sudo wget -q http://tinyurl.com/libncursesw-so-5 -O libncursesw.so.5
