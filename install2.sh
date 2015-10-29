@@ -100,8 +100,8 @@ sudo chmod 755 libtinfo.so.5
 sudo chmod 755 libncursesw.so.5
 
 cd $CBIN #Adds the "dialog" command to the bin
-sudo wget -q https://www.dropbox.com/s/9be2q324fxzlz00/dialog?raw=1 -O dialog
-
+sudo wget -q "https://www.dropbox.com/s/9be2q324fxzlz00/dialog?raw=1" -O dialog
+sudo chmod 755 dialog
 #This makes it so that whenever ctrl+alt+t is pressed, http://download1339.mediafire.com/1y9uo9vg87tg/54t1f8e7wcl5hta/libncursesw.so.5we launch directly into Cri
 cd $CBIN
 sudo mv cri /usr/bin/crosh 
