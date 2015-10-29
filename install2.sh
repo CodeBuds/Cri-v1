@@ -140,7 +140,7 @@ cd ~/Downloads
 sudo mkdir ~/Downloads/.tmp 2&>/dev/null
 echo >~/Downloads/.tmp/coms
 unset CTEMP
-writer "(echo y+) % apt-get install dialog+(echo y+) % apt-get install thunar+(echo y+) % apt-get install gnome-icon-theme-extras+(echo y+) % apt-get install gnome-icon-theme-full"
+writer "apt-get install dialog thunar gnome-icon-theme-extras gnome-icon-theme-full"
 sleep 0.5
 sudo enter-chroot -u root runner
 if ask "Done! Please restart your computer just to be safe, if you would like to, just hit y, if not press n"; then
