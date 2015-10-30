@@ -1307,11 +1307,11 @@ cmd_Xfix() (
   $CBIN/Xfix $@
 )
 
-#USAGE_ROOTMOUNT=''  #Hidden because root mounting is only required on the initial install
-#HELP_ROOTMOUNT=''   #Hidden because root mounting is only required on the initial install
-#cmd_unmount() (
- # /usr/bin/rootmount  
-#)
+USAGE_ROOTMOUNT=''  #Hidden because root mounting is only required on the initial install
+HELP_ROOTMOUNT=''   #Hidden because root mounting is only required on the initial install
+cmd_unmount() (
+  /usr/bin/rootmount  
+)
 
 #
 #This is the Shell command, typically exclusive to the developer console
