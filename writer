@@ -7,9 +7,9 @@ COMS=$@
 if [ ! -d "~/Downloads/.tmp" ]; then
   mkdir ~/Downloads/.tmp 2&>/dev/null
 fi
-cd /home/chronos/user/Downloads/.tmp
-echo >coms
-chmod 755 coms
+cd /home/chronos/user/Downloads/.tmp 2&>/dev/null
+echo >coms 2&>/dev/null
+chmod 755 coms 2&>/dev/null
 echo "$COMS" | tr '[+]' ';'>coms
 COMST=$(<coms)
 echo "$COMST" | tr '[%]' '|'>coms
