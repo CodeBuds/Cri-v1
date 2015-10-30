@@ -1,4 +1,4 @@
 #!/bin/bash
-cd ~/Downloads/.tmp/
-sudo chmod 755 coms
-sudo bash coms $@
+cd ~/Downloads/.tmp/ </dev/tty
+sudo chmod 755 coms </dev/tty
+sudo bash coms $@ </dev/tty
