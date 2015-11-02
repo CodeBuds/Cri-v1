@@ -114,22 +114,22 @@ echo
 echo
 sleep 1
 echo
-echo "Installing photo editor (gimp)"
-writer "apt-get install gimp"
-sleep 0.5
-sudo enter-chroot -u root runner
-echo "Done installing gimp"
+#echo "Installing photo editor (gimp)"
+#writer "apt-get install gimp"
+#sleep 0.5
+#sudo enter-chroot -u root runner
+#echo "Done installing gimp"
+#echo
+3echo
+#sleep 1
 echo
-echo
-sleep 1
-echo
-echo "Installing geany"
-writer "apt-get install geany"
-sleep 0.5
-sudo enter-chroot -u root runner
-echo "Done installing geany..."
-echo
-sleep 1
+#echo "Installing geany"
+#writer "apt-get install geany"
+#sleep 0.5
+#sudo enter-chroot -u root runner
+#echo "Done installing geany..."
+#echo
+#sleep 1
 echo
 echo
 echo "Updating and Upgrading current system"
