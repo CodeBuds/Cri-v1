@@ -55,12 +55,12 @@ writer "apt-get install openjdk-7-jre+apt-get install curl"
 sleep 0.5
 sudo enter-chroot -u root runner
 
-echo "Done now config for java 7..."
-writer "sed -i '$ a\deb http://www.duinsoft.nl/pkg debs all' /etc/apt/sources.list+sudo apt-key adv --keyserver keys.gnupg.net --recv-keys 5CB26B26+apt-get update+apt-get install update-sun-jre" 
-sleep 0.5
-sudo enter-chroot -u root runner
-echo "Installed java 7 (True version)...
-"
+#echo "Done now config for java 7..."
+#writer "sed -i '$ a\deb http://www.duinsoft.nl/pkg debs all' /etc/apt/sources.list+sudo apt-key adv --keyserver keys.gnupg.net --recv-keys 5CB26B26+apt-get update+apt-get install update-sun-jre" 
+#sleep 0.5
+#sudo enter-chroot -u root runner
+#echo "Installed java 7 (True version)...
+#"
 sleep 1
 echo
 echo "Installing NetLogo..."
