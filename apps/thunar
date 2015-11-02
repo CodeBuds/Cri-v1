@@ -1,4 +1,4 @@
 #!/bin/bash
 echo "Opening your files... Please hold"
-sudo enter-chroot -b -n precise xiwi thunar
+sudo enter-chroot -b -u root xiwi thunar
 echo "Ran file viewer"
