@@ -1,7 +1,7 @@
 #!/bin/bash
 echo "Updating and Upgrading all packages..."
 echo "This can take up to 6 minutes..."
-writer "(echo y+) % apt-get update -m --ignore-missing --fix-missing+(echo y+) % apt-get upgrade"
+writer "apt-get update -m --ignore-missing --fix-missing+apt-get upgrade"
 sleep 0.5
 sudo enter-chroot -u root runner
 echo "Done... Thanks for waiting"
