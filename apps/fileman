@@ -1,0 +1,4 @@
+#!/bin/bash
+dialog --title "text" --fselect /path/to/dir height width
+FILE=$(dialog --stdout --title "Please choose a file" --fselect $HOME/ 14 48)
+echo "${FILE} file chosen."
