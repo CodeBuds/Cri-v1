@@ -1216,9 +1216,7 @@ HELP_updatecri='
 '
 cmd_updatecri() (
   $CBIN/updatecri $@
-  echo "
-  Double Checking...
-  "
+  printf '\nDouble Checking...\n'
   $CBIN/updatecri $@
 )
 
