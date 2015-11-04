@@ -91,7 +91,7 @@ function install_app(){
 }
 
 function files_app(){
-	sudo enter-chroot -u root xiwi thunar
+	sudo enter-chroot -b -u root xiwi thunar
 	dialog --title "File Manager" --clear --msgbox "Attempted to run file manager.. Give me a couple of seconds" 7 30
 }
 
