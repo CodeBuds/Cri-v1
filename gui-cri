@@ -194,7 +194,7 @@ Search "Search app online by context" \
 Update "Update/Upgrade all apps and cri" \
 Stop "Stop all apps" \
 Files "A file explorer for chromebooks" \
-Shell "Go to the terminal" 2>"${INPUT}"
+Terminal "Go to the command line" 2>"${INPUT}"
 menuitem=$(<"${INPUT}")
 
 case $menuitem in
@@ -205,7 +205,7 @@ case $menuitem in
   	Update) update_app;;
   	Stop) stop_app;;
   	Files) files_app;;
-	Shell) break;;
+	Terminal) break;;
 esac
 done
 
