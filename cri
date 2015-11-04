@@ -1216,8 +1216,6 @@ HELP_updatecri='
 '
 cmd_updatecri() (
   $CBIN/updatecri $@
-  printf '\nDouble Checking...\n'
-  $CBIN/updatecri $@
 )
 
 USAGE_guicri=''
