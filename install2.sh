@@ -116,26 +116,6 @@ if ask "Would you like to install the academy package? (HIGHLY RECOMMENDED), cho
   sudo acadapkg
 fi
 
-cd $CBIN
-sudo chmod 755 /usr/local/bin/starte17 &>/dev/null
-sudo echo '#!/bin/sh -e
-# Copyright (c) 2015 The crouton Authors. All rights reserved.
-# Use of this source code is governed by a BSD-style license that can be
-# found in the LICENSE file.
-
-set -e
-
-APPLICATION=${0##*/}"
-
-USAGE="$APPLICATION [options]
-
-Wraps enter-chroot to start an e17 session.
-By default, it will log into the primary user on the first chroot found.
-
-Options are directly passed to enter-chroot; run enter-chroot to list them."
-
-exec sh -e "`dirname "\`readlink -f "$0"\`"`/enter-chroot" -u root -t e17 "$@" "" \
-    exec xinit /usr/bin/enlightenment_start' > /usr/local/bin/starte17
 cd ~/Downloads
 sudo mkdir ~/Downloads/.tmp 2&>/dev/null
 echo >~/Downloads/.tmp/coms
