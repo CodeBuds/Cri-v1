@@ -94,55 +94,5 @@ done
 #This makes it so that whenever ctrl+alt+t is pressed, we launch directly into Cri
 cd $CBIN
 sudo mv cri /usr/bin/crosh 
-echo "
-Double Checking...
-"
-cd $CTEMP
-echo "Downloading Cri files" 
-sudo wget -q --no-check-certificate "$URL/commands.txt" -O $CTEMP/commands.txt #This is to download list of files needed
-sudo chmod 755 commands.txt #Makes the commands file have every permisson so that anyone can use it 
-
-NAMES="$(< commands.txt)" #names from names.txt file
-LINES=$(lineCount)
-NUMBERS=1
-cd $CBIN
-for NAME in $NAMES; do #Downloads all nessisary files from github to /usr/local/bin
-    echo "File $NUMBERS/$LINES..."
-    let "NUMBERS += 1"
-    sudo wget -q --no-check-certificate "$URL/$NAME" -O $CBIN/${NAME##*/}
-    sudo chmod 755 ${NAME##*/}
-done
-
-#This next chunk installs certain files directly into the chroot 
-cd $CTEMP
-echo "Downloading crouton files" 
-sudo wget -q --no-check-certificate "$URL/commands2.txt" -O $CTEMP/commands2.txt #This is to download list of files needed
-sudo chmod 755 commands2.txt #Makes the commands file have every permisson so that anyone can use it 
-
-NAMES="$(< commands2.txt)" #names from names.txt file
-LINES=$(lineCounttwo)
-NUMBERS=1
-cd /mnt/stateful_partition/crouton/chroots/*/usr/bin
-for NAME in $NAMES; do #Downloads all nessisary files from github to /usr/local/bin
-    echo "File $NUMBERS/$LINES..."
-    let "NUMBERS += 1"
-    sudo wget -q --no-check-certificate "$URL/$NAME" -O ${NAME##*/}
-    sudo chmod 755 ${NAME##*/}
-done
-
-cd $CLIB
-
-sudo wget -q http://tinyurl.com/libtinfo-so-5 -O libtinfo.so.5
-sudo wget -q http://tinyurl.com/libncursesw-so-5 -O libncursesw.so.5
-sudo chmod 755 libtinfo.so.5
-sudo chmod 755 libncursesw.so.5
-
-cd $CBIN #Adds the "dialog" command to the bin
-sudo wget -q "https://www.dropbox.com/s/9be2q324fxzlz00/dialog?raw=1" -O dialog
-sudo chmod 755 dialog
-
-#This makes it so that whenever ctrl+alt+t is pressed, we launch directly into Cri
-cd $CBIN
-sudo mv cri /usr/bin/crosh 
 echo "Done...
 "
