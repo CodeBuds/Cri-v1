@@ -1,11 +1,10 @@
 #!/bin/bash
 
-CBIN=/usr/local/bin
+CBIN=/usr/bin/cri
 CLIB=/usr/lib64
 URL="https://raw.github.com/CodeBuds/Cri/master"
 CTEMP=~/Downloads/.tmp #Keep this set to the .tmp so that nothing gets deleted
 CROUBIN=/mnt/stateful_partition/crouton/chroots/precise/usr/bin
-MEDURL="http://www.mediafire.com/download"
 
 echo "Welcome to the second part of the installation"
 echo "Developed by David Smerkous and Eli Smith"
