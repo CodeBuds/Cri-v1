@@ -111,7 +111,7 @@ if ask "Would you like to fix the current config file? (RECOMMENDED)"; then #Fix
   sudo fixconfig
 fi
 
-if ask "Would you like to install the academy package? (HIGHLY RECOMMENDED), choose yes for list of packages"; then
+if ask "Would you like to install the academy package? (HIGHLY RECOMMENDED)"; then
   sudo acadapkg
 fi
 
