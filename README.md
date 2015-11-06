@@ -1,5 +1,5 @@
 # Cri
-###Chrome Graphical Interface (Beta)
+###Chrome Graphical Interface (Stable)
 #####Developed by David Smerkous and Eli smith
 This is a *very* capable tool that utilizes the tool Crouton built and designed for chromebooks<br>
 It is required to have the app <a href="https://chrome.google.com/webstore/detail/crouton-integration/gcpneefbbnfalgjniomfjknbcgkbijom" target="_new">Crouton integration</a> for anything to work.<br>
@@ -16,10 +16,6 @@ Then, after that is done and you have ran 'rootmount' run this command in shell 
 NOTE: you must reboot for the second part of the install to actually work<br>
 
     wget -q -O - https://raw.github.com/CodeBuds/Cri/master/install2.sh | bash
-
-
-####NOTE: REMOVING SOME PACKAGES FROM ACADAPKG.... (such as netlogo...) you will have to manually install using crishell then 'sudo enter-chroot'
-#######Please message me (Email below) if you recieve a UID 1000 error
 _______
 #####Usage
 Here is a list of all the commands that can be used in cri, you can see most updated with 'help'<br>
