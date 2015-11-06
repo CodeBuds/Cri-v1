@@ -7,7 +7,7 @@
 #This is just to clear the screen of all clutter
 clear
 echo "If you hang up here press Ctrl+c"
-sudo bash /usr/bin/cri/gui-cri
+sudo bash /usr/bin/gui-cri
 clear
 # NOTE: This script works in dash, but is not as featureful.  Specifically,
 # dash omits readline support (history & command line editing).  So we try
