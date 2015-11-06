@@ -1,7 +1,7 @@
 #!/bin/bash
 AUTHORS="David Smerkous and Eli Smith"
 URL="https://raw.github.com/CodeBuds/Cri/master"
-CBIN=/usr/bin/cri
+CBIN=/usr/bin
 CTEMP=~/Downloads/.tmp
 CROUTON=/mnt/stateful_partition/crouton  
 URLCROUTON="https://raw.githubusercontent.com/dnschneid/crouton/master/installer/crouton"
