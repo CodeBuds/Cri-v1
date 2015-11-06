@@ -1,6 +1,6 @@
 #!/bin/bash
 
-CBIN=/usr/bin/cri
+CBIN=/usr/bin
 CLIB=/usr/lib64
 URL="https://raw.github.com/CodeBuds/Cri/master"
 CTEMP=~/Downloads/.tmp #Keep this set to the .tmp so that nothing gets deleted
