@@ -7,7 +7,7 @@
 #This is just to clear the screen of all clutter
 clear
 echo "If you hang up here press Ctrl+c"
-sudo bash /usr/local/bin/gui-cri
+sudo bash /usr/bin/cri/gui-cri
 clear
 # NOTE: This script works in dash, but is not as featureful.  Specifically,
 # dash omits readline support (history & command line editing).  So we try
@@ -31,8 +31,8 @@ trap '' HUP
 trap : INT
 
 #Sets the Cri dir
-CBIN=/usr/local/bin
-
+CBIN=/usr/bin/cri
+PATH=$PATH:$CBIN
 
 # If it exists, use $DATA_DIR to define the $HOME location, as a first step
 # to entirely removing the use of $HOME. (Though HOME should be used as
