@@ -8,7 +8,7 @@ part ()
   sudo mount -o remount,rw /
   echo
   sleep 1
-  echo "If this is your second time running rootmount, you're done!
+  echo "If this is your second (Succesful) time running rootmount, you're done!
   Now please run wget https://raw.github.com/CodeBuds/Cri/master/install2.sh | bash
   "
   sleep 0.5
