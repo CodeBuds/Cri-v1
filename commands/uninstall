@@ -33,7 +33,6 @@ ask() {
 if ask "Are you sure you want to completely remove Cri, xiwi, and crouton?"; then
     sudo chown chronos:chronos /mnt/stateful_partitions/crouton
     sudo delete-chroot -a -y
-    sudo rm -rf /usr/local/bin
     sudo rm -rf /usr/local/chroots/*
     sudo rm -rf /mnt/stateful_partitions/crouton
     sudo rm -rf /usr/bin/cri
