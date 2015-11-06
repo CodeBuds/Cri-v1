@@ -1,7 +1,7 @@
 #!/bin/bash
 #This file has not been fully implimented yet, use at own risk
 echo "This file has not been fully implimented yet, use at own risk"
-CBIN=/usr/local/bin
+CBIN=/usr/bin
 CTEMP=~/Downloads/.tmp
 URLCROUTON="https://raw.githubusercontent.com/dnschneid/crouton/master/installer/crouton"
 
@@ -41,7 +41,6 @@ fi
 
 sudo delete-chroot -a -y 
 sudo chown chronos:chronos /mnt/stateful_partitions/crouton
-sudo rm -rf $CBIN
 sudo rm -rf $CTEMP
 sudo rm -rf /usr/local/chroots/*
 sudo rm -rf /mnt/stateful_partitions/crouton
@@ -52,11 +51,7 @@ mkdir $CTEMP
 cd $CTEMP
 sudo wget -q --no-check-certificate $URLCROUTON -O $CTEMP/crouton
     sudo chmod 755 crouton
-sudo sh crouton -t xiwi,extension,e17
-
-if [ ! -d "/usr/local/bin" ]; then
-	sudo mkdir /usr/local/bin
-fi 
+sudo sh crouton -t xiwi,extension
 
 echo "ReDownloading files"
 sudo wget -q --no-check-certificate "$URL/commands.txt" -O $CTEMP/commands.txt
