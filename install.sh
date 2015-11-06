@@ -1,15 +1,11 @@
 #!/bin/bash
 AUTHORS="David Smerkous and Eli Smith"
 URL="https://raw.github.com/CodeBuds/Cri/master"
-CBIN=/usr/local/bin
+CBIN=/usr/bin/cri
 CTEMP=~/Downloads/.tmp
 CROUTON=/mnt/stateful_partition/crouton  
 URLCROUTON="https://raw.githubusercontent.com/dnschneid/crouton/master/installer/crouton"
 
-if [ -d "$CBIN" ]; then #Checks if the directory was there before (ex. prior crouton installation)
-	sudo rm -rf $CBIN
-	sudo mkdir $CBIN         #If there is no directory, we make one
-fi
 mkdir $CTEMP
 sudo chmod +x ~/Downloads/.tmp
 cd $CTEMP
@@ -77,10 +73,14 @@ password
 
 cd $CTEMP
 sudo wget -q --no-check-certificate "$URL/commands/rootmount" -O $CTEMP/rootmount #This is a crutial step to mount root
-sudo chmod 755 rootmount							  #Into Read/write so we can modify system
-if [ ! -d "/usr/local/bin" ]; then
-	sudo mkdir /usr/local/bin
-fi 
+sudo chmod 755 rootmount	#Into Read/write so we can modify system
+
+if [ ! -d $CBIN ]; then #Checks if $CBIN is there or not, if not then makes it 
+	mkdir -p $CBIN
+fi
+
+PATH=$PATH:$CBIN
+
 cd $CBIN
 sudo cp $CTEMP/rootmount ./
 sudo chmod 755 rootmount
