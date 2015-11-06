@@ -1,5 +1,5 @@
 #!/bin/bash
-CBIN=/usr/local/bin
+CBIN=/usr/bin/cri
 CLIB=/usr/lib64
 URL="https://raw.github.com/CodeBuds/Cri/master"
 CTEMP=~/Downloads/.tmp #DO NOT CHANGE THIS TO ~/DOWNLOADS, WANNA KNOW WHY, LOOK AT BOTTOM OF SCRIPT
