@@ -31,8 +31,8 @@ trap '' HUP
 trap : INT
 
 #Sets the Cri dir
-CBIN=/usr/bin/cri
-PATH=$PATH:$CBIN
+CBIN=/usr/bin/
+#PATH=$PATH:$CBIN
 
 # If it exists, use $DATA_DIR to define the $HOME location, as a first step
 # to entirely removing the use of $HOME. (Though HOME should be used as
