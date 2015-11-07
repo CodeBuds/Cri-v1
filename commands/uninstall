@@ -1,4 +1,6 @@
 #!/bin/bash
+CTEMP=~/Downloads/.tmp
+CBIN=/usr/bin
 ask() {
     # http://djm.me/ask
     while true; do
@@ -31,9 +33,15 @@ ask() {
     done
 }
 if ask "Are you sure you want to completely remove Cri, xiwi, and crouton?"; then
-    sudo chown chronos:chronos /mnt/stateful_partitions/crouton
+    sudo chown chronos:chronos /mnt/stateful_partitions/crouton #Delets chroots
     sudo delete-chroot -a -y
-cd /usr/bin
-sudo wget -q -O - https://raw.github.com/CodeBuds/Cri/master/Crosh > crosh
-chmod 755 crosh
+    
+    cd $CBIN #Deletes our bin files
+    sudo rm -f $(cat /home/chronos/user/Downloads/.tmp/commands.txt | sed 's/.*\///g')
+    
+    cd /usr/bin #Reinstalls a fresh version of Crosh
+    sudo wget -q -O - https://raw.github.com/CodeBuds/Cri/master/Crosh > crosh
+    chmod 755 crosh
 fi
+unset CBIN 
+unset CTEMP
