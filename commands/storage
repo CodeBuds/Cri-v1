@@ -1,6 +1,6 @@
 #!/bin/bash
-STORE=$(sudo du -hsc / 2>/dev/null | sed -n '2p')
-TOTAL=$(echo $STORE | sed "s/[^[:digit:].-]//g")
-TOTAL=$(awk -v TOTAL=$TOTAL 'BEGIN{print "16"-TOTAL'})
-TOTAL=$TOTAL"G left"
-echo $TOTAL
+HDSIZE=$(sudo fdisk -l | grep Disk | sed -n '2p' | cut -f3 -d\  )
+USED=$(sudo du -hsc / 2>/dev/null | sed -n '2p' | cut -f1 | sed 's/[^0-9]//g')
+LEFT=$(awk -v HDSIZE=$HDSIZE -v USED=$USED 'BEGIN {print HDSIZE-USED}')
+echo "${LEFT}G left
+${USED}G used out of ${HDSIZE}G"
