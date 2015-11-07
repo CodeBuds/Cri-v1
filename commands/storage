@@ -1,6 +1,6 @@
 #!/bin/bash
 STORE=$(sudo du -hsc / 2>/dev/null | sed -n '2p')
-TOTAL=$(echo $STORE | sed 's/[^0-9]//g')
-TOTAL=$(expr 16 - $TOTAL)
+TOTAL=$(echo $STORE | sed "s/[^[:digit:].-]//g")
+TOTAL=$(awk -v TOTAL=$TOTAL 'BEGIN{print "16"-TOTAL'})
 TOTAL=$TOTAL"G left"
 echo $TOTAL
