@@ -1313,6 +1313,13 @@ cmd_unmount() (
   /usr/bin/rootmount  
 )
 
+USAGE_STORAGE=''
+HELP_STORAGE='
+Use this command to see how much storage you have left on your device
+'
+cmd_storage() (
+  /usr/bin/storage  
+)
 #
 #This is the Shell command, typically exclusive to the developer console
 #We've made it accessible to anyone through crosh with an alternate hiden name 
