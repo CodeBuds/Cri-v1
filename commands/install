@@ -5,7 +5,7 @@ if [ ! -e ~/Downloads/.tmp/packages.txt ]; then
 fi
 echo "Trying to install... $NAME"
 echo "Please be patient... (Time depends on size of package)"
-cd ~/Downloads/.tmp
+cd /home/chronos/user/Downloads/.tmp
 if grep -q $@ packages.txt; then
   echo "package already exists, try running it with 'run <package name>'"
 else
