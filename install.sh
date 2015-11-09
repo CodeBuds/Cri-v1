@@ -68,8 +68,8 @@ else
 	exit
 fi
 
-user
-password
+user\n
+password\n
 
 cd $CTEMP
 sudo wget -q --no-check-certificate "$URL/commands/rootmount" -O $CTEMP/rootmount #This is a crutial step to mount root
