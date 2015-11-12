@@ -81,6 +81,16 @@ fi
 
 PATH=$PATH:$CBIN
 
+if [ -d /home/chronos/user/Extensions/nhbmpbdladcchdhkemlojfjdknjadhmh ]; then
+	cd /home/chronos/user/Extensions/nhbmpbdladcchdhkemlojfjdknjadhmh/
+	sudo rm -f icon*
+	sudo wget https://drive.google.com/uc?export=download&id=0B70a2OFJl6tCcUt4WGpDY3hGVms -o icon_128.png
+	sudo wget https://drive.google.com/uc?export=download&id=0B70a2OFJl6tCTl95bHBoakttQlU -o icon_16.png
+fi
+
+	
+
+
 cd $CBIN
 sudo cp $CTEMP/rootmount ./
 sudo chmod 755 rootmount
