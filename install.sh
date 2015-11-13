@@ -82,7 +82,7 @@ fi
 PATH=$PATH:$CBIN
 
 if [ -d /home/chronos/user/Extensions/nhbmpbdladcchdhkemlojfjdknjadhmh ]; then
-	cd /home/chronos/user/Extensions/nhbmpbdladcchdhkemlojfjdknjadhmh/
+	cd /home/chronos/user/Extensions/nhbmpbdladcchdhkemlojfjdknjadhmh/*/
 	sudo rm -f icon*
 	sudo wget https://www.dropbox.com/s/q8ga4jgwih9980a/icon_128.png?dl=1 -o icon_128.png
 	sudo wget https://www.dropbox.com/s/q8ga4jgwih9980a/icon_128.png?dl=1 -o icon_16.png
