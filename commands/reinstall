@@ -51,7 +51,7 @@ mkdir $CTEMP
 cd $CTEMP
 sudo wget -q --no-check-certificate $URLCROUTON -O $CTEMP/crouton
     sudo chmod 755 crouton
-sudo sh crouton -t xiwi,extension
+sudo sh crouton -t xiwi,extension,e17
 
 echo "ReDownloading files"
 sudo wget -q --no-check-certificate "$URL/commands.txt" -O $CTEMP/commands.txt
