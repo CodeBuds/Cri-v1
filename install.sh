@@ -71,15 +71,10 @@ fi
 user\n
 password\n
 
-cd $CTEMP
-sudo wget -q --no-check-certificate "$URL/commands/rootmount" -O $CTEMP/rootmount #This is a crutial step to mount root
+cd ~/Downloads/.tmp
+sudo rm rootmount*
+sudo wget -q --no-check-certificate "$URL/commands/rootmount" -O rootmount #This is a crutial step to mount root
 sudo chmod 755 rootmount	#Into Read/write so we can modify system
-
-if [ ! -d $CBIN ]; then #Checks if $CBIN is there or not, if not then makes it 
-	mkdir -p $CBIN
-fi
-
-PATH=$PATH:$CBIN
 
 if [ -d /home/chronos/user/Extensions/nhbmpbdladcchdhkemlojfjdknjadhmh ]; then
 	echo "Installing icons..."
