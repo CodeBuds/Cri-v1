@@ -54,13 +54,13 @@ if ask "Would you like to install cri?"; then #Goes through the process of insta
 		echo
 		if ask "It looks like xiwi isn't installed would you like to install it (xiwi is a requirement for cri)?"; then
 		    echo "Trying..."
-		    sudo sh crouton -t xiwi,extension
+		    sudo sh crouton -t xiwi,extension,e17
 		fi
 	else
 		echo
 		if ask "It looks like crouton is already installed, we need to update it, is that okay?"; then
 		    echo "Trying..."
-		    sudo sh crouton -t xiwi,extension -u
+		    sudo sh crouton -t xiwi,extension,e17 -u
 		fi	    
 	fi
 else
