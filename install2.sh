@@ -117,7 +117,7 @@ fi
 
 cd ~/Downloads
 sudo mkdir ~/Downloads/.tmp 2&>/dev/null
-echo >~/Downloads/.tmp/coms
+sudo echo >~/Downloads/.tmp/coms
 sudo chown chronos:chronos ./.tmp/coms
 unset CTEMP
 writer "apt-get install dialog thunar gnome-icon-theme-extras gnome-icon-theme-full"
