@@ -93,8 +93,8 @@ fi
 	
 
 
-cd $CBIN
-sudo cp $CTEMP/rootmount ./
+cd /usr/local/bin
+sudo cp $CTEMP/rootmount /usr/local/bin/
 sudo chmod 755 rootmount
 if ask "Would you like to mount as root(Required if not done)?"; then
    rootmount			   #This actually mounts the system to RW, must be done twice, once before reboot, once after
