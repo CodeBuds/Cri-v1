@@ -78,10 +78,16 @@ sudo enter-chroot -u root runner
 sleep 1
 echo "Done"
 echo "Installing processing"
-writer cd /root/Downloads/.tmp/+wget http://download.processing.org/processing-3.0-linux64.tgz+tar xzf processing-3.0-linux64.tgz+rm processing-3.0-linux64.tgz+mv processing-3.0 /root/processing+chmod 755 /root/processing/processing
+writer cd /root/Downloads/.tmp/+wget http://download.processing.org/processing-3.0-linux64.tgz+tar -xzf processing-3.0-linux64.tgz+rm processing-3.0-linux64.tgz+mv processing-3.0 /root/processing+chmod 755 /root/processing/processing
 sleep 0.5
 sudo enter-chroot -u root runner
-echo "Done...
+echo "Done..."
+
+echo "Installing Logger"
+writer cd /root/Downloads/.tmp/+wget http://www.vernier.com/files/downloads/LPL-3846-64.tar.gz+tar -xzf LPL-3846-64.tar.gz+gdebi -n vstdrivers_1.5.1.1_amd64.deb+gdebi -n vstloggerpro_3.8.4.6_amd64.deb+ln -sf /lib/x86_64-linux-gnu/libudev.so.0 /lib/x86_64-linux-gnu/libudev.so.1
+sleep 0.5
+sudo enter-chroot -u root runner
+echo "Done... use loggerpro to run"
 
 Need extra tools
 "
