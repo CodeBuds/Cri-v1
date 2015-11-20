@@ -33,14 +33,14 @@ part ()
   echo
   sleep 1
   echo "If this is your second (Succesful) time running rootmount, you're done!
-  Now please run wget https://raw.github.com/CodeBuds/Cri/master/install2.sh | bash
+  Now please run wget -q -O - https://raw.github.com/CodeBuds/Cri/master/install2.sh | bash
   "
   sleep 0.5
   echo
   sleep 0.5
   echo
   sleep 0.5
- if ask "Finished! Would you like to reboot now (If no, you will need to later)?"; then
+ if ask "Finished! Would you like to reboot now (HIGHLY RECCOMENDED!)(If no, you will need to later)?"; then
     sudo reboot
  fi
   
