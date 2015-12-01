@@ -64,7 +64,7 @@ sudo enter-chroot -u root runner
 sleep 1
 echo
 echo "Installing NetLogo..."
-writer cd /root/Downloads/.tmp/+wget https://ccl.northwestern.edu/netlogo/5.2.1/netlogo-5.2.1.tar.gz+tar xzf netlogo-5.2.1.tar.gz+rm netlogo-5.2.1.tar.gz+mv netlogo-5.2.1 /root/netlogo+chmod 755 /root/netlogo/netlogo.sh
+writer cd /root/Downloads/.tmp/+wget -q https://ccl.northwestern.edu/netlogo/5.2.1/netlogo-5.2.1.tar.gz+tar xzf netlogo-5.2.1.tar.gz+rm netlogo-5.2.1.tar.gz+mv netlogo-5.2.1 /root/netlogo+chmod 755 /root/netlogo/netlogo.sh
 sleep 0.5
 sudo enter-chroot -u root runner
 #writer wget https://raw.github.com/CodeBuds/Cri/master/commands/netlogo && sudo chmod +x netlogo+mv netlogo /usr/bin
@@ -72,19 +72,19 @@ sudo enter-chroot -u root runner
 #sudo enter-chroot -u root runner
 echo "Done"
 echo "Installing energia"
-writer cd /root/Downloads/.tmp/+wget http://energia.nu/downloads/downloadv3.php?file=energia-0101E0016-linux64.tgz+tar xzf downloadv3.php?file=energia-0101E0016-linux64.tgz+rm downloadv3.php?file=energia-0101E0016-linux64.tgz+mv energia-0101E0016 /root/energia+chmod 755 /root/energia/energia-0101E0016/energia
+writer cd /root/Downloads/.tmp/+wget -q http://energia.nu/downloads/downloadv3.php?file=energia-0101E0016-linux64.tgz+tar xzf downloadv3.php?file=energia-0101E0016-linux64.tgz+rm downloadv3.php?file=energia-0101E0016-linux64.tgz+mv energia-0101E0016 /root/energia+chmod 755 /root/energia/energia-0101E0016/energia
 sleep 0.5
 sudo enter-chroot -u root runner
 sleep 1
 echo "Done"
 echo "Installing processing"
-writer cd /root/Downloads/.tmp/+wget http://download.processing.org/processing-3.0-linux64.tgz+tar -xzf processing-3.0-linux64.tgz+rm processing-3.0-linux64.tgz+mv processing-3.0 /root/processing+chmod 755 /root/processing/processing
+writer cd /root/Downloads/.tmp/+wget -q http://download.processing.org/processing-3.0-linux64.tgz+tar -xzf processing-3.0-linux64.tgz+rm processing-3.0-linux64.tgz+mv processing-3.0 /root/processing+chmod 755 /root/processing/processing
 sleep 0.5
 sudo enter-chroot -u root runner
 echo "Done..."
 
 echo "Installing Logger"
-writer cd /root/Downloads/.tmp/+wget http://www.vernier.com/files/downloads/LPL-3846-64.tar.gz+tar -xzf LPL-3846-64.tar.gz+gdebi -n vstdrivers_1.5.1.1_amd64.deb+gdebi -n vstloggerpro_3.8.4.6_amd64.deb+ln -sf /lib/x86_64-linux-gnu/libudev.so.0 /lib/x86_64-linux-gnu/libudev.so.1
+writer cd /root/Downloads/.tmp/+wget -q http://www.vernier.com/files/downloads/LPL-3846-64.tar.gz+tar -xzf LPL-3846-64.tar.gz+gdebi -n vstdrivers_1.5.1.1_amd64.deb+gdebi -n vstloggerpro_3.8.4.6_amd64.deb+ln -sf /lib/x86_64-linux-gnu/libudev.so.0 /lib/x86_64-linux-gnu/libudev.so.1
 sleep 0.5
 sudo enter-chroot -u root runner
 echo "Done... use loggerpro to run"
