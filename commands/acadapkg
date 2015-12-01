@@ -89,6 +89,7 @@ sleep 0.5
 sudo enter-chroot -u root runner
 echo "Done... use loggerpro to run"
 
+echo "
 Need extra tools
 "
 writer "sudo apt-get install software-properties-common python-software-properties"
