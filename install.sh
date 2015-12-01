@@ -45,27 +45,13 @@ lineCount()			   #This is used to count the number of lines in the commands.txt 
 }
 
 cd $CTEMP
-if ask "Would you like to install cri?"; then #Goes through the process of installing crouton 
-	echo "Preparing for installation..."
-	echo
-	sudo wget -q --no-check-certificate $URLCROUTON -O $CTEMP/crouton
-	sudo chmod 755 crouton
-	if [ ! -d "$CROUTON" ]; then
-		echo
-		if ask "It looks like xiwi isn't installed would you like to install it (xiwi is a requirement for cri)?"; then
-		    echo "Trying..."
-		    sudo sh crouton -t xiwi,extension,e17
-		fi
-	else
-		echo
-		if ask "It looks like crouton is already installed, we need to update it, is that okay?"; then
-		    echo "Trying..."
-		    sudo sh crouton -t xiwi,extension,e17 -u
-		fi	    
-	fi
+sudo wget -q --no-check-certificate $URLCROUTON -O $CTEMP/crouton
+sudo chmod 755 crouton
+echo "Downloading...."
+if [ ! -d "$CROUTON" ]; then #Installs crouton
+	    sudo sh crouton -t xiwi,extension,e17
 else
-	echo "Exiting..."
-	exit
+	    sudo sh crouton -t xiwi,extension,e17 -u
 fi
 
 user\n
