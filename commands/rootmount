@@ -40,7 +40,7 @@ part ()
   sleep 0.5
   echo
   sleep 0.5
- if ask "Finished! Would you like to reboot now (HIGHLY RECCOMENDED!)(If no, you will need to later)?"; then
+ if ask "We need to reboot, please stand by. After reboot please continue instruction on the github page. Press 'y' when ready"; then
     sudo reboot
  fi
   
