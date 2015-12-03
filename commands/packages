@@ -1,0 +1,3 @@
+#!/bin/bash
+sudo writer "dpkg --get-selections | grep -v deinstall | cut -f1 | sed 's/lib*//g' | sed '/x[so]/d'"
+sudo enter-chroot -u root runner
