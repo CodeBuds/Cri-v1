@@ -1,6 +1,7 @@
 # Cri
 ###Chrome Graphical Interface (Stable)
 #####Developed by David Smerkous and Eli smith
+#####(This has only been tested on CB30-A3120 Toshiba Chromebook and Toshiba Chromebook 2)
 This is a *very* capable tool that utilizes the tool Crouton built and designed for chromebooks<br>
 It is required to have the app <a href="https://chrome.google.com/webstore/detail/crouton-integration/gcpneefbbnfalgjniomfjknbcgkbijom" target="_new">Crouton integration</a> for anything to work.<br>
 It is also recommended that you install the <a href="https://chrome.google.com/webstore/detail/crosh-window/nhbmpbdladcchdhkemlojfjdknjadhmh">Crosh Window</a> Extention for quick access. <br >
