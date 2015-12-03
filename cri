@@ -1316,9 +1316,18 @@ cmd_Xfix() (
 
 USAGE_ROOTMOUNT=''  #Hidden because root mounting is only required on the initial install
 HELP_ROOTMOUNT=''   #Hidden because root mounting is only required on the initial install
-cmd_unmount() (
+cmd_rootmount() (
   /usr/bin/rootmount  
 )
+
+USAGE_PACKAGES=''
+HELP_packages='
+Used to list installed local packages
+'
+
+cmd_packages() (
+  $CBIN/packages 
+  )
 
 USAGE_STORAGE=''
 HELP_STORAGE='
