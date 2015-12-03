@@ -628,6 +628,10 @@ cmd_ping() (
   debugd_poll Ping "fd:1" "string:${dest}" "${option%,}"
 )
 
+cmd_jaffa() (
+  echo Jaffa Kree!
+  )
+
 USAGE_chaps_debug='[start|stop|<log_level>]'
 HELP_chaps_debug='
   Sets the chapsd logging level.  No arguments will start verbose logging.
