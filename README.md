@@ -47,10 +47,15 @@ Unmount, unmounts ubuntu system<br>
     unmount
 Uninstall, ONLY uninstalls crouton-core and xiwi (Cri will stick)<br>
 
+    packages 
+Lists locally installed packages<br>
+
     uninstall
-Crishell, opens the shell, just renamed to crishell<br>
+Uninstalls everything
 
     crishell
+Crishell, opens the shell, just renamed to crishell<br>
+
 #####Contact information
-Eli Smith: plunkinguitar@gmail.com <br>
-David Smerkous: smerkousdavid@gmail.com <br>
+######Eli Smith: plunkinguitar@gmail.com <br>
+######David Smerkous: smerkousdavid@gmail.com <br>
