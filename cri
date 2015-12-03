@@ -61,8 +61,11 @@ try_bash() {
 try_bash "$@"
 
 INTRO_TEXT="Welcome to the Chrome graphical interface, also known as Cri
+
 This interface was developed by $AUTHORS
+
 Here you are able to run basic commands as well as download and run Ubuntu packages
+
 Type 'help' for a list of commands.
 "
 
