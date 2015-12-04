@@ -21,6 +21,7 @@ NOTE: you must reboot for the second part of the install to actually work<br>
 _______
 #####Usage
 Here is a list of all the commands that can be used in cri, you can see most updated with 'help'<br>
+<br>
 Install, to refrence use same application name as apt-get, this installs a graphical application<br>
 
     install <Ubuntu package name>
@@ -45,16 +46,17 @@ Updatecri, updates cri packages and pulls from git(Must be connected to internet
 Unmount, unmounts ubuntu system<br>
 
     unmount
-Uninstall, ONLY uninstalls crouton-core and xiwi (Cri will stick)<br>
-
-    packages 
 Lists locally installed packages<br>
 
+    packages 
+
+Uninstalls everything<br>
+
     uninstall
-Uninstalls everything
+Crishell, opens the shell, just renamed to crishell<br>
 
     crishell
-Crishell, opens the shell, just renamed to crishell<br>
+
 
 #####Contact information
 ######Eli Smith: plunkinguitar@gmail.com <br>
