@@ -25,41 +25,52 @@ wget -q -O - https://raw.github.com/CodeBuds/Cri/master/install2.sh | bash
 ```
 _______
 ##### Usage
-Here is a list of all the commands that can be used in cri, you can see most updated with 'help'
-Install, to reference use same application name as apt-get, this installs a graphical application<br>
+Here is a list of all the commands that can be used in cri
 
-    install <Ubuntu package name>
-Search, use same reference as above, this lists all similar packages and descriptions<br>
-
-    search <Ubuntu package name>
-Remove, use same reference as above, this removes specified packages<br>
-
-    remove <Ubuntu package name>
-Run, use same reference as above, run the graphical package<br>
-
-    run <Ubuntu package name>
-Stop, Stops all ubuntu processes<br>
-
-    stop
-Update, updates and upgrades ubuntu system<br>
-
-    update
-Updatecri, updates cri packages and pulls from git(Must be connected to internet or it will mess up)<br>
-
-    updatecri
-Unmount, unmounts ubuntu system<br>
-
-    unmount
-Lists locally installed packages<br>
-
-    packages
-
-Uninstalls everything<br>
-
-    uninstall
-Crishell, opens the shell, just renamed to crishell<br>
-
-    crishell
+Install a package using apt-get
+```Shell
+install <Ubuntu package name>
+```
+Search for a package
+```Shell
+search <Ubuntu package name>
+```
+Remove a package
+```Shell
+remove <Ubuntu package name>
+```
+Run a package
+```Shell
+run <Ubuntu package name>
+```
+Stop all processes
+```Shell
+stop
+```
+Update and upgrade the Ubuntu system<br>
+``Shell
+update
+```
+Update cri packages and pull from git(Must be connected to internet or it will mess up)
+```
+updatecri
+```
+Unmount the Ubuntu system
+```Shell
+unmount
+```
+List locally installed packages
+```Shell
+packages
+```
+Uninstall everything
+```Shell
+uninstall
+```
+Opens the shell, just renamed to crishell
+```Shell
+crishell
+```
 
 
 ##### Contact information
