@@ -26,21 +26,21 @@ wget -q -O - https://raw.github.com/CodeBuds/Cri/master/install2.sh | bash
 _______
 ##### Usage
 Here is a list of all the commands that can be used in cri, you can see most updated with 'help'
-Install, to refrence use same application name as apt-get, this installs a graphical application<br>
+Install, to reference use same application name as apt-get, this installs a graphical application<br>
 
     install <Ubuntu package name>
-Search, use same refrence as above, this lists all similar packages and descriptions<br>
+Search, use same reference as above, this lists all similar packages and descriptions<br>
 
     search <Ubuntu package name>
-Remove, use same refrence as above, this removes specified packages<br>
+Remove, use same reference as above, this removes specified packages<br>
 
     remove <Ubuntu package name>
-Run, use same refrence as above, run the graphical package<br>
+Run, use same reference as above, run the graphical package<br>
 
     run <Ubuntu package name>
 Stop, Stops all ubuntu processes<br>
 
-    stop 
+    stop
 Update, updates and upgrades ubuntu system<br>
 
     update
@@ -52,7 +52,7 @@ Unmount, unmounts ubuntu system<br>
     unmount
 Lists locally installed packages<br>
 
-    packages 
+    packages
 
 Uninstalls everything<br>
 
