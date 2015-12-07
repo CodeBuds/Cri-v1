@@ -48,11 +48,11 @@ Stop all processes
 stop
 ```
 Update and upgrade the Ubuntu system<br>
-``Shell
+```Shell
 update
 ```
 Update cri packages and pull from git(Must be connected to internet or it will mess up)
-```
+```Shell
 updatecri
 ```
 Unmount the Ubuntu system
