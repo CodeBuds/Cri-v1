@@ -2,20 +2,7 @@
 URL="https://raw.github.com/CodeBuds/Cri/master"
 ask() {
     while true; do
-        if [ "${2:-}" = "Y" ]; then
-            prompt="Y/n"
-            default=Y
-        elif [ "${2:-}" = "N" ]; then
-            prompt="y/N"
-            default=N
-        else
-            prompt="y/n"
-            default=
-        fi
         read -p "$1 [$prompt] " REPLY </dev/tty
-        if [ -z "$REPLY" ]; then
-            REPLY=$default
-        fi
         case "$REPLY" in
             Y*|y*) return 0 ;;
             N*|n*) return 1 ;;
@@ -35,66 +22,50 @@ sudo enter-chroot -u root runner
 echo "Done..."
 sleep 1
 
-echo "Trying to install arduino"
-writer "apt-get install arduino"
+echo "Trying to install 
+
+Arduino
+Gdebi package manager
+Java
+Netlogo
+Energia
+Processing
+Logger
+Small dependencies
+Video editors
+"
+sleep 7
+writer "yes | apt-get install arduino gdebi openjdk-7-jre curl software-properties-common python-software-properties 4digits gedit   
+"
 sleep 0.5
 sudo enter-chroot -u root runner
 echo "
 Done...
 "
-
-echo "Trying to install Gdebi package manager"
-writer "apt-get install gdebi"
-sleep 0.5
-sudo enter-chroot -u root runner
-
-echo "
-
-Installing java"
-writer "apt-get install openjdk-7-jre+apt-get install curl"
-sleep 0.5
-sudo enter-chroot -u root runner
-
 #echo "Done now config for java 7..."
 #writer "sed -i '$ a\deb http://www.duinsoft.nl/pkg debs all' /etc/apt/sources.list+sudo apt-key adv --keyserver keys.gnupg.net --recv-keys 5CB26B26+apt-get update+apt-get install update-sun-jre" 
 #sleep 0.5
 #sudo enter-chroot -u root runner
 #echo "Installed java 7 (True version)...
-#"
-sleep 1
-echo
-echo "Installing NetLogo..."
+#
 writer cd /root/Downloads/.tmp/+wget -q https://ccl.northwestern.edu/netlogo/5.2.1/netlogo-5.2.1.tar.gz+tar xzf netlogo-5.2.1.tar.gz+rm netlogo-5.2.1.tar.gz+mv netlogo-5.2.1 /root/netlogo+chmod 755 /root/netlogo/netlogo.sh
 sleep 0.5
 sudo enter-chroot -u root runner
 #writer wget https://raw.github.com/CodeBuds/Cri/master/commands/netlogo && sudo chmod +x netlogo+mv netlogo /usr/bin
 #sleep 0.5
 #sudo enter-chroot -u root runner
-echo "Done"
-echo "Installing energia"
 writer cd /root/Downloads/.tmp/+wget -q http://energia.nu/downloads/downloadv3.php?file=energia-0101E0016-linux64.tgz+tar xzf downloadv3.php?file=energia-0101E0016-linux64.tgz+rm downloadv3.php?file=energia-0101E0016-linux64.tgz+mv energia-0101E0016 /root/energia+chmod 755 /root/energia/energia-0101E0016/energia
 sleep 0.5
 sudo enter-chroot -u root runner
-sleep 1
-echo "Done"
 echo "Installing processing"
 writer cd /root/Downloads/.tmp/+wget -q http://download.processing.org/processing-3.0-linux64.tgz+tar -xzf processing-3.0-linux64.tgz+rm processing-3.0-linux64.tgz+mv processing-3.0 /root/processing+chmod 755 /root/processing/processing
 sleep 0.5
 sudo enter-chroot -u root runner
-echo "Done..."
-
 echo "Installing Logger"
 writer cd /root/Downloads/.tmp/+wget -q http://www.vernier.com/files/downloads/LPL-3846-64.tar.gz+tar -xzf LPL-3846-64.tar.gz+gdebi -n vstdrivers_1.5.1.1_amd64.deb+gdebi -n vstloggerpro_3.8.4.6_amd64.deb+ln -sf /lib/x86_64-linux-gnu/libudev.so.0 /lib/x86_64-linux-gnu/libudev.so.1
 sleep 0.5
 sudo enter-chroot -u root runner
 echo "Done... use loggerpro to run"
-
-echo "
-Need extra tools
-"
-writer "sudo apt-get install software-properties-common python-software-properties"
-sleep 0.5
-sudo enter-chroot -u root runner
 echo "
 
 Installing OpenShot video editor
@@ -104,32 +75,14 @@ sleep 0.5
 sudo enter-chroot -u root runner
 echo "Done..."
 echo "To run openshot just type into cri 'run openshot'"
-echo
-writer "apt-get install gedit"
-sleep 0.5
-sudo enter-chroot -u root runner
-echo
 echo "Done installing thunar file manager..."
-echo
-sleep 1
-echo
-echo "Installing 4digits"
-writer "apt-get install 4digits"
-sleep 0.5
-sudo enter-chroot -u root runner
-echo
-echo
-sleep 1
-echo
 #echo "Installing photo editor (gimp)"
 #writer "apt-get install gimp"
 #sleep 0.5
 #sudo enter-chroot -u root runner
 #echo "Done installing gimp"
 #echo
-3echo
 #sleep 1
-echo
 #echo "Installing geany"
 #writer "apt-get install geany"
 #sleep 0.5
@@ -137,8 +90,6 @@ echo
 #echo "Done installing geany..."
 #echo
 #sleep 1
-echo
-echo
 echo "Updating and Upgrading current system"
 writer "apt-get update+apt-get upgrade"
 sleep 0.5
