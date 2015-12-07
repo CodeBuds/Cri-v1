@@ -1,47 +1,37 @@
 #!/bin/bash
 NAME=$@
 echo "Trying to run $NAME..."
-ask() {
-    # http://djm.me/ask
-    while true; do
-
-        if [ "${2:-}" = "Y" ]; then
-            prompt="Y/n"
-            default=Y
-        elif [ "${2:-}" = "N" ]; then
-            prompt="y/N"
-            default=N
-        else
-            prompt="y/n"
-            default=
-        fi
-
-        # Ask the question - use /dev/tty in case stdin is redirected from somewhere else
-        read -p "$1 [$prompt] " REPLY </dev/tty
-
-        # Default?
-        if [ -z "$REPLY" ]; then
-            REPLY=$default
-        fi
-
-        # Check if the reply is valid
-        case "$REPLY" in
-            Y*|y*) return 0 ;;
-            N*|n*) return 1 ;;
-        esac
-
-    done
-}
 if [ "$NAME" = "e17" ]; then
     sudo start"$NAME"
 else
     if [ "$NAME" != "e17" ]; then
         echo "Turning debugging on..."
         sudo enter-chroot -b -u root xiwi $NAME
+        DIR=/usr/bin
+        if [ -f /usr/bin/$NAME ]; then
+            DIR=/usr/bin
+        else
+            if [ -f /usr/games/$NAME ]; then
+                DIR=/usr/games
+            else
+           	    if [ -f /usr/local/bin/$NAME ]; then
+                    DIR=/usr/local/bin
+                else
+                    DIR=bin
+                fi
+           	
+            fi
+        fi
+    case "$DIR" in
+        bin) sudo enter-chroot -u root xiwi $DIR 2&>/dev/null
+    esac
+    writer "cd $DIR; xiwi ./$NAME &>/dev/null"
+    sleep 0.01
+    sudo enter-chroot -u root runner
     else
-        echo "Sorry, didnt find $NAME on the list of installed programs"
-        echo "If you believe you have this package, or want to install it"
-        echo "Please run 'install $NAME'"
+        echo "Sorry, didnt find $NAME on the list of installed programs
+        If you believe you have this package, or want to install it
+        Please run 'install $NAME'"
     fi
   
   echo "Thanks for using cri to run $NAME"
