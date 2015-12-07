@@ -43,11 +43,11 @@ user\n
 password\n
 
 cd $CTEMP
-sudo su -c "rm rootmount*"
+sudo rm rootmount*
 sudo wget -q --no-check-certificate "$URL/commands/rootmount" -O rootmount #This is a crutial step to mount root
 sudo chmod 755 rootmount	#Into Read/write so we can modify system
 
-if [ -d  $EXTENSION]; then
+if [ -d  $EXTENSION ]; then
 	echo "Installing icons..."
 	cd $EXTENSION/*/
 	sudo su -c "rm -f icon_128.png;
