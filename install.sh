@@ -17,7 +17,7 @@ printf "Welcome to the Cri installer\nDeveloped by $AUTHORS \nYou are running as
 
 ask() {				   #This is the function we call for our yes/no situations 
     while true; do
-        read -p "$1 [$prompt] " REPLY </dev/tty
+        read -p "$1?[y/n] " REPLY </dev/tty
         case "$REPLY" in
             Y*|y*) return 0 ;;
             N*|n*) return 1 ;;
