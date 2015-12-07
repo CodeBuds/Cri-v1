@@ -10,7 +10,7 @@ CROUBIN=/mnt/stateful_partition/crouton/chroots/precise/usr/bin
 printf "Welcome to the second part of the installation\nDeveloped by David Smerkous and Eli Smith\n\nStarting...\n"
 ask() { #Same function called earlier in the previous script to use in yes/no situations
     while true; do
-        read -p "$1 [y/n] " REPLY </dev/tty
+        read -p "$1?[y/n] " REPLY </dev/tty
         if [ -z "$REPLY" ]; then
             REPLY=$default
         fi
