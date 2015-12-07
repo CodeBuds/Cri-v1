@@ -12,7 +12,7 @@ CTEMP=~/Downloads/.tmp #DO NOT CHANGE THIS TO ~/DOWNLOADS, WANNA KNOW WHY, LOOK 
 CROUBIN=/mnt/stateful_partition/crouton/chroots/precise/usr/bin
 cd $CBIN
 
-echo "Welcome to the cri updater, please give me a minute to organize everything"
+printf "Welcome to the cri updater, please give me a minute to organize everything\n\n"
 
 ask() {
     while true; do
@@ -28,7 +28,6 @@ clean() {
     tput cuu 1 && tput el
 }
 
-echo "Redownloading..."
 lineCount() #Same function called earlier in the previous script to use in the counting of lines in commands.txt
 {
     wc -l < commands.txt
@@ -48,7 +47,7 @@ if [ ! -d "$CTEMP" ]; then
 fi
 
 cd $CTEMP
-printf "Downloading Cri files\n\n"
+printf "\nDownloading Cri files\n\n..."
 sudo wget -q --no-check-certificate "$URL/commands.txt" -O $CTEMP/commands.txt #This is to download list of files needed
 sudo chmod 755 commands.txt #Makes the commands file have every permisson so that anyone can use it
 NAMES="$(< commands.txt)" #names from names.txt file
@@ -65,7 +64,7 @@ done
 
 #This next chunk installs certain files directly into the chroot
 cd $CTEMP
-printf "Downloading crouton files\n\n"
+printf "\nDownloading crouton files\n\n..."
 sudo wget -q --no-check-certificate "$URL/commands2.txt" -O $CTEMP/commands2.txt #This is to download list of files needed
 sudo chmod 755 commands2.txt #Makes the commands file have every permisson so that anyone can use it
 
