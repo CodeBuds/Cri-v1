@@ -1,5 +1,6 @@
 #!/bin/bash
 NAME=$@
+ROOT=/mnt/stateful_partition/crouton/chroots/precise
 echo "Trying to run $NAME..."
 if [ "$NAME" = "e17" ]; then
     sudo start"$NAME"
@@ -7,13 +8,13 @@ else
     if [ "$NAME" != "e17" ]; then
         #sudo enter-chroot -b -u root xiwi $NAME
         DIR=/usr/bin
-        if [ -f /usr/bin/$NAME ]; then
+        if [ -f $ROOT/usr/bin/$NAME ]; then
             DIR=/usr/bin
         else
-            if [ -f /usr/games/$NAME ]; then
+            if [ -f $ROOT/usr/games/$NAME ]; then
                 DIR=/usr/games
             else
-           	    if [ -f /usr/local/bin/$NAME ]; then
+           	    if [ -f $ROOT/usr/local/bin/$NAME ]; then
                     DIR=/usr/local/bin
                 else
                     DIR=bin
@@ -22,7 +23,7 @@ else
             fi
         fi
     case "$DIR" in
-        bin) sudo enter-chroot -u root xiwi $DIR 2&>/dev/null
+        bin) sudo enter-chroot -u root xiwi $NAME 2&>/dev/null
     esac
     writer "cd $DIR; xiwi ./$NAME &>/dev/null"
     sleep 0.01
