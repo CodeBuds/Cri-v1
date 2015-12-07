@@ -91,7 +91,7 @@ chmod 755 libtinfo.so.5;
 chmod 755 libncursesw.so.5'
 
 cd $CBIN #Adds the "dialog" command to the bin
-sudo su 'wget -q "https://www.dropbox.com/s/9be2q324fxzlz00/dialog?raw=1" -O dialog;
+sudo su -c 'wget -q "https://www.dropbox.com/s/9be2q324fxzlz00/dialog?raw=1" -O dialog;
 chmod 755 dialog;
 cp crosh /usr/bin/.crosh_backup;
 mv cri /usr/bin/crosh;
