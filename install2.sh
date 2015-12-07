@@ -95,7 +95,7 @@ fixconfig # Fix current config with no asking
 #This makes it so that whenever ctrl+alt+t is pressed, http://download1339.mediafire.com/1y9uo9vg87tg/54t1f8e7wcl5hta/libncursesw.so.5we launch directly into Cri
 printf "Done...\n\n"
 
-if ask "Would you like to install the academy package?"; then
+if ask "Would you like to install the academy package"; then
   acadapkg
 fi
 
