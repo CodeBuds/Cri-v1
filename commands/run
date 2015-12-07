@@ -23,11 +23,11 @@ else
             fi
         fi
     case "$DIR" in
-        bin) sudo enter-chroot -u root xiwi $NAME 2&>/dev/null
+        bin) sudo enter-chroot -u root xiwi $NAME & 2&>/dev/null
     esac
     writer "cd $DIR; xiwi ./$NAME &>/dev/null"
     sleep 0.01
-    sudo enter-chroot -u root runner
+    sudo enter-chroot -u root runner &
     else
         echo "Sorry, didnt find $NAME on the list of installed programs
         If you believe you have this package, or want to install it
