@@ -1,15 +1,15 @@
 #!/bin/bash
-wget -q --spider https://www.google.com
-if [ $? != 0 ]
-then
-    echo "No internet connection detected. Please check your connection and run this again."
-    exit 1
-fi
 CBIN=/usr/bin
 CLIB=/usr/lib64
 URL="https://raw.github.com/CodeBuds/Cri/master"
 CTEMP=~/Downloads/.tmp #DO NOT CHANGE THIS TO ~/DOWNLOADS, WANNA KNOW WHY, LOOK AT BOTTOM OF SCRIPT
 CROUBIN=/mnt/stateful_partition/crouton/chroots/precise/usr/bin
+cd $CTEMP
+wget -q --no-check-certificate https://www.google.com -O testInternet
+if [ -s $CTEMP/testInternet ]; then
+    echo "No internet connection detected. Please check your connection and run this again."
+    exit 1
+fi
 cd $CBIN
 
 printf "Welcome to the cri updater, please give me a minute to organize everything\n\n"
