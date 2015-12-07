@@ -16,26 +16,18 @@ echo "Welcome to the cri updater, please give me a minute to organize everything
 
 ask() {
     while true; do
-        if [ "${2:-}" = "Y" ]; then
-            prompt="Y/n"
-            default=Y
-        elif [ "${2:-}" = "N" ]; then
-            prompt="y/N"
-            default=N
-        else
-            prompt="y/n"
-            default=
-        fi
         read -p "$1 [$prompt] " REPLY </dev/tty
-        if [ -z "$REPLY" ]; then
-            REPLY=$default
-        fi
         case "$REPLY" in
             Y*|y*) return 0 ;;
             N*|n*) return 1 ;;
         esac
     done
 }
+
+clean() {
+    tput cuu 1 && tput el
+}
+
 echo "Redownloading..."
 lineCount() #Same function called earlier in the previous script to use in the counting of lines in commands.txt
 {
@@ -56,15 +48,15 @@ if [ ! -d "$CTEMP" ]; then
 fi
 
 cd $CTEMP
-echo "Downloading Cri files"
+printf "Downloading Cri files\n\n"
 sudo wget -q --no-check-certificate "$URL/commands.txt" -O $CTEMP/commands.txt #This is to download list of files needed
 sudo chmod 755 commands.txt #Makes the commands file have every permisson so that anyone can use it
-
 NAMES="$(< commands.txt)" #names from names.txt file
 LINES=$(lineCount)
 NUMBERS=1
 cd $CBIN
 for NAME in $NAMES; do #Downloads all nessisary files from github to /usr/local/bin
+    clean
     echo "File $NUMBERS/$LINES..."
     let "NUMBERS += 1"
     sudo wget -q --no-check-certificate "$URL/$NAME" -O $CBIN/${NAME##*/}
@@ -73,7 +65,7 @@ done
 
 #This next chunk installs certain files directly into the chroot
 cd $CTEMP
-echo "Downloading crouton files"
+printf "Downloading crouton files\n\n"
 sudo wget -q --no-check-certificate "$URL/commands2.txt" -O $CTEMP/commands2.txt #This is to download list of files needed
 sudo chmod 755 commands2.txt #Makes the commands file have every permisson so that anyone can use it
 
@@ -82,6 +74,7 @@ LINES=$(lineCounttwo)
 NUMBERS=1
 cd /mnt/stateful_partition/crouton/chroots/*/usr/bin
 for NAME in $NAMES; do #Downloads all nessisary files from github to /usr/local/bin
+    clean
     echo "File $NUMBERS/$LINES..."
     let "NUMBERS += 1"
     sudo wget -q --no-check-certificate "$URL/$NAME" -O ${NAME##*/}
@@ -90,6 +83,6 @@ done
 
 #This makes it so that whenever ctrl+alt+t is pressed, we launch directly into Cri
 cd $CBIN
-sudo mv cri /usr/bin/crosh
+sudo mv cri /usr/bin/crosh # No need for backup if we are updating from a working version
 echo "Done...
 "
