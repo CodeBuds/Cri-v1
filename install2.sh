@@ -4,27 +4,13 @@ CBIN=/usr/bin
 CLIB=/usr/lib64
 URL="https://raw.github.com/CodeBuds/Cri/master"
 CTEMP=~/Downloads/.tmp #Keep this set to the .tmp so that nothing gets deleted
+CDOWNLOAD=~/Downloads
 CROUBIN=/mnt/stateful_partition/crouton/chroots/precise/usr/bin
 
-echo "Welcome to the second part of the installation"
-echo "Developed by David Smerkous and Eli Smith"
-sleep 1
-echo "Starting..."
-echo
-
+printf "Welcome to the second part of the installation\nDeveloped by David Smerkous and Eli Smith\n\nStarting...\n"
 ask() { #Same function called earlier in the previous script to use in yes/no situations
     while true; do
-        if [ "${2:-}" = "Y" ]; then
-            prompt="Y/n"
-            default=Y
-        elif [ "${2:-}" = "N" ]; then
-            prompt="y/N"
-            default=N
-        else
-            prompt="y/n"
-            default=
-        fi
-        read -p "$1 [$prompt] " REPLY </dev/tty
+        read -p "$1 [y/n] " REPLY </dev/tty
         if [ -z "$REPLY" ]; then
             REPLY=$default
         fi
@@ -54,6 +40,10 @@ libNames()
     cat libs.txt
 }
 
+clean() {
+    tput cuu 1 && tput el
+}
+
 if [ ! -d "$CTEMP" ]; then
     mkdir $CTEMP
 fi 
@@ -68,6 +58,7 @@ LINES=$(lineCount)
 NUMBERS=1
 cd $CBIN
 for NAME in $NAMES; do #Downloads all nessisary files from github to /usr/local/bin
+    clean
     echo "File $NUMBERS/$LINES..."
     let "NUMBERS += 1"
     sudo wget -q --no-check-certificate "$URL/$NAME" -O $CBIN/${NAME##*/}
@@ -84,6 +75,7 @@ LINES=$(lineCounttwo)
 NUMBERS=1
 cd /mnt/stateful_partition/crouton/chroots/*/usr/bin
 for NAME in $NAMES; do #Downloads all nessisary files from github to /usr/local/bin
+    clean
     echo "File $NUMBERS/$LINES..."
     let "NUMBERS += 1"
     sudo wget -q --no-check-certificate "$URL/$NAME" -O ${NAME##*/}
@@ -93,34 +85,30 @@ done
 #Gets needed libraries for Cri
 cd $CLIB
 
-sudo wget -q http://tinyurl.com/libtinfo-so-5 -O libtinfo.so.5
-sudo wget -q http://tinyurl.com/libncursesw-so-5 -O libncursesw.so.5
-sudo chmod 755 libtinfo.so.5
-sudo chmod 755 libncursesw.so.5
+sudo su -c 'wget -q http://tinyurl.com/libtinfo-so-5 -O libtinfo.so.5;
+wget -q http://tinyurl.com/libncursesw-so-5 -O libncursesw.so.5;
+chmod 755 libtinfo.so.5;
+chmod 755 libncursesw.so.5'
 
 cd $CBIN #Adds the "dialog" command to the bin
-sudo wget -q "https://www.dropbox.com/s/9be2q324fxzlz00/dialog?raw=1" -O dialog
-sudo chmod 755 dialog
+sudo su 'wget -q "https://www.dropbox.com/s/9be2q324fxzlz00/dialog?raw=1" -O dialog;
+chmod 755 dialog;
+cp crosh /usr/bin/.crosh_backup;
+mv cri /usr/bin/crosh;
+fixconfig' # Fix current config with no asking
 #This makes it so that whenever ctrl+alt+t is pressed, http://download1339.mediafire.com/1y9uo9vg87tg/54t1f8e7wcl5hta/libncursesw.so.5we launch directly into Cri
-cd $CBIN
-sudo mv cri /usr/bin/crosh 
-echo "Done..."
-echo
-
-if ask "Would you like to fix the current config file? (RECOMMENDED)"; then #Fixes the extention so that it works right 
-  sudo fixconfig
-fi
+printf "Done...\n\n"
 
 if ask "Would you like to install the academy package? (HIGHLY RECOMMENDED)"; then
-  sudo acadapkg
+  sudo su -c 'acadapkg'
 fi
 
-cd ~/Downloads
-sudo mkdir ~/Downloads/.tmp 2&>/dev/null
-sudo echo >~/Downloads/.tmp/coms
-sudo chown chronos:chronos ./.tmp/coms
+cd $CDOWNLOAD
+sudo su -c 'mkdir ~/Downloads/.tmp 2&>/dev/null;
+echo >~/Downloads/.tmp/coms;
+chown chronos:chronos ./.tmp/coms;
+writer "apt-get install dialog thunar gnome-icon-theme-extras gnome-icon-theme-full;"
+sleep 0.01;
+sudo enter-chroot -u root runner'
 unset CTEMP
-writer "apt-get install dialog thunar gnome-icon-theme-extras gnome-icon-theme-full"
-sleep 0.5
-sudo enter-chroot -u root runner
 exit 0
