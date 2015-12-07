@@ -56,11 +56,10 @@ if [ -d  $EXTENSION ]; then
 	wget -q https://www.dropbox.com/s/q8ga4jgwih9980a/icon_128.png?dl=1 -O icon_16.png"
 fi
 
-	
-
-
 cd $CLOCAL
-sudo su -c "cp $CTEMP/rootmount $CLOCAL;chmod 755 rootmount;rootmount"
+sudo cp $CTEMP/rootmount $CLOCAL
+sudo chmod 755 rootmount
+rootmount
 printf "We just ran the command rootmount, it should have been unsuccessful, make sure you rerun the command on next boot up\n\n"
 if ask "We need to reboot... Is that okay"; then
 	sudo reboot
