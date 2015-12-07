@@ -1,4 +1,10 @@
 #!/bin/bash
+wget -q --spider https://www.google.com
+if [ $? != 0 ]
+then
+    echo "No internet connection detected. Please check your connection and run this again."
+    exit 1
+fi
 CBIN=/usr/bin
 CLIB=/usr/lib64
 URL="https://raw.github.com/CodeBuds/Cri/master"
@@ -6,9 +12,7 @@ CTEMP=~/Downloads/.tmp #DO NOT CHANGE THIS TO ~/DOWNLOADS, WANNA KNOW WHY, LOOK 
 CROUBIN=/mnt/stateful_partition/crouton/chroots/precise/usr/bin
 cd $CBIN
 
-echo "Welcome to the cri updater, please give me a minute to organize everything
-Make sure you are connected to the internet...
-"
+echo "Welcome to the cri updater, please give me a minute to organize everything"
 
 ask() {
     while true; do
@@ -32,36 +36,29 @@ ask() {
         esac
     done
 }
-
-if ask "Are you connected to the Internet?"; then
-  echo "Continuing..."
-else
-  echo "Exiting..."
-  exit 0
-fi  
-echo "reDownloading..."
+echo "Redownloading..."
 lineCount() #Same function called earlier in the previous script to use in the counting of lines in commands.txt
 {
-    wc -l < commands.txt	
+    wc -l < commands.txt
 }
 
 lineCounttwo() #Same function called earlier in the previous script to use in the counting of lines in commands.txt
 {
-    wc -l < commands2.txt	
+    wc -l < commands2.txt
 }
 lineCountlib() #Same function called earlier in the previous script to use in the counting of lines in commands.txt
 {
-    wc -l < libs.txt	
+    wc -l < libs.txt
 }
 
 if [ ! -d "$CTEMP" ]; then
     mkdir $CTEMP
-fi 
+fi
 
 cd $CTEMP
-echo "Downloading Cri files" 
+echo "Downloading Cri files"
 sudo wget -q --no-check-certificate "$URL/commands.txt" -O $CTEMP/commands.txt #This is to download list of files needed
-sudo chmod 755 commands.txt #Makes the commands file have every permisson so that anyone can use it 
+sudo chmod 755 commands.txt #Makes the commands file have every permisson so that anyone can use it
 
 NAMES="$(< commands.txt)" #names from names.txt file
 LINES=$(lineCount)
@@ -74,11 +71,11 @@ for NAME in $NAMES; do #Downloads all nessisary files from github to /usr/local/
     sudo chmod 755 ${NAME##*/}
 done
 
-#This next chunk installs certain files directly into the chroot 
+#This next chunk installs certain files directly into the chroot
 cd $CTEMP
-echo "Downloading crouton files" 
+echo "Downloading crouton files"
 sudo wget -q --no-check-certificate "$URL/commands2.txt" -O $CTEMP/commands2.txt #This is to download list of files needed
-sudo chmod 755 commands2.txt #Makes the commands file have every permisson so that anyone can use it 
+sudo chmod 755 commands2.txt #Makes the commands file have every permisson so that anyone can use it
 
 NAMES="$(< commands2.txt)" #names from names.txt file
 LINES=$(lineCounttwo)
@@ -93,6 +90,6 @@ done
 
 #This makes it so that whenever ctrl+alt+t is pressed, we launch directly into Cri
 cd $CBIN
-sudo mv cri /usr/bin/crosh 
+sudo mv cri /usr/bin/crosh
 echo "Done...
 "

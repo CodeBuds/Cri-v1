@@ -1,9 +1,18 @@
-#!/bin/bash
+#!/bin/dash
+# Copyright (c) 2012 The Chromium OS Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+#
+# NOTE: This script works in dash, but is not as featureful.  Specifically,
+# dash omits readline support (history & command line editing).  So we try
+# to run through bash if it exists, otherwise we stick to dash.  All other
+# code should be coded to the POSIX standard and avoid bashisms.
+#
+# Please test that any changes continue to work in dash by running
+# '/build/$BOARD/bin/dash crosh --dash' before checking them in.
 
-# Please test any new things in bash
-# '/build/$BOARD/bin/bash crosh --bash' before checking them in.
-
-# disable path expansion
+# Disable path expansion at the command line.  None of our builtins need or want
+# it, and it's safer/saner to disallow it in the first place.
 set -f
 
 # Don't allow SIGHUP to terminate crosh. This guarantees that even if the user
@@ -23,11 +32,11 @@ if [ "${DATA_DIR+set}" = "set" ]; then
   export HOME="${DATA_DIR}/user"
 fi
 
-IS_BASH=1
+IS_BASH=0
 try_bash() {
   # If dash was explicitly requested, then nothing to do.
   case " $* " in
-  *" --bash "*) return 0;;
+  *" --dash "*) return 0;;
   esac
 
   # If we're already bash, then nothing to do.
@@ -41,11 +50,11 @@ try_bash() {
 }
 try_bash "$@"
 
-INTRO_TEXT="Welcome to the Cri
-Developed by annoying chrome os developers
-Modified by David Smerkous and Eli Smith
-This is the original crosh except this text
-and this uses bash not dash
+INTRO_TEXT="Welcome to crosh, the Chrome OS developer shell.
+
+If you got here by mistake, don't panic!  Just close this tab and carry on.
+
+Type 'help' for a list of commands.
 "
 
 CHROMEOS_INSTALL=/usr/sbin/chromeos-install
@@ -69,7 +78,6 @@ load_extra_crosh() {
     fi
   fi
 
-#Just check for a usb so that we can make changed back to usb
   case "${removable}: $* " in
   1:*|\
   *:*" --usb "*)
@@ -212,8 +220,10 @@ help() {
     printf 'ERROR: %s\n\n' "$*"
   fi
 
-  # This is set by `dispatch`.
-  cmd_help "${CURRENT_COMMAND}"
+  # This is set by `dispatch` when a valid command has been found.
+  if [ -n "${CURRENT_COMMAND}" ]; then
+    cmd_help "${CURRENT_COMMAND}"
+  fi
 }
 
 USAGE_help_advanced=''
@@ -241,7 +251,7 @@ cmd_help_advanced() (
 # http://crbug.com/318368
 USAGE_exit=''
 HELP_exit='
-  Exit cri
+  Exit crosh.
 '
 cmd_exit()
 {
@@ -307,9 +317,8 @@ HELP_ssh=''
 unset USAGE_ssh HELP_ssh
 cmd_ssh() (
   cat <<EOF
-The 'ssh' command has been removed, bullcrap, says David and Eli, just go to
-to ssh2, if not then try the xterm without dumb, butt crosh"
-
+The 'ssh' command has been removed.  Please install the official SSH extension:
+https://chrome.google.com/webstore/detail/pnhechapfaindjhompbnflcldabbghjo
 EOF
 )
 
@@ -778,34 +787,62 @@ cmd_autest() (
   /usr/bin/update_engine_client --omaha_url=$omaha_url
 )
 
-USAGE_p2p_update='[enable|disable]'
+USAGE_p2p_update='[enable|disable] [--num-connections] [--show-peers]'
 HELP_p2p_update='
   Enables or disables the peer-to-peer (P2P) sharing of updates over the local
   network. This will both attempt to get updates from other peers in the
   network and share the downloaded updates with them. Run this command without
-  arguments to see the current state.
+  arguments to see the current state.  Additional switches will display number
+  of connections and P2P peers.
 '
 cmd_p2p_update() (
-  case "$1" in
-    "enable")
-      param="-p2p_update=yes"
-      ;;
 
-    "disable")
-      param="-p2p_update=no"
-      ;;
+  if [ "$1" = "" ]; then
+    /usr/bin/update_engine_client -show_p2p_update
+  fi
 
-    "")
-      param=""
-      ;;
+  while [ $# -gt 0 ]; do
+    case "$1" in
+      "enable")
+        /usr/bin/update_engine_client -p2p_update=yes -show_p2p_update
+        ;;
 
-    *)
-      help "unknown option: $1"
-      return 1
-      ;;
-  esac
-  /usr/bin/update_engine_client $param -show_p2p_update
+      "disable")
+        /usr/bin/update_engine_client -p2p_update=no -show_p2p_update
+        ;;
+
+      "--num-connections")
+        if p2p_check_enabled; then
+          echo "Number of active p2p connections:"
+          /usr/sbin/p2p-client --num-connections
+        fi
+        ;;
+
+      "--show-peers")
+        if p2p_check_enabled; then
+          echo "Current p2p peers:"
+          /usr/sbin/p2p-client --list-all
+        fi
+        ;;
+
+      *)
+        help "unknown option: $1"
+        return 1
+        ;;
+    esac
+
+    shift
+  done
 )
+
+p2p_check_enabled() {
+  if ! /usr/bin/update_engine_client -show_p2p_update 2>&1 \
+    | grep -q "ENABLED"; then
+    echo "Run \"p2p_update enable\" to enable peer-to-peer before" \
+    "using this command."
+    return 1
+  fi
+}
 
 USAGE_rollback=''
 HELP_rollback='
@@ -1164,14 +1201,6 @@ cmd_tpm_status() (
   /usr/sbin/cryptohome --action=tpm_more_status
 )
 
-USAGE_cri=''
-HELP_cri='
-  Shut up
-'
-cmd_cri() (
-  /usr/local/bin/cri
-)
-
 substr() {
   local str="$1"
   local start="$2"
@@ -1210,6 +1239,45 @@ dispatch() {
 
   local space_pos=$(expr index "$line" ' ')
 
+  if [ $space_pos = 0 ]; then
+    command=$line
+  else
+    command=$(substr "$line" "0" "$space_pos")
+    command=${command% *}
+    params=$(substr "$line" "$space_pos")
+  fi
+
+  if ! check_command "${command}"; then
+    help "unknown command: ${command}"
+  else
+    # See if --help was requested; if so, handle it directly so each command
+    # doesn't have to deal with it directly.
+    local p
+    for p in ${params}; do
+      if [ "${p}" = "-h" -o "${p}" = "--help" ]; then
+        cmd_help "${command}"
+        return 0
+      fi
+    done
+
+    # Only add valid commands to the history.
+    shell_history -s "$LINE_"
+
+    # Set CURRENT_COMMAND for the `help` helper.
+    CURRENT_COMMAND="${command}" "cmd_${command}" ${params}
+  fi
+}
+
+repl() {
+  echo "${INTRO_TEXT}"
+  if [ "$IS_BASH" != "1" ]; then
+    echo "Sorry, line editing and command history disabled due to" \
+      "shell limitations."
+  fi
+
+  # This will be set by the 'exit' command to tell us to quit.
+  local exit
+
   # Create a colorized prompt to make it easier to see commands start/finish.
   local prompt
   prompt="$(printf '%bcrosh>%b ' '\001\033[1;33m\002' '\001\033[0m\002')"
@@ -1217,7 +1285,6 @@ dispatch() {
   while [ -z "${exit}" ]; do
     if shell_read "${prompt}" LINE_; then
       if [ ! -z "$LINE_" ]; then
-        shell_history -s "$LINE_"
         dispatch "$LINE_"
       fi
     else
@@ -1235,9 +1302,10 @@ main() {
     # We aren't installed; use local copy for testing.
     INPUTRC="$(dirname "$0")/inputrc.crosh"
   fi
-  
+
   shell_history_init
 
+  repl
 
   # Save the history after the clean exit.
   shell_history -w "${HISTFILE}"
