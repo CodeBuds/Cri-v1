@@ -8,26 +8,31 @@ else
     if [ "$NAME" != "e17" ]; then
         #sudo enter-chroot -b -u root xiwi $NAME
         DIR=/usr/bin
+        PARSE=./
         if [ -f $ROOT/usr/bin/$NAME ]; then
             DIR=/usr/bin
+            PARSE=./
         else
             if [ -f $ROOT/usr/games/$NAME ]; then
                 DIR=/usr/games
+                PARSE=./
             else
            	    if [ -f $ROOT/usr/local/bin/$NAME ]; then
                     DIR=/usr/local/bin
+                    PARSE=./
                 else
                     DIR=bin
+                    PARSE= 
                 fi
            	
             fi
         fi
-    case "$DIR" in
-        bin) sudo enter-chroot -u root xiwi $NAME & 2&>/dev/null
-    esac
-    writer "cd $DIR; xiwi ./$NAME &>/dev/null"
+    #case "$DIR" in
+        #bin) sudo enter-chroot -u root xiwi $NAME & 2&>/dev/null
+    #esac
+    writer "cd $DIR+xiwi $PARSE$NAME & &>/dev/null"
     sleep 0.01
-    sudo enter-chroot -u root runner & 2&>/dev/null
+    sudo enter-chroot -u root runner 2&>/dev/null
     else
         echo "Sorry, didnt find $NAME on the list of installed programs
         If you believe you have this package, or want to install it
