@@ -35,8 +35,7 @@ Small dependencies
 Video editors
 "
 sleep 7
-writer "yes | apt-get install arduino gdebi openjdk-7-jre curl software-properties-common python-software-properties 4digits gedit   
-"
+writer "yes % apt-get install arduino gdebi openjdk-7-jre curl software-properties-common python-software-properties 4digits gedit"
 sleep 0.5
 sudo enter-chroot -u root runner
 echo "
