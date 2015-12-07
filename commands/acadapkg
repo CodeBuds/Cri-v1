@@ -2,7 +2,7 @@
 URL="https://raw.github.com/CodeBuds/Cri/master"
 ask() {
     while true; do
-        read -p "$1 [$prompt] " REPLY </dev/tty
+        read -p "$1?[y/n] " REPLY </dev/tty
         case "$REPLY" in
             Y*|y*) return 0 ;;
             N*|n*) return 1 ;;
