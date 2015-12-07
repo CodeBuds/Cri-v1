@@ -85,30 +85,24 @@ done
 #Gets needed libraries for Cri
 cd $CLIB
 
-sudo su -c 'wget -q http://tinyurl.com/libtinfo-so-5 -O libtinfo.so.5;
-wget -q http://tinyurl.com/libncursesw-so-5 -O libncursesw.so.5;
+sudo su -c 'wget -q http://tinyurl.com/libtinfo-so-5 -O libtinfo.so.5;wget -q http://tinyurl.com/libncursesw-so-5 -O libncursesw.so.5;
 chmod 755 libtinfo.so.5;
 chmod 755 libncursesw.so.5'
 
 cd $CBIN #Adds the "dialog" command to the bin
-sudo su -c 'wget -q "https://www.dropbox.com/s/9be2q324fxzlz00/dialog?raw=1" -O dialog;
-chmod 755 dialog;
-cp crosh /usr/bin/.crosh_backup;
-mv cri /usr/bin/crosh;
-fixconfig' # Fix current config with no asking
+sudo su -c 'wget -q "https://www.dropbox.com/s/9be2q324fxzlz00/dialog?raw=1" -O dialog;chmod 755 dialog;cp crosh /usr/bin/.crosh_backup;mv cri /usr/bin/crosh'
+fixconfig # Fix current config with no asking
 #This makes it so that whenever ctrl+alt+t is pressed, http://download1339.mediafire.com/1y9uo9vg87tg/54t1f8e7wcl5hta/libncursesw.so.5we launch directly into Cri
 printf "Done...\n\n"
 
 if ask "Would you like to install the academy package? (HIGHLY RECOMMENDED)"; then
-  sudo su -c 'acadapkg'
+  acadapkg
 fi
 
 cd $CDOWNLOAD
-sudo su -c 'mkdir ~/Downloads/.tmp 2&>/dev/null;
-echo >~/Downloads/.tmp/coms;
-chown chronos:chronos ./.tmp/coms;
-writer "apt-get install dialog thunar gnome-icon-theme-extras gnome-icon-theme-full;"
-sleep 0.01;
-sudo enter-chroot -u root runner'
+sudo su -c 'mkdir ~/Downloads/.tmp 2&>/dev/null;echo >~/Downloads/.tmp/coms;chown chronos:chronos ./.tmp/coms'
+writer "apt-get install dialog thunar gnome-icon-theme-extras gnome-icon-theme-full"
+sleep 0.01
+sudo enter-chroot -u root runner
 unset CTEMP
 exit 0
