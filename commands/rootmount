@@ -1,6 +1,7 @@
 #!/bin/bash
 
 ask() {				   #This is the function we call for our yes/no situations 
+    while true; do
         read -p "$1?[y/n] " REPLY </dev/tty
         case "$REPLY" in
             Y*|y*) return 0 ;;
