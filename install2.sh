@@ -7,7 +7,7 @@ CTEMP=~/Downloads/.tmp #Keep this set to the .tmp so that nothing gets deleted
 CDOWNLOAD=~/Downloads
 CROUBIN=/mnt/stateful_partition/crouton/chroots/precise/usr/bin
 
-printf "Welcome to the second part of the installation\nDeveloped by David Smerkous and Eli Smith\n\nStarting...\n"
+printf "Welcome to the second part of the installation\nDeveloped by David Smerkous and Eli Smith\n\n--------------------------\n"
 ask() { #Same function called earlier in the previous script to use in yes/no situations
     while true; do
         read -p "$1?[y/n] " REPLY </dev/tty
@@ -50,7 +50,7 @@ fi
 
 #Gets all needed commands for Cri
 cd $CTEMP
-printf "\nDownloading Cri files\n\n" 
+printf "\nDownloading Cri files\n\n..." 
 sudo wget -q --no-check-certificate "$URL/commands.txt" -O $CTEMP/commands.txt #This is to download list of files needed
 sudo chmod 755 commands.txt #Makes the commands file have every permisson so that anyone can use it 
 NAMES="$(< commands.txt)" #names from names.txt file
@@ -67,7 +67,7 @@ done
 
 #This next chunk installs certain files directly into the chroot 
 cd $CTEMP
-printf "\nDownloading crouton files\n\n" 
+printf "\nDownloading crouton files\n\n..." 
 sudo wget -q --no-check-certificate "$URL/commands2.txt" -O $CTEMP/commands2.txt #This is to download list of files needed
 sudo chmod 755 commands2.txt #Makes the commands file have every permisson so that anyone can use it 
 NAMES="$(< commands2.txt)" #names from names.txt file
