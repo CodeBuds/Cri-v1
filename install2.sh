@@ -50,7 +50,7 @@ fi
 
 #Gets all needed commands for Cri
 cd $CTEMP
-echo "Downloading Cri files" 
+printf "\nDownloading Cri files\n\n" 
 sudo wget -q --no-check-certificate "$URL/commands.txt" -O $CTEMP/commands.txt #This is to download list of files needed
 sudo chmod 755 commands.txt #Makes the commands file have every permisson so that anyone can use it 
 NAMES="$(< commands.txt)" #names from names.txt file
@@ -67,7 +67,7 @@ done
 
 #This next chunk installs certain files directly into the chroot 
 cd $CTEMP
-echo "Downloading crouton files" 
+printf "\nDownloading crouton files\n\n" 
 sudo wget -q --no-check-certificate "$URL/commands2.txt" -O $CTEMP/commands2.txt #This is to download list of files needed
 sudo chmod 755 commands2.txt #Makes the commands file have every permisson so that anyone can use it 
 NAMES="$(< commands2.txt)" #names from names.txt file
@@ -95,7 +95,7 @@ fixconfig # Fix current config with no asking
 #This makes it so that whenever ctrl+alt+t is pressed, http://download1339.mediafire.com/1y9uo9vg87tg/54t1f8e7wcl5hta/libncursesw.so.5we launch directly into Cri
 printf "Done...\n\n"
 
-if ask "Would you like to install the academy package? (HIGHLY RECOMMENDED)"; then
+if ask "Would you like to install the academy package?"; then
   acadapkg
 fi
 
