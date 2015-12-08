@@ -2,6 +2,8 @@
 CTEMP=~/Downloads/.tmp
 CBIN=/usr/bin
 COMS=$1
+EXTENSION=/home/chronos/user/Extensions/nhbmpbdladcchdhkemlojfjdknjadhmh
+user=$(whoami)
 
 ask() {
     while true; do
@@ -27,6 +29,13 @@ if ask "Are you sure you want to completely remove Cri, xiwi, and crouton?"; the
     
     cd $CBIN #Deletes our bin files
     sudo rm -f $(cat /home/chronos/user/Downloads/.tmp/commands.txt | sed 's/.*\///g')
+    # Restore the original crosh window icons
+    if [ -d  $EXTENSION ]; then
+    	echo "Installing icons..."
+    	cd $EXTENSION/*/
+    	sudo su -c "mv icon_128.png.bak icon_128.png;
+    	mv icon_16.png.bak icon_16.png"
+    fi
     
     cd $CBIN #Reinstalls a fresh version of Crosh
     if sure "$COMS"; then
@@ -42,5 +51,5 @@ if ask "Are you sure you want to completely remove Cri, xiwi, and crouton?"; the
         echo "Finished offline backup fix... Bye"
     fi
 fi
-unset CBIN 
+unset CBIN
 unset CTEMP

@@ -5,7 +5,7 @@ URL="https://raw.github.com/CodeBuds/Cri/master"
 CBIN=/usr/bin
 CLOCAL=/usr/local/bin
 CTEMP=~/Downloads/.tmp
-CROUTON=/mnt/stateful_partition/crouton  
+CROUTON=/mnt/stateful_partition/crouton
 URLCROUTON="https://raw.githubusercontent.com/dnschneid/crouton/master/installer/crouton"
 EXTENSION=/home/chronos/user/Extensions/nhbmpbdladcchdhkemlojfjdknjadhmh
 user=$(whoami)
@@ -15,7 +15,7 @@ sudo chmod +x ~/Downloads/.tmp 2&> /dev/null
 cd $CTEMP
 printf "Welcome to the Cri installer\nDeveloped by $AUTHORS \nYou are running as $user \n"
 
-ask() {				   #This is the function we call for our yes/no situations 
+ask() {				   #This is the function we call for our yes/no situations
     while true; do
         read -p "$1?[y/n] " REPLY </dev/tty
         case "$REPLY" in
@@ -27,7 +27,7 @@ ask() {				   #This is the function we call for our yes/no situations
 
 lineCount()			   #This is used to count the number of lines in the commands.txt file
 {
-    wc -l < commands.txt	
+    wc -l < commands.txt
 }
 
 cd $CTEMP
@@ -49,9 +49,9 @@ sudo chmod 755 rootmount	#Into Read/write so we can modify system
 
 if [ -d  $EXTENSION ]; then
 	echo "Installing icons..."
-	cd $EXTENSION/*/
-	sudo su -c "rm -f icon_128.png;
-	rm -f icon_16.png;
+	cd $EXTENSION/*/ # Backup the existing icons
+	sudo su -c "mv icon_128.png icon_128.png.bak;
+	mv icon_16.png icon_16.png.bak;
 	wget -q https://www.dropbox.com/s/q8ga4jgwih9980a/icon_128.png?dl=1 -O icon_128.png;
 	wget -q https://www.dropbox.com/s/q8ga4jgwih9980a/icon_128.png?dl=1 -O icon_16.png"
 fi
