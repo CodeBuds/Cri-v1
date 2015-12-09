@@ -106,7 +106,7 @@ function update_app(){
 
 }
 function stop_app(){
-  stop
+  bash /usr/bin/stop
   dialog --title "Stop" --ok-label "Return to menu" --clear --msgbox "Attempted to Stop everything" 7 30
 }
 
