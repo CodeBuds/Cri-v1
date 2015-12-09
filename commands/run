@@ -40,3 +40,4 @@ else
   
   echo "Thanks for using cri to run $NAME"
 fi
+sleep 5
