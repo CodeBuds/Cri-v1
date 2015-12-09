@@ -1,5 +1,6 @@
 #!/bin/bash
 CBIN=/usr/bin
+ARF="$@"
 CLIB=/usr/lib64
 URL="https://raw.github.com/CodeBuds/Cri/master"
 CTEMP=~/Downloads/.tmp #DO NOT CHANGE THIS TO ~/DOWNLOADS, WANNA KNOW WHY, LOOK AT BOTTOM OF SCRIPT
@@ -55,7 +56,9 @@ LINES=$(lineCount)
 NUMBERS=1
 cd $CBIN
 for NAME in $NAMES; do #Downloads all nessisary files from github to /usr/local/bin
-    clean
+    if [ "$ARF" != "gui" ]; then
+      clean
+    fi
     echo "File $NUMBERS/$LINES..."
     let "NUMBERS += 1"
     sudo wget -q --no-check-certificate "$URL/$NAME" -O $CBIN/${NAME##*/}
@@ -73,7 +76,9 @@ LINES=$(lineCounttwo)
 NUMBERS=1
 cd /mnt/stateful_partition/crouton/chroots/*/usr/bin
 for NAME in $NAMES; do #Downloads all nessisary files from github to /usr/local/bin
-    clean
+    if [ "$ARF" != "gui" ]; then    
+      clean
+    fi
     echo "File $NUMBERS/$LINES..."
     let "NUMBERS += 1"
     sudo wget -q --no-check-certificate "$URL/$NAME" -O ${NAME##*/}
