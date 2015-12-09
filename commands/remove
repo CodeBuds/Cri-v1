@@ -1,7 +1,9 @@
 #!/bin/bash
-name=$@
-echo "Trying to remove... $name"
-writer "(echo y+) % apt-get remove $name"
-sudo enter-chroot -u root runner
+NAME="$@"
+echo "Trying to remove... $NAME"
+writer "yes % apt-get remove $NAME" 2>&1
+sudo enter-chroot -u root runner 2>&1
 echo "
-Done removing... $name"
+Done removing... $NAME"
+sleep 5 # wait EOF for dialog
+exit 0
