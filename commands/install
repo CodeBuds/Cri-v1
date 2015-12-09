@@ -1,18 +1,17 @@
 #!/bin/bash
-name=$@
-if [ ! -e ~/Downloads/.tmp/packages.txt ]; then
-  sudo chown chronos:chronos ~/Downloads/.tmp/packages.txt
-fi
-echo "Trying to install... $NAME"
-echo "Please be patient... (Time depends on size of package)"
-cd /home/chronos/user/Downloads/.tmp
-if grep -q $@ packages.txt; then
-  echo "package already exists, try running it with 'run <package name>'"
-else
-  echo $@ >> packages.txt
-  writer "(echo y+) % apt-get install $name"
-  sudo enter-chroot -u root runner
-  echo "Done installing... $NAME"
-  echo "package already exists, try running it with 'run <package name>'"
-fi
-exit
+NAME="$@"
+  #if [ ! -e ~/Downloads/.tmp/packages.txt ]; then
+  #  sudo chown chronos:chronos ~/Downloads/.tmp/packages.txt
+  #fi
+printf "Trying to install... $NAME\nPlease be patient... (Time depends on size of package)"
+  #cd /home/chronos/user/Downloads/.tmp
+  #if grep -q $@ packages.txt; then
+  #echo "package already exists, try running it with 'run <package name>'"
+  #else
+  #echo $@ >> packages.txt
+writer "yes % apt-get install $NAME" 2>&1
+sudo enter-chroot -u root runner 2>&1
+echo "Done installing... $NAME"
+sleep 5 #Only affects terminal users
+  #fi
+exit 0
