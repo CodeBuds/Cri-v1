@@ -1,4 +1,5 @@
 #!/bin/bash
-name=$@
-writer "(echo y+) % apt-cache search $name"
-sudo enter-chroot -u root runner
+NAME="$@"
+writer "yes % apt-cache search $NAME"
+echo  "Searching... $NAME"
+sudo enter-chroot -u root runner 2&>/dev/null
