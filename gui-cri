@@ -3,21 +3,21 @@ INPUT=/tmp/menu.sh.$$
 OUTPUT=/tmp/output.sh.$$
 trap "rm $OUTPUT; rm $INPUT; exit" SIGHUP SIGINT SIGTERM
 
-function display_output(){
-	local h=${1-20}			# box height default 10
-	local w=${2-50} 		# box width default 41
-	local t=${3-Output} 	# box title
-	dialog --backtitle "Chrome gRaphical Interface" --title "${t}" --clear --msgbox "$(<$OUTPUT)" ${h} ${w}
-}
+#Gui interface by dialog to run other graphical interfaces created by David Smerkous and Eli Smith
+#GNU pulblic license v2.0
+#Currently mostly stable
 
 function run_app(){
+
           OUTPUT2="/tmp/input.txt"
           >$OUTPUT2
-          function runCommand(){
-	          local n=${@-"random"}
-	          run "$n"
-          	  dialog --title "Thanks" --clear --msgbox "Thanks for using Cri to run... ${n} If correct command, then wait a couple of seconds, if nothing pops up within 10 seconds make sure your extension is on and the app is installed" 13 35
+
+          function runCommand() {
+            local n=${@-"random"}
+            run "$n" 2>&1 | dialog --title "Run" --backtitle "Run an Application" --progressbox 24 85
+            dialog --title "Thanks" --ok-label "Return to menu" --clear --msgbox "Thanks for using Cri to run... ${n} If nothing pops up please make sure app is installed and extension is on" 13 35
           }
+
           trap "rm $OUTPUT2; exit" SIGHUP SIGINT SIGTERM
           dialog --title "Application" \
           --backtitle "Application Runner" \
@@ -25,17 +25,10 @@ function run_app(){
           respose=$?
           name=$(<$OUTPUT2)
           case $respose in
-            0)
-            	runCommand ${name}
-            	;;
-            1)
-            	echo "Exiting Application Runner"
-            	;;
-            255)
-             echo "Exiting Application Runner"
+            0)runCommand ${name};;
+            1)echo "Exiting Application Runner";;
+            255)echo "Exiting Application Runner"
           esac
-
-
           rm $OUTPUT2
 }
 
@@ -45,11 +38,13 @@ function run_app(){
 function install_app(){
           OUTPUT3="/tmp/input2.txt"
           >$OUTPUT3
+
           function installCommand(){
-          	local n=${@-"random"}
-                install $n
-          	dialog --title "Installed" --clear --msgbox "Thanks for using Cri to install... ${n}" 7 30
+            local n=${@-"random"}
+            install $n 2>&1 | dialog --title "Install" --backtitle "Install an Application" --progressbox 24 85
+          	dialog --title "Installed" --ok-label "Return to menu" --clear --msgbox "Thanks for using Cri to install... ${n}" 7 30
           }
+
           trap "rm $OUTPUT3; exit" SIGHUP SIGINT SIGTERM
           dialog --title "Application" \
           --backtitle "Application Installer" \
@@ -57,21 +52,16 @@ function install_app(){
           respose=$?
           name=$(<$OUTPUT3)
           case $respose in
-            0)
-            	installCommand ${name}
-            	;;
-            1)
-            	echo "Exiting Application Installer"
-            	;;
-            255)
-             echo "Exiting Application Installer"
+            0)installCommand ${name};;
+            1)echo "Exiting Application Installer";;
+            255)echo "Exiting Application Installer"
           esac
           rm $OUTPUT3
 }
 
 function files_app(){
-	sudo enter-chroot -b -u root xiwi thunar
-	dialog --title "File Manager" --clear --msgbox "Attempted to run file manager.. Give me a couple of seconds" 7 30
+	sudo enter-chroot -b -u root xiwi thunar 2&>/dev/null
+	dialog --title "File Manager" --ok-label "Return to menu" --clear --msgbox "Attempted to run file manager.. Give me a couple of seconds" 7 30
 }
 
 
@@ -80,8 +70,8 @@ function remove_app(){
           >$OUTPUT4
           function removeCommand(){
 	          local n=${@-"random"}
-	          remove $n
-	          dialog --title "Removed" --clear --msgbox "Thanks for using Cri to remove... ${n}" 7 30
+	          remove $n 2>&1 | dialog --title "Remove" --backtitle "Remove an Application" --progressbox 24 85
+	          dialog --title "Removed" --ok-label "Return to menu" --clear --msgbox "Thanks for using Cri to remove... ${n}" 7 30
           }
           trap "rm $OUTPUT4; exit" SIGHUP SIGINT SIGTERM
           dialog --title "Application" \
@@ -90,26 +80,34 @@ function remove_app(){
           respose2=$?
           name2=$(<$OUTPUT4)
           case $respose2 in
-            0)
-            	removeCommand ${name2}
-            	;;
-            1)
-            	echo "Exiting Application Remover"
-            	;;
-            255)
-             echo "Exiting Application Remover"
+            0)removeCommand ${name2};;
+            1)echo "Exiting Application Remover";;
+            255)echo "Exiting Application Remover"
           esac
           rm $OUTPUT4
 }
 
+function change_mode(){
+  if [ ! -f ~/.dialogrc ]; then
+    dialog --create-rc ~/.dialogrc
+  else
+    rm ~/.dialogrc
+  fi
+}
+
+function updates(){
+  updatecri 2>&1 /dev/null
+  update 2>&1 /dev/null
+}
+
 function update_app(){
-  updatecri
-  update
-  dialog --title "Updater" --clear --msgbox "Attempted to Update everything, check lines for errors" 7 30
+  updates 2>&1 | dialog --title "Update" --backtitle "Updater" --progressbox 24 85
+  dialog --title "Updater" --ok-label "Return to menu" --clear --msgbox "Attempted to Update everything..." 7 30
+
 }
 function stop_app(){
   stop
-  dialog --title "Updater" --clear --msgbox "Attempted to Stop everything" 7 30
+  dialog --title "Stop" --ok-label "Return to menu" --clear --msgbox "Attempted to Stop everything" 7 30
 }
 
 function search_app(){
@@ -122,7 +120,7 @@ function search_app(){
           function searchCommand(){
           	local n=${@-"random"}
             search $n >$INPUT5
-          	dialog --title "Results for ${n}" --clear --msgbox "$(<$INPUT5)" 30 95
+          	dialog --title "Results for ${n}" --ok-label "Return to menu" --clear --msgbox "$(<$INPUT5)" 30 95
           }
           
           trap "rm $OUTPUT5; exit" SIGHUP SIGINT SIGTERM
@@ -140,14 +138,9 @@ function search_app(){
            
 
           case $respose2 in
-            0)
-            	searchCommand ${name2}
-            	;;
-            1)
-            	echo "Exiting Application Searching"
-            	;;
-            255)
-             echo "Exiting Application Searching"
+            0)searchCommand ${name2};;
+            1)echo "Exiting Application Searching";;
+            255)echo "Exiting Application Searching"
           esac
 
 
@@ -160,35 +153,39 @@ function search_app(){
 while true; do
  
 
-dialog --clear  --help-button --backtitle "Chrome gRaphical Interface" \
---title "[ Selection ]" \
+dialog --clear --ok-label "Enter" --no-cancel --backtitle "Chrome gRaphical Interface by David Smerkous and Eli Smith" \
+--title "[ Select Option ]" \
 --menu "You can use the mouse, UP/DOWN arrow keys, the first \n\
 letter of the choice as a hot key, or the \n\
-number keys 1-9 to choose an option.\n\
- " 20 50 8 \
-Run_app "Run an application" \
-Install "Install an application" \
-Remove "Remove an application" \
-Search "Search app online by context" \
-Update "Update/Upgrade all apps and cri" \
-Stop "Stop all apps" \
-Files "A file explorer for chromebooks" \
-Terminal "Go to the command line" 2>"${INPUT}"
+number keys to choose an option.\n\
+ " 20 60 9 \
+Run_app "Run an App" \
+Install "Install an App" \
+Remove "Remove an App" \
+Search "Search App by context" \
+Update "Update all Apps" \
+Stop "Stop all Apps" \
+Files "File Explorer" \
+Color "Toggle color mode" \
+Terminal "Go to Terminal" 2>"${INPUT}"
 menuitem=$(<"${INPUT}")
 
 case $menuitem in
-	Run_app) run_app;;
-	Install) install_app;;
-	Remove) remove_app;;
-  	Search) search_app;;
-  	Update) update_app;;
-  	Stop) stop_app;;
-  	Files) files_app;;
-	Terminal) break;;
+  Run_app) run_app;;
+  Install) install_app;;
+  Remove) remove_app;;
+  Search) search_app;;
+  Update) update_app;;
+  Stop) stop_app;;
+  Files) files_app;;
+  Color) change_mode;;
+  Terminal) break;;
 esac
+
 done
 
 [ -f $OUTPUT ] && rm $OUTPUT
 [ -f $INPUT ] && rm $INPUT
 clear
-exit
+
+exit 0
