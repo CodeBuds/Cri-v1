@@ -14,6 +14,9 @@ fi
 cd $CBIN
 
 printf "Welcome to the cri updater, please give me a minute to organize everything\n\n"
+if [ $ARF ]; then
+    echo "Arguments: $ARF"
+fi
 
 ask() {
     while true; do
@@ -56,7 +59,7 @@ LINES=$(lineCount)
 NUMBERS=1
 cd $CBIN
 for NAME in $NAMES; do #Downloads all nessisary files from github to /usr/local/bin
-    if [ "$ARF" != "gui" ]; then
+    if [ $ARF != gui ]; then
       clean
     fi
     echo "File $NUMBERS/$LINES..."
