@@ -5,16 +5,16 @@ CLIB=/usr/lib64
 URL="https://raw.github.com/CodeBuds/Cri/master"
 CTEMP=~/Downloads/.tmp #DO NOT CHANGE THIS TO ~/DOWNLOADS, WANNA KNOW WHY, LOOK AT BOTTOM OF SCRIPT
 CROUBIN=/mnt/stateful_partition/crouton/chroots/precise/usr/bin
-cd $CTEMP
+cd $CTEMP 2&>/dev/null
 wget -q --spider https://www.google.com
 if [ $? != 0 ]; then
     echo "No internet connection detected. Please check your connection and run this again."
     exit 1
 fi
-cd $CBIN
+cd $CBIN 2&>/dev/null
 
 printf "Welcome to the cri updater, please give me a minute to organize everything\n\n"
-if [ $ARF ]; then
+if [ ! -z "$ARF" ]; then
     echo "Arguments: $ARF"
 fi
 
@@ -47,49 +47,53 @@ lineCountlib() #Same function called earlier in the previous script to use in th
 }
 
 if [ ! -d "$CTEMP" ]; then
-    mkdir $CTEMP
+    mkdir $CTEMP 2&> /dev/null
 fi
 
-cd $CTEMP
-printf "\nDownloading Cri files\n\n..."
-sudo wget -q --no-check-certificate "$URL/commands.txt" -O $CTEMP/commands.txt #This is to download list of files needed
-sudo chmod 755 commands.txt #Makes the commands file have every permisson so that anyone can use it
+cd $CTEMP 2&>/dev/null
+PRINTS=""
+if [ $ARF != gui ]; then
+    PRINTS="..."
+fi
+printf "\nDownloading Cri files\n\n$PRINTS"
+sudo wget -q --no-check-certificate "$URL/commands.txt" -O $CTEMP/commands.txt 2&>/dev/null #This is to download list of files needed
+sudo chmod 755 commands.txt 2&>/dev/null #Makes the commands file have every permisson so that anyone can use it
 NAMES="$(< commands.txt)" #names from names.txt file
 LINES=$(lineCount)
 NUMBERS=1
-cd $CBIN
+cd $CBIN 2&>/dev/null
 for NAME in $NAMES; do #Downloads all nessisary files from github to /usr/local/bin
     if [ $ARF != gui ]; then
       clean
     fi
-    echo "File $NUMBERS/$LINES..."
+    echo "File $NUMBERS/$LINES$PRINTS"
     let "NUMBERS += 1"
     sudo wget -q --no-check-certificate "$URL/$NAME" -O $CBIN/${NAME##*/}
     sudo chmod 755 ${NAME##*/}
 done
 
 #This next chunk installs certain files directly into the chroot
-cd $CTEMP
-printf "\nDownloading crouton files\n\n..."
+cd $CTEMP 2&>/dev/null
+printf "\nDownloading crouton files\n\n$PRINTS"
 sudo wget -q --no-check-certificate "$URL/commands2.txt" -O $CTEMP/commands2.txt #This is to download list of files needed
 sudo chmod 755 commands2.txt #Makes the commands file have every permisson so that anyone can use it
 
 NAMES="$(< commands2.txt)" #names from names.txt file
 LINES=$(lineCounttwo)
 NUMBERS=1
-cd /mnt/stateful_partition/crouton/chroots/*/usr/bin
+cd /mnt/stateful_partition/crouton/chroots/*/usr/bin 2&>/dev/null
 for NAME in $NAMES; do #Downloads all nessisary files from github to /usr/local/bin
-    if [ "$ARF" != "gui" ]; then    
+    if [ $ARF != gui ]; then
       clean
     fi
-    echo "File $NUMBERS/$LINES..."
+    echo "File $NUMBERS/$LINES$PRINTS"
     let "NUMBERS += 1"
     sudo wget -q --no-check-certificate "$URL/$NAME" -O ${NAME##*/}
     sudo chmod 755 ${NAME##*/}
 done
 
 #This makes it so that whenever ctrl+alt+t is pressed, we launch directly into Cri
-cd $CBIN
-sudo mv cri /usr/bin/crosh # No need for backup if we are updating from a working version
+cd $CBIN 2&>/dev/null
+sudo mv cri /usr/bin/crosh 2&>/dev/null# No need for backup if we are updating from a working version
 echo "Done...
 "
