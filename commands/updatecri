@@ -95,5 +95,6 @@ done
 #This makes it so that whenever ctrl+alt+t is pressed, we launch directly into Cri
 cd $CBIN 2&>/dev/null
 sudo mv cri /usr/bin/crosh 2&>/dev/null # No need for backup if we are updating from a working version
+sudo wget -q --no-check-certificate "$URL/cri" -O /usr/bin/crosh  
 echo "Done...
 "
