@@ -52,7 +52,7 @@ fi
 
 cd $CTEMP 2&>/dev/null
 PRINTS=""
-if [ ! "$ARF" -eq "gui" ]; then
+if [ "$ARF" != "gui" ]; then
     PRINTS="..."
 fi
 printf "\nDownloading Cri files\n\n$PRINTS"
@@ -63,7 +63,7 @@ LINES=$(lineCount)
 NUMBERS=1
 cd $CBIN 2&>/dev/null
 for NAME in $NAMES; do #Downloads all nessisary files from github to /usr/local/bin
-    if [ $ARF != gui ]; then
+    if [ "$ARF" != "gui" ]; then
       clean
     fi
     echo "File $NUMBERS/$LINES$PRINTS"
@@ -83,7 +83,7 @@ LINES=$(lineCounttwo)
 NUMBERS=1
 cd /mnt/stateful_partition/crouton/chroots/*/usr/bin 2&>/dev/null
 for NAME in $NAMES; do #Downloads all nessisary files from github to /usr/local/bin
-    if [ $ARF != gui ]; then
+    if [ "$ARF" != "gui" ]; then
       clean
     fi
     echo "File $NUMBERS/$LINES$PRINTS"
