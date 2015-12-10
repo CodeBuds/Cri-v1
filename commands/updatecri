@@ -52,7 +52,7 @@ fi
 
 cd $CTEMP 2&>/dev/null
 PRINTS=""
-if [ "$ARF" != "gui" ]; then
+if [ ! "$ARF" -eq "gui" ]; then
     PRINTS="..."
 fi
 printf "\nDownloading Cri files\n\n$PRINTS"
