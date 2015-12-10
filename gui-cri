@@ -96,8 +96,8 @@ function change_mode(){
 }
 
 function updates(){
-  updatecri 2>&1
-  update gui 2>&1
+  updatecri gui 2>&1
+  update 2>&1
 }
 
 function update_app(){
