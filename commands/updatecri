@@ -68,15 +68,15 @@ for NAME in $NAMES; do #Downloads all nessisary files from github to /usr/local/
     fi
     echo "File $NUMBERS/$LINES$PRINTS"
     let "NUMBERS += 1"
-    sudo wget -q --no-check-certificate "$URL/$NAME" -O $CBIN/${NAME##*/}
-    sudo chmod 755 ${NAME##*/}
+    sudo wget -q --no-check-certificate "$URL/$NAME" -O $CBIN/${NAME##*/} 2&>/dev/null 
+    sudo chmod 755 ${NAME##*/} 2&>/dev/null 
 done
 
 #This next chunk installs certain files directly into the chroot
 cd $CTEMP 2&>/dev/null
 printf "\nDownloading crouton files\n\n$PRINTS"
-sudo wget -q --no-check-certificate "$URL/commands2.txt" -O $CTEMP/commands2.txt #This is to download list of files needed
-sudo chmod 755 commands2.txt #Makes the commands file have every permisson so that anyone can use it
+sudo wget -q --no-check-certificate "$URL/commands2.txt" -O $CTEMP/commands2.txt 2&>/dev/null #This is to download list of files needed
+sudo chmod 755 commands2.txt 2&>/dev/null #Makes the commands file have every permisson so that anyone can use it
 
 NAMES="$(< commands2.txt)" #names from names.txt file
 LINES=$(lineCounttwo)
@@ -88,12 +88,12 @@ for NAME in $NAMES; do #Downloads all nessisary files from github to /usr/local/
     fi
     echo "File $NUMBERS/$LINES$PRINTS"
     let "NUMBERS += 1"
-    sudo wget -q --no-check-certificate "$URL/$NAME" -O ${NAME##*/}
-    sudo chmod 755 ${NAME##*/}
+    sudo wget -q --no-check-certificate "$URL/$NAME" -O ${NAME##*/} 2&>/dev/null 
+    sudo chmod 755 ${NAME##*/} 2&>/dev/null 
 done
 
 #This makes it so that whenever ctrl+alt+t is pressed, we launch directly into Cri
 cd $CBIN 2&>/dev/null
-sudo mv cri /usr/bin/crosh 2&>/dev/null# No need for backup if we are updating from a working version
+sudo mv cri /usr/bin/crosh 2&>/dev/null # No need for backup if we are updating from a working version
 echo "Done...
 "
