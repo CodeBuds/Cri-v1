@@ -110,6 +110,30 @@ function stop_app(){
   dialog --title "Stop" --ok-label "Return to menu" --clear --msgbox "Attempted to Stop everything" 7 30
 }
 
+function acada_app(){
+  dialog --clear --ok-label "Enter" --no-cancel --backtitle "Chrome gRaphical Interface Acada Package" \
+  --title "[ Select Option ]" \
+  --menu "Select and app to run" 17 60 7 \
+  Netlogo "Modeling enviroment" \
+  Arduino "Program an arduino" \
+  Processing "Java visual arts" \
+  LoggerPro "Graphs and data" \
+  Energia "Program a launchpad" \
+  Openshot "Video Editor" \
+  Return "Return to menu" 2>"${INPUT}"
+  menuitem=$(<"${INPUT}")
+  
+  case $menuitem in
+    Netlogo) run netlogo 2>&1 | dialog --title "Netlogo" --backtitle "Running Netlogo" --progressbox 24 85;;
+    Arduino) run arduino 2>&1 | dialog --title "Arduino" --backtitle "Running Arduino" --progressbox 24 85;;
+    Processing) run processing 2>&1 | dialog --title "Processing" --backtitle "Running Processing" --progressbox 24 85;;
+    LoggerPro) run loggerpro 2>&1 | dialog --title "LoggerPro" --backtitle "Running LoggerPro" --progressbox 24 85;;
+    Energia) run energia 2>&1 | dialog --title "Energia" --backtitle "Running Energia" --progressbox 24 85;;
+    Openshot) run openshot 2>&1 | dialog --title "Open Shot" --backtitle "Running Open Shot" --progressbox 24 85;;
+    Return) return 0;;
+  esac
+}
+
 function search_app(){
           OUTPUT5="/tmp/input4.txt"
           INPUT5="/tmp/output5.txt"
@@ -158,7 +182,7 @@ dialog --clear --ok-label "Enter" --no-cancel --backtitle "Chrome gRaphical Inte
 --menu "You can use the mouse, UP/DOWN arrow keys, the first \n\
 letter of the choice as a hot key, or the \n\
 number keys to choose an option.\n\
- " 20 60 9 \
+ " 20 60 10 \
 Run_app "Run an App" \
 Install "Install an App" \
 Remove "Remove an App" \
@@ -167,6 +191,7 @@ Update "Update all Apps" \
 Stop "Stop all Apps" \
 Files "File Explorer" \
 Color "Toggle color mode" \
+Acada "Acadapkg defaults" \
 Terminal "Go to Terminal" 2>"${INPUT}"
 menuitem=$(<"${INPUT}")
 
@@ -179,6 +204,7 @@ case $menuitem in
   Stop) stop_app;;
   Files) files_app;;
   Color) change_mode;;
+  Acada) acada_app;;
   Terminal) break;;
 esac
 
