@@ -1,8 +1,8 @@
 #!/bin/bash
 printf "Updating and Upgrading all packages...\nThis can take up to 6 minutes...\n"
-writer "apt-get update -m --ignore-missing --fix-missing+apt-get upgrade"
+writer "apt-get update -m --ignore-missing --fix-missing 2&>1+apt-get upgrade 2>&1" 2&>/dev/null 
 sleep 0.05
-sudo enter-chroot -u root runner
+sudo enter-chroot -u root runner 2>&1
 echo "Done... Thanks for waiting"
 sleep 5 # For EOF gui users
 exit 0
