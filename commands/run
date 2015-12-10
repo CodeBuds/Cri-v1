@@ -1,5 +1,5 @@
 #!/bin/bash
-NAME=$@
+NAME="$@"
 ROOT=/mnt/stateful_partition/crouton/chroots/precise
 echo "Trying to run $NAME..."
 if [ "$NAME" = "e17" ]; then
@@ -8,30 +8,33 @@ else
     if [ "$NAME" != "e17" ]; then
         #sudo enter-chroot -b -u root xiwi $NAME
         DIR=/usr/bin
-        if [ -f $ROOT/usr/bin/$NAME ]; then
-            DIR=/usr/bin
+        if [ -f $ROOT/usr/games/$NAME ]; then
+            DIR=/usr/games
+	    writer "cd /usr/games+xiwi ./$NAME"
+	    sudo enter-chroot -u root runner
         else
-            if [ -f $ROOT/usr/games/$NAME ]; then
-                DIR=/usr/games
-            else
-           	    if [ -f $ROOT/usr/local/bin/$NAME ]; then
-                    DIR=/usr/local/bin
-                else
-                    DIR=0
-                fi
+	    sudo enter-chroot -u root xiwi $NAME
+            #if [ -f $ROOT/usr/games/$NAME ]; then
+               # DIR=/usr/games
+            #else
+           	    #if [ -f $ROOT/usr/local/bin/$NAME ]; then
+                    #DIR=/usr/local/bin
+                #else
+                    #DIR=0
+                #fi
            	
-            fi
+            #fi
         fi
     #case "$DIR" in
         #bin) sudo enter-chroot -u root xiwi $NAME & 2&>/dev/null
     #esac
-    if [ $DIR != 0 ]; then
-        writer "cd $DIR+xiwi ./$NAME 2&>/dev/null" 2&> /dev/null
-    else
-        writer "xiwi $NAME 2&>/dev/null" 2&> /dev/null
-    fi
-    sleep 0.01
-    sudo enter-chroot -u root runner 2&>/dev/null
+    #if [ $DIR != 0 ]; then
+        #writer "cd $DIR+xiwi ./$NAME & 2&>/dev/null" 2&> /dev/null
+    #else
+        #writer "xiwi $NAME & 2&>/dev/null" 2&> /dev/null
+    #fi
+    #sleep 0.01
+    #sudo enter-chroot -u root runner 2&>/dev/null
     else
         echo "Sorry, didnt find $NAME on the list of installed programs
         If you believe you have this package, or want to install it
@@ -40,4 +43,4 @@ else
   
   echo "Thanks for using cri to run $NAME"
 fi
-sleep 5
+sleep 2
