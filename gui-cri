@@ -96,8 +96,8 @@ function change_mode(){
 }
 
 function updates(){
-  updatecri 2>&1 /dev/null
-  update 2>&1 /dev/null
+  updatecri 2>&1
+  update gui 2>&1
 }
 
 function update_app(){
