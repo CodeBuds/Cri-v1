@@ -3,7 +3,7 @@ CBIN=/usr/bin
 ARF="$@"
 CLIB=/usr/lib64
 URL="https://raw.github.com/CodeBuds/Cri/master"
-CTEMP=/home/user/*/Downloads/.tmp #DO NOT CHANGE THIS TO ~/DOWNLOADS, WANNA KNOW WHY, LOOK AT BOTTOM OF SCRIPT
+CTEMP=/home/chronos/user/Downloads/.tmp #DO NOT CHANGE THIS TO ~/DOWNLOADS, WANNA KNOW WHY, LOOK AT BOTTOM OF SCRIPT
 CROUBIN=/mnt/stateful_partition/crouton/chroots/precise/usr/bin
 cd $CTEMP
 wget -q --spider https://www.google.com
