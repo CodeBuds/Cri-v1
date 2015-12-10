@@ -26,9 +26,9 @@ else
         #bin) sudo enter-chroot -u root xiwi $NAME & 2&>/dev/null
     #esac
     if [ $DIR != 0 ]; then
-        writer "cd $DIR+xiwi ./$NAME & 2&>/dev/null" 2&> /dev/null
+        writer "cd $DIR+xiwi ./$NAME 2&>/dev/null" 2&> /dev/null
     else
-        writer "xiwi $NAME & 2&>/dev/null" 2&> /dev/null
+        writer "xiwi $NAME 2&>/dev/null" 2&> /dev/null
     fi
     sleep 0.01
     sudo enter-chroot -u root runner 2&>/dev/null
