@@ -2,3 +2,4 @@
 /commands/netlogo
 /commands/energia
 /commands/processing
+/commands/hubnet
