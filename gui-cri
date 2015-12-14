@@ -111,8 +111,9 @@ function stop_app(){
 }
 
 function acada_app(){
+  INPUT2="/tmp/menustuff.txt"
   dialog --clear --ok-label "Enter" --no-cancel --backtitle "Chrome gRaphical Interface Acada Package" \
-  --title "[ Select Option ]" \
+  --title "[ Select Default Program ]" \
   --menu "Select and app to run" 17 60 8 \
   Netlogo "Modeling enviroment" \
   Hubnet "Netlogo(Client/Server)" \
@@ -121,8 +122,8 @@ function acada_app(){
   LoggerPro "Graphs and data" \
   Energia "Program a launchpad" \
   Openshot "Video Editor" \
-  Return "Return to menu" 2>"${INPUT}"
-  menuitem=$(<"${INPUT}")
+  Return "Return to menu" 2>"${INPUT2}"
+  menuitem=$(<"${INPUT2}")
   
   case $menuitem in
     Netlogo) run netlogo 2>&1 | dialog --title "Netlogo" --backtitle "Running Netlogo" --progressbox 24 85;;
