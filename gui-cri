@@ -111,8 +111,8 @@ function stop_app(){
 }
 
 function acada_app(){
-  INPUT2=/tmp/menustuff.txt
-  sudo touch $INPUT2
+  INPUT2=/tmp/menustuff.sh.$$
+  >$INPUT2
   dialog --clear --ok-label "Enter" --no-cancel --backtitle "Chrome gRaphical Interface Acada Package" \
   --title "[ Select Default Program ]" \
   --menu "Select and app to run" 17 60 8 \
