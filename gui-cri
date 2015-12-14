@@ -113,8 +113,9 @@ function stop_app(){
 function acada_app(){
   dialog --clear --ok-label "Enter" --no-cancel --backtitle "Chrome gRaphical Interface Acada Package" \
   --title "[ Select Option ]" \
-  --menu "Select and app to run" 17 60 7 \
+  --menu "Select and app to run" 17 60 8 \
   Netlogo "Modeling enviroment" \
+  Hubnet "Netlogo(Client/Server)" \
   Arduino "Program an arduino" \
   Processing "Java visual arts" \
   LoggerPro "Graphs and data" \
@@ -125,6 +126,7 @@ function acada_app(){
   
   case $menuitem in
     Netlogo) run netlogo 2>&1 | dialog --title "Netlogo" --backtitle "Running Netlogo" --progressbox 24 85;;
+    Hubnet) run hubnet 2>&1 | dialog --title "Hubnet" --backtitle "Running Hubnet" --progressbox 24 85;;
     Arduino) run arduino 2>&1 | dialog --title "Arduino" --backtitle "Running Arduino" --progressbox 24 85;;
     Processing) run processing 2>&1 | dialog --title "Processing" --backtitle "Running Processing" --progressbox 24 85;;
     LoggerPro) run loggerpro 2>&1 | dialog --title "LoggerPro" --backtitle "Running LoggerPro" --progressbox 24 85;;
@@ -148,41 +150,28 @@ function search_app(){
           }
           
           trap "rm $OUTPUT5; exit" SIGHUP SIGINT SIGTERM
-           
-
           dialog --title "Application" \
           --backtitle "Application Searching" \
           --inputbox "Enter a one or two word description of the app" 8 60 2>$OUTPUT5
-           
-
           respose2=$?
-           
-
           name2=$(<$OUTPUT5)
-           
-
           case $respose2 in
             0)searchCommand ${name2};;
             1)echo "Exiting Application Searching";;
             255)echo "Exiting Application Searching"
           esac
-
-
           rm $OUTPUT5
           rm $INPUT5
 }
 
-
-
 while true; do
- 
-
 dialog --clear --ok-label "Enter" --no-cancel --backtitle "Chrome gRaphical Interface by David Smerkous and Eli Smith" \
 --title "[ Select Option ]" \
 --menu "You can use the mouse, UP/DOWN arrow keys, the first \n\
 letter of the choice as a hot key, or the \n\
 number keys to choose an option.\n\
  " 20 60 10 \
+AcadaPkg "Acadapkg defaults" \
 Run_app "Run an App" \
 Install "Install an App" \
 Remove "Remove an App" \
@@ -191,11 +180,11 @@ Update "Update all Apps" \
 Stop "Stop all Apps" \
 Files "File Explorer" \
 Color "Toggle color mode" \
-Acada "Acadapkg defaults" \
 Terminal "Go to Terminal" 2>"${INPUT}"
 menuitem=$(<"${INPUT}")
 
 case $menuitem in
+  Acada) acada_app;;
   Run_app) run_app;;
   Install) install_app;;
   Remove) remove_app;;
@@ -204,7 +193,6 @@ case $menuitem in
   Stop) stop_app;;
   Files) files_app;;
   Color) change_mode;;
-  Acada) acada_app;;
   Terminal) break;;
 esac
 
