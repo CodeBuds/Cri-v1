@@ -1,0 +1,4 @@
+#!/bin/bash
+cd /root/netlogo
+chmod 755 hubnet.sh
+./hubnet.sh
