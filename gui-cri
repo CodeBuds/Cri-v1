@@ -60,6 +60,9 @@ function install_app(){
 }
 
 function files_app(){
+	writer 'cd /root/+mkdir 2 2&>/dev/null'
+	sleep 0.05
+	sudo enter-chroot -b -u root xiwi runner
 	sudo enter-chroot -b -u root xiwi thunar 2&>/dev/null
 	dialog --title "File Manager" --ok-label "Return to menu" --clear --msgbox "Attempted to run file manager.. Give me a couple of seconds" 7 30
 }
