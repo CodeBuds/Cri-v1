@@ -39,14 +39,14 @@ writer "yes % apt-get install arduino gdebi openjdk-7-jre curl software-properti
 sleep 0.5
 sudo enter-chroot -u root runner
 echo "
-Done...
-"
+Done..."
+
 #echo "Done now config for java 7..."
 #writer "sed -i '$ a\deb http://www.duinsoft.nl/pkg debs all' /etc/apt/sources.list+sudo apt-key adv --keyserver keys.gnupg.net --recv-keys 5CB26B26+apt-get update+apt-get install update-sun-jre" 
 #sleep 0.5
 #sudo enter-chroot -u root runner
 #echo "Installed java 7 (True version)...
-#
+
 writer cd /root/Downloads/.tmp/+wget https://ccl.northwestern.edu/netlogo/5.2.1/netlogo-5.2.1.tar.gz+tar xzf netlogo-5.2.1.tar.gz+rm netlogo-5.2.1.tar.gz+mv netlogo-5.2.1 /root/netlogo+chmod 755 /root/netlogo/netlogo.sh
 sleep 0.5
 sudo enter-chroot -u root runner
