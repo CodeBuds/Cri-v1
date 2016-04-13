@@ -1,3 +1,13 @@
+                            -----------------------------------------------------------------
+                            |                                                               |
+                            |                     This repo is depricated,                  |
+                            |                           Please use:                         |
+                            |                github.com/Pseudonymous-coders/CRI             |
+                            |                                                               |
+                            -----------------------------------------------------------------
+
+
+
 # Cri
 ### Chrome Graphical Interface (Stable)
 ##### Developed by David Smerkous and Eli smith
