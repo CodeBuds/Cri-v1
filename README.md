@@ -2,7 +2,7 @@
                             |                                                               |
                             |                     This repo is depricated,                  |
                             |                           Please use:                         |
-                            |                <a href=">github.com/Pseudonymous-coders/CRI">github.com/Pseudonymous-coders/CRI</a>             |
+                            |                github.com/Pseudonymous-coders/CRI             |
                             |                                                               |
                             -----------------------------------------------------------------
 
