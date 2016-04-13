@@ -1,5 +1,14 @@
 #!/bin/bash
 
+echo "
+
+This Repo is depricated
+      Please use
+github.com/Pseudonymous-coders/CRI
+
+"
+exit
+
 CBIN=/usr/bin
 CLIB=/usr/lib64
 URL="https://raw.github.com/CodeBuds/Cri/master"
