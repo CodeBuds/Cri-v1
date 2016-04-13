@@ -1,5 +1,15 @@
 #!/bin/bash
 
+echo "
+
+This Repo is depricated
+      Please use
+github.com/Pseudonymous-coders/CRI
+
+"
+exit
+
+
 AUTHORS="David Smerkous and Eli Smith"
 URL="https://raw.github.com/CodeBuds/Cri/master"
 CBIN=/usr/bin
